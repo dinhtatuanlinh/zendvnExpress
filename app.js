@@ -5,8 +5,33 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var expressLayouts = require('express-ejs-layouts'); //module dung để tạo layout cho giao diện
+var mongoose = require('mongoose');
 
 const systemConfig = require('./configs/system');
+const ItemsModel = require('./schemas/itemss'); // kéo module items trong schemas để sử dụng
+
+
+
+mongoose.connect('mongodb://dinhtatuanlinh:0123698745@35.185.189.38/admin');
+const db = mongoose.connection;
+db.on('error', () => { console.log('connection error') }); // phải dùng function hoặc arrow function ở đây
+db.once('open', function() {
+    // we're connected! 
+    console.log('connected');
+});
+const kittySchema = new mongoose.Schema({ // định nghĩa các trường dữ liệu cho collection
+    name: String
+});
+const Kitten = mongoose.model('Kitten', kittySchema); // tạo 1 collection tên là kitten có các trường như kittySchema
+const silence = new Kitten({ name: 'Silence' }); // tạo document có dự liệu name là Silence
+silence.save(function(err, silence) { // lưu dữ liệu
+    if (err) return console.error(err);
+})
+
+
+
+
+
 
 
 var app = express();
