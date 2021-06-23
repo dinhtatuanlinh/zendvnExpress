@@ -12,7 +12,7 @@ const ItemsModel = require('./schemas/items'); // kéo module items trong schema
 
 
 
-mongoose.connect('mongodb://tuanlinh:164342816@0.0.0.0:27017/admin');
+mongoose.connect('mongodb://tuanlinh:164342816@0.0.0.0:27017/zendvnExpress');
 const db = mongoose.connection;
 db.on('error', () => { console.log('connection error') }); // phải dùng function hoặc arrow function ở đây
 db.once('open', function() {
@@ -27,11 +27,6 @@ const silence = new Kitten({ name: 'Silence' }); // tạo document có dự li�
 silence.save(function(err, silence) { // lưu dữ liệu
     if (err) return console.error(err);
 })
-
-
-
-
-
 
 
 var app = express();
