@@ -2,19 +2,19 @@
 <html>
 
 <head>
-    <% include inc/admin/elements/head %>
+    <%- include('inc/admin/elements/head') %>
 </head>
 
 <body>
     <div id="wrapper">
-        <% include inc/admin/elements/nav %>
+        <%- include('inc/admin/elements/nav') %>
             <div id="page-wrapper">
-                <% include inc/admin/elements/title %>
+                <%- include('inc/admin/elements/title') %>
                     <%- body %>
                         <!-- code này sẽ lấy phần content được khai báo trong router admin -->
             </div>
     </div>
-    <% include inc/admin/elements/script %>
+    <%- include('inc/admin/elements/script') %>
 
 </body>
 

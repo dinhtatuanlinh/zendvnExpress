@@ -12,7 +12,7 @@ const ItemsModel = require('./schemas/items'); // kéo module items trong schema
 
 
 
-mongoose.connect('mongodb://tuanlinh:164342816@0.0.0.0:27017/admin');
+mongoose.connect('mongodb://tuanlinh:164342816@115.79.35.159:27017/admin');
 const db = mongoose.connection;
 db.on('error', () => { console.log('connection error') }); // phải dùng function hoặc arrow function ở đây
 db.once('open', function() {
