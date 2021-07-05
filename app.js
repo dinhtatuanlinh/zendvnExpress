@@ -10,7 +10,8 @@ var mongoose = require('mongoose');
 const systemConfig = require('./configs/system');
 const ItemsModel = require('./schemas/items'); // kéo module items trong schemas để sử dụng
 
-
+// router
+var indexRouter = require('./routes/index');
 
 mongoose.connect('mongodb://tuanlinh:164342816@115.79.35.159:27017/admin');
 const db = mongoose.connection;
@@ -43,7 +44,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// router
 // local variable
+app.use('/', indexRouter);// goi trang chu
 app.locals.systemConfig = systemConfig; //tạo biến local để truyền tới view
 
 app.use(`/${systemConfig.prefixAdmin}`, require('./routes/backend/backendManager'));
