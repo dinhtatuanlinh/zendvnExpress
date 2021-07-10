@@ -20,15 +20,19 @@ db.once('open', function() {
     // we're connected! 
     console.log('connected');
 });
-const kittySchema = new mongoose.Schema({ // định nghĩa các trường dữ liệu cho collection
-    name: String
+// const kittySchema = new mongoose.Schema({ // định nghĩa các trường dữ liệu cho collection
+//     name: String
+// });
+// const Kitten = mongoose.model('Kitten', kittySchema); // tạo 1 collection tên là kitten có các trường như kittySchema
+// const silence = new Kitten({ name: 'Silence' }); // tạo document có dự liệu name là Silence
+// silence.save(function(err, silence) { // lưu dữ liệu
+//     if (err) return console.error(err);
+// })
+// get data from database
+var nodejs = new ItemsModel({name: 'nodejs', status: '1', ordering: '1'});
+ItemsModel.find({}, function(err, items){
+    console.log(items);
 });
-const Kitten = mongoose.model('Kitten', kittySchema); // tạo 1 collection tên là kitten có các trường như kittySchema
-const silence = new Kitten({ name: 'Silence' }); // tạo document có dự liệu name là Silence
-silence.save(function(err, silence) { // lưu dữ liệu
-    if (err) return console.error(err);
-})
-
 
 var app = express();
 
@@ -46,8 +50,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // router
 // local variable
-app.use('/', indexRouter);// goi trang chu
-app.locals.systemConfig = systemConfig; //tạo biến local để truyền tới view
+
+app.locals.systemConfig = systemConfig; //tạo biến local để truyền tới view biến systemConfig sẽ có thể gọi được ở view ejs
 
 app.use(`/${systemConfig.prefixAdmin}`, require('./routes/backend/backendManager'));
 
@@ -56,7 +60,7 @@ app.use(function(req, res, next) {
     next(createError(404));
 });
 
-// error handler
+// error handler (khi gọi url ko tồn tại trả về trang 404)
 app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
