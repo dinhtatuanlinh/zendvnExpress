@@ -28,11 +28,13 @@ db.once('open', function() {
 // silence.save(function(err, silence) { // lưu dữ liệu
 //     if (err) return console.error(err);
 // })
+
+// create a collection
+// var nodejs = new ItemsModel({name: 'nodejs', status: '1', ordering: '1'});
+// nodejs.save(function(err, nodejs){
+//     if (err) return console.log(err);
+// })
 // get data from database
-var nodejs = new ItemsModel({name: 'nodejs', status: '1', ordering: '1'});
-nodejs.save(function(err, nodejs){
-    if (err) return console.log(err);
-})
 ItemsModel.find({}, function(err, items){
     console.log(items);
 });
