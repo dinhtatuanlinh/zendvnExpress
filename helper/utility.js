@@ -8,7 +8,6 @@ var statusButton = (status)=>{
     // đếm số document của collection
     statusFilter.forEach((item, index) => {
         let cond = {};
-        statusFilter[0].class = 'success';
         if (item.name !== 'all') cond = {status: item.name};
         if (item.name === status) statusFilter[index].class = 'success';
         ItemsModel.count(cond).then((data)=>{
