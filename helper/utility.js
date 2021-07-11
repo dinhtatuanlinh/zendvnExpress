@@ -8,7 +8,7 @@ let statusFilter = [
 var count = (cond) =>{
     return new Promise((res, rej) =>{
         console.log(cond);
-        ItemsModel.count(cond, (data)=>{
+        ItemsModel.countDocuments(cond, (data)=>{
             console.log(data);
             res(data);
         })
@@ -23,6 +23,7 @@ var delay = (status) => {
             if (item.name !== 'all') cond = {status: item.name};
             if (item.name === status) statusFilter[i].class = 'success';
             var num = await count(cond);
+            console.log('abc');
             console.log(num);
             statusFilter[i].num = num;
             i++;
