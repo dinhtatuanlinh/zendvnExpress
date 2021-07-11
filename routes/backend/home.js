@@ -12,8 +12,8 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
     // để lấy được dữ liệu trên đường dẫn ta sử dụng req.params.status với status là dữ liệu (/:status)? (console.log(req.params.status))
     var status = req.params.status;
     if(status == undefined) status = 'all';
-    let statusFilter = await utility.statusButton(status);
-    console.log(statusFilter);
+    let statusFilter = await utility.statusButton(status);// utility trả về async là 1 promise nên cũng phải await ra
+    // console.log(statusFilter);
     ItemsModel.find({}).then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
             // console.log(items);
             res.render('inc/admin/list', { 
