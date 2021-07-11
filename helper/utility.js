@@ -9,7 +9,7 @@ var count = (cond) =>{
     return new Promise((res, rej) =>{
         console.log(cond);
         ItemsModel.countDocuments(cond, (err, data)=>{
-            if (err) return console.log(err);
+            if (err) return console.log(err);// cần phải có đoạn code này thì mới lấy được số lượng document
             // console.log(data);
             res(data);
         })
@@ -43,7 +43,7 @@ var statusButton = async (status)=>{
     //     return statusFilter;
     // });
     var result = await delay(status);
-    console.log(result);
+    // console.log(result);
     return result;
     
 }

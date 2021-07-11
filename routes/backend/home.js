@@ -13,9 +13,9 @@ router.get('(/:status)?', (req, res, next) => {// khi truyền dữ liệu qua �
     var status = req.params.status;
     if(status == undefined) status = 'all';
     let statusFilter = utility.statusButton(status);
-    
+    console.log(statusFilter);
     ItemsModel.find({}).then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
-            console.log(items);
+            // console.log(items);
             res.render('inc/admin/list', { 
                 title: 'abc list page',
                 items: items,
