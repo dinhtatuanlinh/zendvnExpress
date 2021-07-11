@@ -1,4 +1,9 @@
 const ItemsModel = require('./../schemas/items');
+let statusFilter = [
+    {name: 'all', count: null, link: '#', class: 'default'},
+    {name: 'active', count: null, link: '#', class: 'default'},
+    {name: 'inactive', count: null, link: '#', class: 'default'},
+];
 var delay = () => {
     return new Promise((res, rej) =>{
         statusFilter.forEach((item, index) => {
@@ -13,11 +18,7 @@ var delay = () => {
     
 };
 var statusButton = async (status)=>{
-    let statusFilter = [
-        {name: 'all', count: null, link: '#', class: 'default'},
-        {name: 'active', count: null, link: '#', class: 'default'},
-        {name: 'inactive', count: null, link: '#', class: 'default'},
-    ];
+    
     // đếm số document của collection
     
     await delay();
