@@ -9,7 +9,7 @@ var count = (cond) =>{
     return new Promise((res, rej) =>{
         console.log(cond);
         ItemsModel.count(cond, (data)=>{
-            
+            console.log(data);
             res(data);
         })
     })
