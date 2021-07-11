@@ -109,7 +109,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <%- include('./../helper/status') %>
+                                <% statusHelper = (status, link) => { %>
+                                    <div>abc</div>
+                                    <a href="<%= link %>">
+                                        
+                                        <% if(status == 1){ %>
+                                            <span class="label label-success">active</span>
+                                        <% }else{ %>
+                                            <span class="label label-warning">inactive</span>
+                                        <%} %>
+                                    </a>
+                                <% } %>
                                 <%
                                     items.forEach((item, index) =>{
                                 %>
@@ -126,8 +136,20 @@
                                     <td>
                                         <!-- gọi function từ helper ra  -->
                                         <%= statusHelper(item.status, "#") %>
+                                        <% /* %>
+                                        <% if(item.status == 1){ %>
+                                            <a href="<%= systemConfig.prefixAdmin %>/item/change-status/<%= item._id %>/active">
+                                                <span class="label
+                                                label-success">active</span>
+                                            </a>
 
-
+                                        <% }else{ %>
+                                            <a href="<%= systemConfig.prefixAdmin %>/item/change-status/<%= item._id %>/inactive">
+                                                <span class="label
+                                                label-warning">inactive</span>
+                                            </a>
+                                        <% } %>
+                                        <% */ %>
 
                                     </td>
                                     <td>
