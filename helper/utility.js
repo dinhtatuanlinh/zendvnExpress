@@ -13,11 +13,12 @@ var statusButton = (status)=>{
             if (item.name === status) statusFilter[index].class = 'success';
             ItemsModel.count(cond).then((data)=>{
                 statusFilter[index].count = data;
+                console.log(statusFilter[index]);
             })
         })
     };
     delay().then(async() => {
-        console.log(statusFilter);
+
         return statusFilter;
     });
     
