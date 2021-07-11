@@ -7,7 +7,7 @@
         <div class="panel panel-info">
             <div class="panel-heading">
                 Search & Filter
-                <a href="<%= systemConfig.prefixAdmin %>/item">
+                <a target="_self" href="<%= systemConfig.prefixAdmin %>/item">
                     <span id="icon-reload" class="glyphicon glyphicon-refresh"></span>
                 </a>
             </div>
@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="status-list col-sm-6 pl0">
                         <% statusFilter.forEach((item, index)=>{ %>
-                            <a class="btn m-b-sm btn-<%= item.class %> btn-sm"
+                            <a target="_self" class="btn m-b-sm btn-<%= item.class %> btn-sm"
                                 href="<%= systemConfig.prefixAdmin %>/<%= item.name %>">
                                 <%= item.name +" (" + item.count +" )" %>
                             </a>
@@ -35,9 +35,7 @@
                                 </span>
                                 <span class="input-group-btn">
                                     <button class="btn btn-success" type="button">
-                                        <a href="<%=
-                                                            systemConfig.prefixAdmin
-                                                            %>/group/all">Clear</a>
+                                        <a target="_self" href="<%= systemConfig.prefixAdmin %>/group/all">Clear</a>
                                     </button>
                                 </span>
                             </div>
@@ -78,10 +76,7 @@
                             Apply
                         </button>
                         <div class="pull-right">
-                            <a href="<%=
-                                                systemConfig.prefixAdmin %>/add" class="btn btn-warning btn-addNew">Add
-                                New
-                            </a>
+                            <a target="_self" href="<%= systemConfig.prefixAdmin %>/add" class="btn btn-warning btn-addNew">Add New </a>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -120,11 +115,11 @@
                                                 <%= statusHelper(item.status," #" ) %>
                                                     <% /* %>
                                                         <% if(item.status==1){ %>
-                                                            <a href="<%= systemConfig.prefixAdmin %>/item/change-status/<%= item._id %>/active">
+                                                            <a target="_self" href="<%= systemConfig.prefixAdmin %>/item/change-status/<%= item._id %>/active">
                                                                 <span class="label label-success">active</span>
                                                             </a>
                                                             <% }else{ %>
-                                                                <a href="<%= systemConfig.prefixAdmin %>/item/change-status/<%= item._id %>/inactive">
+                                                                <a target="_self" href="<%= systemConfig.prefixAdmin %>/item/change-status/<%= item._id %>/inactive">
                                                                     <span class="label label-warning">inactive</span>
                                                                 </a>
                                                                 <% } %>
@@ -135,9 +130,9 @@
                                                     class="text-center ordering" />
                                             </td>
                                             <td>
-                                                <a href="<%= systemConfig.prefixAdmin %>/item/form//change-status/<%= item._id %>"
+                                                <a target="_self" href="<%= systemConfig.prefixAdmin %>/item/form//change-status/<%= item._id %>"
                                                     type="button" class="btn btn-warning btn-sm">Edit</a>
-                                                <a href="<%= systemConfig.prefixAdmin %>/item/delete//change-status/<%= item._id %>"
+                                                <a target="_self" href="<%= systemConfig.prefixAdmin %>/item/delete//change-status/<%= item._id %>"
                                                     type="button" class="btn btn-danger btn-sm btn-delete">Delete</a>
                                             </td>
                                         </tr>
@@ -177,24 +172,24 @@
                     <ul class="pagination text-center">
                         <li class="disabled"><a>«</a></li>
                         <li>
-                            <a
+                            <a target="_self"
                                 href="<%= systemConfig.prefixAdmin %>/item/page=1">1</a>
                         </li>
                         <li class="active"><a>2</a></li>
                         <li>
-                            <a
+                            <a target="_self"
                                 href="<%= systemConfig.prefixAdmin %>/item/page=3">3</a>
                         </li>
                         <li>
-                            <a
+                            <a target="_self"
                                 href="<%= systemConfig.prefixAdmin %>/item/page=4">4</a>
                         </li>
                         <li>
-                            <a
+                            <a target="_self"
                                 href="<%= systemConfig.prefixAdmin %>/item/page=5">5</a>
                         </li>
                         <li>
-                            <a
+                            <a target="_self"
                                 href="<%= systemConfig.prefixAdmin %>/item/page=0">»</a>
                         </li>
                     </ul>

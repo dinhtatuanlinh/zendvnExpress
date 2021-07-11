@@ -1,7 +1,7 @@
 <!-- cách xây dựng hàm và nhúng hàm trong ejs -->
 <% statusHelper = (status, link) => { %>
 
-    <a href="<%= link %>">
+    <a target="_self" href="<%= link %>">
         
         <% if(status == 'active'){ %>
             <span class="label label-success">active</span>
