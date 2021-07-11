@@ -3,9 +3,9 @@
 
     <a href="<%= link %>">
         
-        <% if(status == 1){ %>
+        <% if(status == 'active'){ %>
             <span class="label label-success">active</span>
-        <% }else{ %>
+        <% }else if(status == 'inactive'){ %>
             <span class="label label-warning">inactive</span>
         <%} %>
     </a>
