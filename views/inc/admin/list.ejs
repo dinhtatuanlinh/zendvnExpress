@@ -109,7 +109,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-
+                                <%- include('./../helper/status') %>
                                 <%
                                     items.forEach((item, index) =>{
                                 %>
@@ -124,6 +124,9 @@
                                         <%= item.name %>
                                     </td>
                                     <td>
+                                        <!-- gọi function từ helper ra  -->
+                                        <%= statusHelper(item.status, '#') %>
+                                        <% /* %>
                                         <% if(item.status == 1){ %>
                                             <a href="<%= systemConfig.prefixAdmin %>/item/change-status/<%= item._id %>/active">
                                                 <span class="label
@@ -136,7 +139,7 @@
                                                 label-warning">inactive</span>
                                             </a>
                                         <% } %>
-                                        
+                                        <% */ %>
 
                                     </td>
                                     <td>
