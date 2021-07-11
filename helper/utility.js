@@ -8,7 +8,8 @@ let statusFilter = [
 var count = (cond) =>{
     return new Promise((res, rej) =>{
         console.log(cond);
-        ItemsModel.countDocuments(cond, (data)=>{
+        ItemsModel.countDocuments(cond, (err, data)=>{
+            if (err) console.log(err);
             console.log(data);
             res(data);
         })
