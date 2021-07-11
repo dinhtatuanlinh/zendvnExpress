@@ -17,8 +17,8 @@ var statusButton = (status)=>{
             })
         })
     };
-    delay().then(async() => {
-
+    delay().then(() => {
+        console.log(statusFilter);
         return statusFilter;
     });
     
