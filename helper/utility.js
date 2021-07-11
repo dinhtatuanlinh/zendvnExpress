@@ -14,6 +14,7 @@ var delay = (status) => {
                 statusFilter[index].count = data;
             })
         })
+        res(statusFilter);
     })
     
 };
@@ -21,9 +22,9 @@ var statusButton = async (status)=>{
     
     // đếm số document của collection
     
-    await delay(status);
-    console.log(statusFilter);
-    return statusFilter;
+    var result = await delay(status);
+    console.log(result);
+    return result;
     
 }
 
