@@ -10,7 +10,7 @@ var count = (cond) =>{
         console.log(cond);
         ItemsModel.countDocuments(cond, (err, data)=>{
             if (err) return console.log(err);
-            console.log(data);
+            // console.log(data);
             res(data);
         })
     })
@@ -24,10 +24,10 @@ var delay = (status) => {
             if (item.name !== 'all') cond = {status: item.name};
             if (item.name === status) statusFilter[i].class = 'success';
             var num = await count(cond);
-            console.log('abc');
+            // console.log('abc');
             
             statusFilter[i].num = num;
-            console.log(statusFilter[i]);
+            // console.log(statusFilter[i]);
             i++;
         }
         res(statusFilter);
