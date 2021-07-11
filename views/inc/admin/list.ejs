@@ -19,16 +19,8 @@
                 <div class="row">
                     <div class="status-list col-sm-6 pl0">
 
-                        <a class="btn m-b-sm btn-success btn-sm" href="<%= systemConfig.prefixAdmin %>/item/all">
-                        ALL (4)
-                    </a>
-
-                        <a class="btn m-b-sm btn-default btn-sm" href="<%= systemConfig.prefixAdmin %>/item/active">
-                        ACTIVE (4)
-                    </a>
-
-                        <a class="btn m-b-sm btn-default btn-sm" href="<%= systemConfig.prefixAdmin %>/item/inactive">
-                        INACTIVE (0)
+                        <a class="btn m-b-sm btn-<%= statusFilter.class %> btn-sm" href="<%= systemConfig.prefixAdmin %>/item/all">
+                            <%= statusFilter.name + " (" + statusFilter.count + ")" %>
                     </a>
 
                     </div>
@@ -109,7 +101,9 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <!-- kéo hàm từ trong file ejs vào file này -->
                                 <% include ./../helper/status %>
+                                <!-- end kéo hàm từ trong file ejs vào file này -->
                                 <%
                                     items.forEach((item, index) =>{
                                 %>
