@@ -5,9 +5,16 @@ const ItemsModel = require('./../../schemas/items'); // kéo module items trong 
 /* GET users listing. */
 router.get('/', (req, res, next) => {
     // get data from database
-    ItemsModel.find({}, function (err, items) {
-        console.log(items);
-    });
-    res.render('inc/admin/list', { title: 'abc list page' });
+    // ItemsModel.find({}, function (err, items) { // thay bằng phương thức then để xử lý bất đồng bộ
+    //     console.log(items);
+    // });
+    ItemsModel.find({}).then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
+            console.log(items);
+            res.render('inc/admin/list', { 
+                title: 'abc list page',
+                items: items
+            });
+        });
+    
 });
 module.exports = router;
