@@ -7,17 +7,17 @@ var delay = (status) => {
             {name: 'active', count: null, link: '#', class: 'default'},
             {name: 'inactive', count: null, link: '#', class: 'default'},
         ];
-        var index = 0;
+        var i = 0;
         for(var item of statusFilter) {
             let cond = {};
             if (item.name !== 'all') cond = {status: item.name};
-            if (item.name === status) statusFilter[index].class = 'success';
+            if (item.name === status) statusFilter[i].class = 'success';
             ItemsModel.count(cond).then((data)=>{
                 console.log(statusFilter);
                 console.log(index);
                 statusFilter[index].count = data;
             })
-            index ++;
+            i++;
         }
 
     })
