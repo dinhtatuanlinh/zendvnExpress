@@ -70,8 +70,8 @@ app.use(function(err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    // res.render('error');///khi không tìm được trang sẽ trả về trang báo lỗi
-    res.render('error', { title: 'errorPage' });
+    res.render('error');///khi không tìm được trang sẽ trả về trang báo lỗi
+    // res.render('error', { title: 'errorPage' });
 });
 
 module.exports = app;
