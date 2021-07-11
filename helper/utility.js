@@ -14,17 +14,19 @@ var delay = (status) => {
                 statusFilter[index].count = data;
             })
         })
-        res(statusFilter);
+
     })
     
 };
-var statusButton = async (status)=>{
+var statusButton = (status)=>{
     
     // đếm số document của collection
     
-    var result = await delay(status);
-    console.log(result);
-    return result;
+    delay(status).then(()=>{
+        console.log(statusFilter);
+        return statusFilter;
+    });
+    
     
 }
 
