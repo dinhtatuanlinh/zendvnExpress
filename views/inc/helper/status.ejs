@@ -1,6 +1,5 @@
 <!-- cách xây dựng hàm và nhúng hàm trong ejs -->
-<div>abc</div>
-<% statusHelper=(status, link) =>{ %>
+<% statusHelper = (status, link) => { %>
     <a href="<%= link %>">
         <% if(status == 1){ %>
             <span class="label label-success">active</span>
