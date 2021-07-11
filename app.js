@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var expressLayouts = require('express-ejs-layouts'); //module dung để tạo layout cho giao diện
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 
 const systemConfig = require('./configs/system');
 
@@ -13,13 +13,7 @@ const systemConfig = require('./configs/system');
 // router
 var indexRouter = require('./routes/index');
 
-mongoose.connect('mongodb://tuanlinh:164342816@115.79.35.159:27017/admin');
-const db = mongoose.connection;
-db.on('error', () => { console.log('connection error') }); // phải dùng function hoặc arrow function ở đây
-db.once('open', function() {
-    // we're connected! 
-    console.log('database connected');
-});
+
 // const kittySchema = new mongoose.Schema({ // định nghĩa các trường dữ liệu cho collection
 //     name: String
 // });
