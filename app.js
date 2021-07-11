@@ -18,7 +18,7 @@ const db = mongoose.connection;
 db.on('error', () => { console.log('connection error') }); // phải dùng function hoặc arrow function ở đây
 db.once('open', function() {
     // we're connected! 
-    console.log('connected');
+    console.log('database connected');
 });
 // const kittySchema = new mongoose.Schema({ // định nghĩa các trường dữ liệu cho collection
 //     name: String
