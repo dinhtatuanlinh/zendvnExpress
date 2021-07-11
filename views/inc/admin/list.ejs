@@ -110,8 +110,7 @@
                             </thead>
                             <tbody>
 
-                                <%
-
+                                <%#
                                     items.forEach((item, index)) =>{
                                 %>
                                 <tr>
@@ -125,18 +124,18 @@
                                         <%= item.name %>
                                     </td>
                                     <td>
-                                        <% if(item.status == 1){ %>
+                                        <%# if(item.status == 1){ %>
                                             <a href="<%= systemConfig.prefixAdmin %>/item/change-status/<%= item._id %>/active">
                                                 <span class="label
                                                 label-success">active</span>
                                             </a>
 
-                                        <% }else{ %>
+                                        <%# }else{ %>
                                             <a href="<%= systemConfig.prefixAdmin %>/item/change-status/<%= item._id %>/inactive">
                                                 <span class="label
                                                 label-success">inactive</span>
                                             </a>
-                                        <% } %>
+                                        <%# } %>
                                         
 
                                     </td>
@@ -151,9 +150,8 @@
                                     </td>
                                 </tr>
 
-                                <%
+                                <%#
                                     })
-
                                 %>
                                 
                                 
