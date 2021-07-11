@@ -6,15 +6,20 @@ var statusButton = (status)=>{
         {name: 'inactive', count: null, link: '#', class: 'default'},
     ];
     // đếm số document của collection
-    statusFilter.forEach((item, index) => {
-        let cond = {};
-        if (item.name !== 'all') cond = {status: item.name};
-        if (item.name === status) statusFilter[index].class = 'success';
-        ItemsModel.count(cond).then((data)=>{
-            statusFilter[index].count = data;
+    var delay = async() => {
+        statusFilter.forEach((item, index) => {
+            let cond = {};
+            if (item.name !== 'all') cond = {status: item.name};
+            if (item.name === status) statusFilter[index].class = 'success';
+            ItemsModel.count(cond).then((data)=>{
+                statusFilter[index].count = data;
+            })
         })
-    })
-    return statusFilter
+    };
+    delay().then(async() => {
+        return statusFilter;
+    });
+    
 }
 
 module.exports = {
