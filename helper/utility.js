@@ -14,6 +14,7 @@ var delay = (status) => {
             if (item.name === status) statusFilter[index].class = 'success';
             ItemsModel.count(cond).then((data)=>{
                 console.log(statusFilter);
+                console.log(index);
                 statusFilter[index].count = data;
             })
             index ++;
