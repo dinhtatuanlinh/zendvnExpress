@@ -4,7 +4,7 @@ let statusFilter = [
     {name: 'active', count: null, link: '#', class: 'default'},
     {name: 'inactive', count: null, link: '#', class: 'default'},
 ];
-var delay = () => {
+var delay = (status) => {
     return new Promise((res, rej) =>{
         statusFilter.forEach((item, index) => {
             let cond = {};
@@ -21,7 +21,7 @@ var statusButton = async (status)=>{
     
     // đếm số document của collection
     
-    await delay();
+    await delay(status);
     console.log(statusFilter);
     return statusFilter;
     
