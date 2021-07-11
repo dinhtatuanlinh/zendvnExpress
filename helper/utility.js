@@ -1,11 +1,12 @@
 const ItemsModel = require('./../schemas/items');
-let statusFilter = [
-    {name: 'all', count: null, link: '#', class: 'default'},
-    {name: 'active', count: null, link: '#', class: 'default'},
-    {name: 'inactive', count: null, link: '#', class: 'default'},
-];
+
 var delay = (status) => {
     return new Promise((res, rej) =>{
+        let statusFilter = [
+            {name: 'all', count: null, link: '#', class: 'default'},
+            {name: 'active', count: null, link: '#', class: 'default'},
+            {name: 'inactive', count: null, link: '#', class: 'default'},
+        ];
         var index = 0;
         for(var item of statusFilter) {
             let cond = {};
