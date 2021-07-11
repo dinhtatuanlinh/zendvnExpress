@@ -1,3 +1,4 @@
+const ItemsModel = require('./../schemas/items');
 let statusFilter = [
     {name: 'all', count: null, link: '#', class: 'default'},
     {name: 'active', count: null, link: '#', class: 'success'},
