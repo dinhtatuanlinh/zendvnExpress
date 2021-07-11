@@ -8,7 +8,7 @@ db.once('open', function() {
     console.log('database connected');
 });
 // định nghĩa các collections trong database
-var schema = new Mongoose.Schema({
+var schema = new mongoose.Schema({
     name: 'string',
     status: 'string',
     ordering: 'string',
