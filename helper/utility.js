@@ -30,7 +30,7 @@ var delay = (status) => {
             console.log(statusFilter[i]);
             i++;
         }
-
+        res(statusFilter);
     })
     
 };
@@ -42,9 +42,9 @@ var statusButton = async (status)=>{
     //     console.log(statusFilter);
     //     return statusFilter;
     // });
-    await delay(status);
-    console.log(statusFilter);
-    return statusFilter;
+    var result = await delay(status);
+    console.log(result);
+    return result;
     
 }
 // end tạo nút phân loại active inactive
