@@ -6,6 +6,7 @@ let statusFilter = [
 ];
 var delay = (status) => {
     return new Promise((res, rej) =>{
+        var index = 0;
         for(var item of statusFilter) {
             let cond = {};
             if (item.name !== 'all') cond = {status: item.name};
@@ -13,6 +14,7 @@ var delay = (status) => {
             ItemsModel.count(cond).then((data)=>{
                 statusFilter[index].count = data;
             })
+            index ++;
         }
 
     })
