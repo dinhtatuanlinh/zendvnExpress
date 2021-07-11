@@ -17,7 +17,7 @@
                     <div class="status-list col-sm-6 pl0">
                         <% statusFilter.forEach((item, index)=>{ %>
                             <a class="btn m-b-sm btn-<%= item.class %> btn-sm"
-                                href="<%= systemConfig.prefixAdmin %>/item/all">
+                                href="<%= systemConfig.prefixAdmin %>/<%= item.name %>">
                                 <%= item.name +" (" + item.count +" )" %>
                             </a>
                             <% }) %>
