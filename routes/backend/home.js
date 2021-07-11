@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const ItemsModel = require('./schemas/items'); // kéo module items trong schemas để truy cập bảng items trong database
+const ItemsModel = require('./../../schemas/items'); // kéo module items trong schemas để truy cập bảng items trong database
 
 /* GET users listing. */
 router.get('/', (req, res, next) => {
