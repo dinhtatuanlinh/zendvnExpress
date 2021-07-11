@@ -109,17 +109,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <% statusHelper = (status, link) => { %>
-                                    <div>abc</div>
-                                    <a href="<%= link %>">
-                                        
-                                        <% if(status == 1){ %>
-                                            <span class="label label-success">active</span>
-                                        <% }else{ %>
-                                            <span class="label label-warning">inactive</span>
-                                        <%} %>
-                                    </a>
-                                <% } %>
+                                <% include ./../helper/status %>
                                 <%
                                     items.forEach((item, index) =>{
                                 %>
