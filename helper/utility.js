@@ -21,6 +21,7 @@ var delay = (status) => {
             if (item.name !== 'all') cond = {status: item.name};
             if (item.name === status) statusFilter[i].class = 'success';
             var num = await count(cond);
+            console.log(num);
             statusFilter[i].num = num;
             i++;
         }
