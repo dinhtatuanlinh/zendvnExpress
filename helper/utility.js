@@ -1,4 +1,10 @@
+// tạo nút phân loại active inactive
 const ItemsModel = require('./../schemas/items');
+let statusFilter = [
+    {name: 'all', num: null, link: '#', class: 'default'},
+    {name: 'active', num: null, link: '#', class: 'default'},
+    {name: 'inactive', num: null, link: '#', class: 'default'},
+];
 var count = (cond) =>{
     return new Promise((res, rej) =>{
         ItemsModel.count(cond, (data)=>{
@@ -8,11 +14,7 @@ var count = (cond) =>{
 }
 var delay = (status) => {
     return new Promise( async (res, rej) =>{
-        let statusFilter = [
-            {name: 'all', num: null, link: '#', class: 'default'},
-            {name: 'active', num: null, link: '#', class: 'default'},
-            {name: 'inactive', num: null, link: '#', class: 'default'},
-        ];
+        
         var i = 0;
         for(var item of statusFilter) {
             let cond = {};
@@ -35,10 +37,11 @@ var statusButton = async (status)=>{
     //     return statusFilter;
     // });
     await delay(status);
+    console.log(statusFilter);
     return statusFilter;
     
 }
-
+// end tạo nút phân loại active inactive
 module.exports = {
     statusButton: statusButton
 }
