@@ -1,10 +1,6 @@
 // tạo nút phân loại active inactive
 const ItemsModel = require('./../schemas/items');
-let statusFilter = [
-    {name: 'all', num: null, link: '#', class: 'default'},
-    {name: 'active', num: null, link: '#', class: 'default'},
-    {name: 'inactive', num: null, link: '#', class: 'default'},
-];
+
 var count = (cond) =>{
     return new Promise((res, rej) =>{
         // console.log(cond);
@@ -15,7 +11,7 @@ var count = (cond) =>{
         })
     })
 }
-var delay = (status) => {
+var delay = (status, statusFilter) => {
     return new Promise( async (res, rej) =>{
         
         var i = 0;
@@ -34,7 +30,7 @@ var delay = (status) => {
     })
     
 };
-var statusButton = async (status)=>{
+var statusButton = async (status, statusFilter)=>{
     
     // đếm số document của collection
     
@@ -42,7 +38,7 @@ var statusButton = async (status)=>{
     //     console.log(statusFilter);
     //     return statusFilter;
     // });
-    var result = await delay(status);
+    var result = await delay(status, statusFilter);
     // console.log(result);
     return result;
     
