@@ -8,7 +8,7 @@ var expressLayouts = require('express-ejs-layouts'); //module dung để tạo l
 var mongoose = require('mongoose');
 
 const systemConfig = require('./configs/system');
-const ItemsModel = require('./schemas/items'); // kéo module items trong schemas để sử dụng
+
 
 // router
 var indexRouter = require('./routes/index');
@@ -34,10 +34,7 @@ db.once('open', function() {
 // nodejs.save(function(err, nodejs){
 //     if (err) return console.log(err);
 // })
-// get data from database
-ItemsModel.find({}, function(err, items){
-    console.log(items);
-});
+
 
 var app = express();
 
