@@ -19,7 +19,7 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
     statusFilter = await utility.statusButton(statusCurrent, statusFilter);// utility trả về async là 1 promise nên cũng phải await ra
     // console.log(statusFilter);
     if(statusCurrent !== 'all') where = {status: statusCurrent};// xử lý khi currentstatus bằng all
-    if(search !== "") where = {name: search};
+    if(search !== "") where = {name: new RegExp(search, 'i')}; // RegExp là regular expressions giúp tìm document chứa đoạn kí tự search, i là ko phân biệt hoa thường
     // console.log(where);
     ItemsModel.find(where).then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
             // console.log(items);
