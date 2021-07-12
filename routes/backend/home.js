@@ -27,8 +27,9 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
     var statusCurrent = req.params.status;
     if(statusCurrent == undefined) statusCurrent = 'all';
     statusFilter = await utility.statusButton(statusCurrent, statusFilter);// utility trả về async là 1 promise nên cũng phải await ra
-    // console.log(statusFilter);
+    
     if(statusCurrent !== 'all') where.status = statusCurrent;// xử lý khi currentstatus bằng all
+console.log(statusCurrent);
     var addLink = "";
     if(search !== "") {
         addLink = "?search=" + search;

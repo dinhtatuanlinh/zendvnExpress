@@ -37,7 +37,7 @@ var statusButton = async (status, statusFilter)=>{
 // end tạo nút phân loại active inactive
 // pagination parameter
 var pagiFunc = (currentPage) => {
-    console.log(isNaN(currentPage));
+
     if (isNaN(currentPage) || currentPage === undefined) currentPage = 1;
     
     var pagiParams = {
