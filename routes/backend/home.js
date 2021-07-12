@@ -19,9 +19,9 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
     var statusCurrent = req.params.status;
     if(statusCurrent == undefined) statusCurrent = 'all';
     statusFilter = await utility.statusButton(statusCurrent, statusFilter);// utility trả về async là 1 promise nên cũng phải await ra
-    console.log(statusFilter);
+    // console.log(statusFilter);
     if(statusCurrent !== 'all') where = {status: statusCurrent};
-    console.log(where);
+    // console.log(where);
     ItemsModel.find(where).then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
             // console.log(items);
             res.render('inc/admin/list', { 

@@ -6,7 +6,7 @@ var count = (cond) =>{
         // console.log(cond);
         ItemsModel.countDocuments(cond, (err, data)=>{
             if (err) return console.log(err);// cần phải có đoạn code này thì mới lấy được số lượng document
-            console.log(data);
+            // console.log(data);
             res(data);
         })
     })
@@ -23,7 +23,7 @@ var delay = (status, statusFilter) => {
             // console.log('abc');
             
             statusFilter[i].num = num;
-            console.log(statusFilter[i]);
+            // console.log(statusFilter[i]);
             i++;
         }
         res(statusFilter);
@@ -38,8 +38,9 @@ var statusButton = async (status, statusFilter)=>{
     //     console.log(statusFilter);
     //     return statusFilter;
     // });
+
     var result = await delay(status, statusFilter);
-    // console.log(result);
+    
     return result;
     
 }
