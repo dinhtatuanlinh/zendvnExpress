@@ -78,10 +78,8 @@
                                         <input type="checkbox" class="cbAll" />
                                     </th>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Status</th>
-                                    <!-- <th width="30%">Content</th> -->
-                                    <th>Ordering</th>
+                                    <th><a target="_self" href="<%= systemConfig.prefixAdmin %>?sort=name"></a>Name</th>
+                                    <th><a target="_self" href="<%= systemConfig.prefixAdmin %>?sort=status"></a>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -105,10 +103,7 @@
                                                 <!-- gọi function từ helper ra  -->
                                                 <%- statusHelper(item.status," #" ) %>
                                             </td>
-                                            <td>
-                                                <input type="number" value="<%= item.ordering %>"
-                                                    class="text-center ordering" />
-                                            </td>
+
                                             <td>
                                                 <a target="_self" href="<%= systemConfig.prefixAdmin %>/item/form//change-status/<%= item._id %>"
                                                     type="button" class="btn btn-warning btn-sm">Edit</a>

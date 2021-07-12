@@ -10,6 +10,9 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
         {name: 'active', num: null, link: '#', class: 'default'},
         {name: 'inactive', num: null, link: '#', class: 'default'},
     ];
+    var sort = "";
+    if(req.query.sort !== undefined) sort = req.query.sort;
+    console.log(sort);
     var search = "";
     if (req.query.search !== undefined) search = req.query.search; // req.query dùng để lấy dữ liệu search được gửi qua phương thức get
     var where = {};
@@ -25,7 +28,7 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
         where.name = new RegExp(search, 'i'); // RegExp là regular expressions giúp tìm document chứa đoạn kí tự search, i là ko phân biệt hoa thường
     }
     // console.log(where);
-    ItemsModel.find(where).then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
+    ItemsModel.find(where).sort().then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
             
             res.render('inc/admin/list', { 
                 title: 'abc list page',
