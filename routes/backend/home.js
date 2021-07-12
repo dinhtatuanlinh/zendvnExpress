@@ -10,6 +10,8 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
         {name: 'active', num: null, link: '#', class: 'default'},
         {name: 'inactive', num: null, link: '#', class: 'default'},
     ];
+    var pagiParams = utiltiy.pagiFunc(req.params.p);
+    console.log(pagiParams);
     var sort = {};
     if(req.query.sort !== undefined && req.query.order !== undefined) {
         if(req.query.sort === "name"){
@@ -18,7 +20,6 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
             sort = {status: req.query.order};
         }
     }
-    console.log(sort);
     var search = "";
     if (req.query.search !== undefined) search = req.query.search; // req.query dùng để lấy dữ liệu search được gửi qua phương thức get
     var where = {};
@@ -36,14 +37,13 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
     // console.log(where);
     ItemsModel.find(where).sort(sort).then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
             
-            res.render('inc/admin/list', { 
-                title: 'abc list page',
-                items,
-                statusFilter,
-                search,
-                addLink
-            });
+        res.render('inc/admin/list', { 
+            title: 'abc list page',
+            items,
+            statusFilter,
+            search,
+            addLink
         });
-    
+    });
 });
 module.exports = router;

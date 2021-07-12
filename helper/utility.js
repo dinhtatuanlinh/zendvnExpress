@@ -45,6 +45,17 @@ var statusButton = async (status, statusFilter)=>{
     
 }
 // end tạo nút phân loại active inactive
+// pagination parameter
+var pagiFunc = (currentPage) => {
+    var pagiParams = {
+        itemsPerPage : 3,
+        currentPage  : currentPage
+    }
+    return pagiParams
+}
+
+// end pagination parameter
 module.exports = {
-    statusButton: statusButton
+    statusButton: statusButton,
+    pagiFunc: pagiFunc
 }
