@@ -20,7 +20,7 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
     // console.log(statusFilter);
     if(statusCurrent !== 'all') where = {status: statusCurrent};// xử lý khi currentstatus bằng all
     if(search !== "") where = {name: new RegExp(search, 'i')}; // RegExp là regular expressions giúp tìm document chứa đoạn kí tự search, i là ko phân biệt hoa thường
-    // console.log(where);
+    console.log(search);
     ItemsModel.find(where).then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
             console.log(items);
             res.render('inc/admin/list', { 
