@@ -23,21 +23,14 @@
                             <% }) %>
                     </div>
                     <div class="col-sm-6">
-                        <form action="<%=
-                                            systemConfig.prefixAdmin %>/item/all" method="GET">
+                        <form action="<%= systemConfig.prefixAdmin %>/item" method="GET">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="search" placeholder="Search
-                                                    for..." value="" />
-                                <input type="hidden" value="all" />
+                                <input type="text" class="form-control" name="search" placeholder="Search for..." value="<%= search %>" />
 
                                 <span class="input-group-btn">
                                     <button class="btn btn-info" type="submit">Search</button>
                                 </span>
-                                <span class="input-group-btn">
-                                    <button class="btn btn-success" type="button">
-                                        <a target="_self" href="<%= systemConfig.prefixAdmin %>/group/all">Clear</a>
-                                    </button>
-                                </span>
+
                             </div>
                         </form>
                     </div>

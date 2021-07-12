@@ -10,24 +10,24 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
         {name: 'active', num: null, link: '#', class: 'default'},
         {name: 'inactive', num: null, link: '#', class: 'default'},
     ];
-    // get data from database
-    // ItemsModel.find({}, function (err, items) { // thay bằng phương thức then để xử lý bất đồng bộ
-    //     console.log(items);
-    // });
+    var search = "";
+    if (req.query.search !== "") search = req.query.search; // req.query dùng để lấy dữ liệu search được gửi qua phương thức get
     var where = {};
     // để lấy được dữ liệu trên đường dẫn ta sử dụng req.params.status với status là dữ liệu (/:status)? (console.log(req.params.status))
     var statusCurrent = req.params.status;
     if(statusCurrent == undefined) statusCurrent = 'all';
     statusFilter = await utility.statusButton(statusCurrent, statusFilter);// utility trả về async là 1 promise nên cũng phải await ra
     // console.log(statusFilter);
-    if(statusCurrent !== 'all') where = {status: statusCurrent};
+    if(statusCurrent !== 'all') where = {status: statusCurrent};// xử lý khi currentstatus bằng all
+    if(search !== "") where = {name: search};
     // console.log(where);
     ItemsModel.find(where).then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
             // console.log(items);
             res.render('inc/admin/list', { 
                 title: 'abc list page',
-                items: items,
-                statusFilter: statusFilter
+                items,
+                statusFilter,
+                search
             });
         });
     
