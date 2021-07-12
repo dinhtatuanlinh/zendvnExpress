@@ -15,8 +15,15 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="status-list col-sm-6 pl0">
-                        <%= search %>
-                        <% statusFilter.forEach((item, index)=>{ %>
+                        <%= 
+                            var addLink = "";
+                            if(search !== "")  addLink = "?search=" + search;
+                        %>
+                        <%= addLink %> 
+                        <% 
+                        statusFilter.forEach((item, index)=>{ 
+                            
+                        %>
                             <a target="_self" class="btn m-b-sm btn-<%= item.class %> btn-sm" href="<%= systemConfig.prefixAdmin %>/<%= item.name %>">
                                 <%= item.name +" (" + item.num +" )" %>
                             </a>
