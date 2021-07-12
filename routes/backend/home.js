@@ -35,13 +35,13 @@ console.log(statusCurrent);
         addLink = "?search=" + search;
         where.name = new RegExp(search, 'i'); // RegExp là regular expressions giúp tìm document chứa đoạn kí tự search, i là ko phân biệt hoa thường
     }
-    console.log(where);
+    
     ItemsModel.find(where)
     .sort(sort)
     .skip(pagiParams.position)
     .limit(pagiParams.itemsPerPage)
     .then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
-            
+        console.log(where);
         res.render('inc/admin/list', { 
             title: 'abc list page',
             items,
