@@ -38,7 +38,7 @@ var statusButton = async (status, statusFilter)=>{
 // pagination parameter
 var pagiFunc = (currentPage) => {
     console.log(currentPage);
-    if (currentPage === NaN || currentPage === undefined) currentPage = 1;
+    if (currentPage === "NaN" || currentPage === undefined) currentPage = 1;
     
     var pagiParams = {
         itemsPerPage : 3,
