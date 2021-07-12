@@ -24,7 +24,7 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
         addLink = "?search=" + search;
         where.name = new RegExp(search, 'i'); // RegExp là regular expressions giúp tìm document chứa đoạn kí tự search, i là ko phân biệt hoa thường
     }
-    console.log(where);
+    // console.log(where);
     ItemsModel.find(where).then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
             
             res.render('inc/admin/list', { 
