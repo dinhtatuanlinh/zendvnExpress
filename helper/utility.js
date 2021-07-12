@@ -52,6 +52,8 @@ var pagiFunc = (currentPage) => {
         itemsPerPage : 3,
         currentPage  : currentPage
     }
+    var position = (pagiParams.currentPage - 1) * pagiParams.itemsPerPage;
+    pagiParams.position = position;
     return pagiParams
 }
 

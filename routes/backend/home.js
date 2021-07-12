@@ -37,7 +37,7 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
     // console.log(where);
     ItemsModel.find(where)
     .sort(sort)
-    .skip((pagiParams.currentPage - 1) * pagiParams.itemsPerPage)
+    .skip(pagiParams.position)
     .limit(pagiParams.itemsPerPage)
     .then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
             
