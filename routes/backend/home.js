@@ -41,12 +41,11 @@ console.log(statusCurrent);
     .skip(pagiParams.position)
     .limit(pagiParams.itemsPerPage)
     .then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
-        console.log(where);
         res.render('inc/admin/list', { 
             title: 'abc list page',
             items,
             statusFilter,
-            // statusCurrent,
+            statusCurrent,
             search,
             addLink
         });
