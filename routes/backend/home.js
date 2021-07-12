@@ -35,7 +35,11 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
         where.name = new RegExp(search, 'i'); // RegExp là regular expressions giúp tìm document chứa đoạn kí tự search, i là ko phân biệt hoa thường
     }
     // console.log(where);
-    ItemsModel.find(where).sort(sort).then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
+    ItemsModel.find(where)
+    .sort(sort)
+    .skip((pagiParams.currentPage - 1) * pagiParams.itemsPerPage)
+    .limit(pagiParams.itemsPerPage)
+    .then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
             
         res.render('inc/admin/list', { 
             title: 'abc list page',
