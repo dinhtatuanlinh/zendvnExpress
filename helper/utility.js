@@ -6,7 +6,7 @@ var count = (cond) =>{
         // console.log(cond);
         ItemsModel.countDocuments(cond, (err, data)=>{
             if (err) return console.log(err);// cần phải có đoạn code này thì mới lấy được số lượng document
-            // console.log(data);
+            console.log(data);
             res(data);
         })
     })
