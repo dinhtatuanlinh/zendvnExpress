@@ -46,7 +46,7 @@ console.log(statusCurrent);
             title: 'abc list page',
             items,
             statusFilter,
-            statusCurrent,
+            // statusCurrent,
             search,
             addLink
         });
