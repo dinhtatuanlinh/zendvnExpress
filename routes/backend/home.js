@@ -10,7 +10,6 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
         {name: 'active', num: null, link: '#', class: 'default'},
         {name: 'inactive', num: null, link: '#', class: 'default'},
     ];
-    console.log(req.query.p);
     var pagiParams = utility.pagiFunc(parseInt(req.query.p));
     console.log(pagiParams);
     var sort = {};
