@@ -45,6 +45,7 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
             title: 'abc list page',
             items,
             statusFilter,
+            statusCurrent,
             search,
             addLink
         });

@@ -31,18 +31,8 @@ var delay = (status, statusFilter) => {
     
 };
 var statusButton = async (status, statusFilter)=>{
-    
-    // đếm số document của collection
-    
-    // delay(status).then(()=>{
-    //     console.log(statusFilter);
-    //     return statusFilter;
-    // });
-
     var result = await delay(status, statusFilter);
-    
     return result;
-    
 }
 // end tạo nút phân loại active inactive
 // pagination parameter
