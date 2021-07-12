@@ -11,7 +11,7 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
         {name: 'inactive', num: null, link: '#', class: 'default'},
     ];
     var search = "";
-    if (req.query.search !== "") search = req.query.search; // req.query dùng để lấy dữ liệu search được gửi qua phương thức get
+    if (req.query.search !== undefined) search = req.query.search; // req.query dùng để lấy dữ liệu search được gửi qua phương thức get
     var where = {};
     // để lấy được dữ liệu trên đường dẫn ta sử dụng req.params.status với status là dữ liệu (/:status)? (console.log(req.params.status))
     var statusCurrent = req.params.status;
