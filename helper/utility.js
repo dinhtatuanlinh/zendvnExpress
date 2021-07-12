@@ -47,6 +47,7 @@ var statusButton = async (status, statusFilter)=>{
 // end tạo nút phân loại active inactive
 // pagination parameter
 var pagiFunc = (currentPage) => {
+    if (currentPage === undefined) currentPage = 1;
     var pagiParams = {
         itemsPerPage : 3,
         currentPage  : currentPage
