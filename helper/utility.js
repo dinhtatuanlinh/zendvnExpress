@@ -23,7 +23,7 @@ var delay = (status, statusFilter) => {
             // console.log('abc');
             
             statusFilter[i].num = num;
-            // console.log(statusFilter[i]);
+            console.log(statusFilter[i]);
             i++;
         }
         res(statusFilter);
