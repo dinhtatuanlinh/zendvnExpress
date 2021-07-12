@@ -103,18 +103,7 @@
                                             </td>
                                             <td>
                                                 <!-- gọi function từ helper ra  -->
-                                                <%= statusHelper(item.status," #" ) %>
-                                                    <% /* %>
-                                                        <% if(item.status==1){ %>
-                                                            <a target="_self" href="<%= systemConfig.prefixAdmin %>/item/change-status/<%= item._id %>/active">
-                                                                <span class="label label-success">active</span>
-                                                            </a>
-                                                            <% }else{ %>
-                                                                <a target="_self" href="<%= systemConfig.prefixAdmin %>/item/change-status/<%= item._id %>/inactive">
-                                                                    <span class="label label-warning">inactive</span>
-                                                                </a>
-                                                                <% } %>
-                                                                    <% */ %>
+                                                <%- statusHelper(item.status," #" ) %>
                                             </td>
                                             <td>
                                                 <input type="number" value="<%= item.ordering %>"
