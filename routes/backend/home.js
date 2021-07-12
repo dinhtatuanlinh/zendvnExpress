@@ -35,7 +35,7 @@ console.log(statusCurrent);
         addLink = "?search=" + search;
         where.name = new RegExp(search, 'i'); // RegExp là regular expressions giúp tìm document chứa đoạn kí tự search, i là ko phân biệt hoa thường
     }
-    // console.log(where);
+    console.log(where);
     ItemsModel.find(where)
     .sort(sort)
     .skip(pagiParams.position)
