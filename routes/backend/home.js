@@ -20,7 +20,7 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
     // console.log(statusFilter);
     if(statusCurrent !== 'all') where = {status: statusCurrent};// xử lý khi currentstatus bằng all
     if(search !== "") where = {name: search};
-    console.log(where);
+    // console.log(where);
     ItemsModel.find(where).then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
             // console.log(items);
             res.render('inc/admin/list', { 
