@@ -1,12 +1,10 @@
 <!-- cách xây dựng hàm và nhúng hàm trong ejs -->
-<% statusHelper = (status, link) => { %>
-
-    <a target="_self" href="<%= link %>">
-        
-        <% if(status == 'active'){ %>
-            <span class="label label-success">active</span>
-        <% }else if(status == 'inactive'){ %>
-            <span class="label label-warning">inactive</span>
-        <%} %>
-    </a>
-<% } %>
+<% statusHelper = (status, link) => { 
+    let html ='';
+    if(status == 'active'){
+        html = `<span class="label label-success">active</span>`;
+    }else if(status == 'inactive'){
+        html = `<span class="label label-warning">inactive</span>`;
+    }
+    return `<a target="_self" href="${link}">${html}</a>`;
+ } %>
