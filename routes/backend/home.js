@@ -20,13 +20,14 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
         }
     }
     // change status
+    // console.log(req.app.locals.systemConfig) // phương thức req.app.locals dùng để truy cập tới các biến locals được tạo như ở đây là biến locals systemConfig được tạo tại file app.js
     if(req.query.changestatus !== undefined && req.query.changestatus === "1"){
         if (req.query.status === "active"){
-            ItemsModel.update({_id: req.query.id}, {status: "inactive"}, (err, affected, res)=>{
+            ItemsModel.updateOne({_id: req.query.id}, {status: "inactive"}, (err, affected, res)=>{
                 console.log("success");
             })
         }else{
-            ItemsModel.update({_id: req.query.id}, {status: "active"}, (err, affected, res)=>{
+            ItemsModel.updateOne({_id: req.query.id}, {status: "active"}, (err, affected, res)=>{
                 console.log("success");
             })
         }
@@ -65,5 +66,14 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
             pagiParams
         });
     });
+});
+router.post('/changestatus/:status', (req, res, next) => {// lấy dữ liệu gửi lên qua phương thức post
+    console.log(req.params.status);// lấy status truyền trên url
+    console.log(req.body);// phương thức req.body của module body parser dùng để lấy dữ liệu gửi lên tư form post
+    ItemsModel.updateMany({_id: {$in: req.body.cid}}, {status: req.params.status}, (err, affected, res)=>{//
+        console.log("success");
+        res.redirect(`${req.app.locals.systemConfig}`);
+    });
+    
 });
 module.exports = router;
