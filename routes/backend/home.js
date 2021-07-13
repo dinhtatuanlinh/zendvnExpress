@@ -20,7 +20,7 @@ router.get('(/:status)?(/:query)?', async (req, res, next) => {// khi truyền d
         }
     }
     // change status
-    console.log(req.params.query);
+    console.log(req.params.status);
     if(req.params.query !== undefined && req.params.query === "change-status"){
         console.log(req.query.id);
         console.log(req.query.status);
