@@ -36,16 +36,19 @@ var statusButton = async (status, statusFilter)=>{
 }
 // end tạo nút phân loại active inactive
 // pagination parameter
-var pagiFunc = (currentPage) => {
+var pagiFunc = async (currentPage, totalItems) => {
 
     if (isNaN(currentPage) || currentPage === undefined) currentPage = 1;
     
     var pagiParams = {
         itemsPerPage : 3,
-        currentPage  : currentPage
+        currentPage  : currentPage,
+        totalItems   : totalItems
     }
     var position = (pagiParams.currentPage - 1) * pagiParams.itemsPerPage;
     pagiParams.position = position;
+    var totalPages = Math.ceil(totalItems/pagiParams.itemsPerPage);
+    pagiParams.totalPages = totalPages;
     return pagiParams
 }
 
