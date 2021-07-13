@@ -72,7 +72,7 @@ router.post('/changestatus/:status', (req, res, next) => {// lấy dữ liệu g
     console.log(req.body);// phương thức req.body của module body parser dùng để lấy dữ liệu gửi lên tư form post
     ItemsModel.updateMany({_id: {$in: req.body.cid}}, {status: req.params.status}, (err, affected, result)=>{//
         console.log("success");
-        res.redirect(`admin124`);
+        res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
     });
 });
 module.exports = router;
