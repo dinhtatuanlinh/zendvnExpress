@@ -2,12 +2,30 @@
 <% 
     // linh = 'abc';
     pagination = (pagiParams) =>{
-        html = ``;
+        html = `<ul class="pagination text-center">`;
+        if(pagiParams.currentPage === 1){
+            html += `<li class="disabled"><a>«</a></li>`;
+        }else{
+            html += `<li><a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=1">«</a></li>`;
+        }
+        
         for(var i = 1; i <= pagiParams.totalPages; i++){
-            html += `<li>
+            if (i === pagiParams.currentPage){
+                html += `<li class="active">
+                        <a>${i}</a>
+                    </li>`;
+            }else{
+                html += `<li>
                         <a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=${i}">${i}</a>
                     </li>`;
-    }
+            }
+        }
+        if(pagiParams.currentPage === pagiParams.totalPages){
+            html += `<li class="disabled"><a>»</a></li>`;
+        }else{
+            html += `<li><a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=${pagiParams.totalPages}">»</a></li>`;
+        }
+        html += `</ul>`;
         return `
         <div class="panel panel-info" id="pagination">
             <div class="panel-heading">
@@ -25,13 +43,7 @@
 
                 </div>
                 <div class="ad-pagination">
-                    <ul class="pagination text-center">
-                        <li class="disabled"><a>«</a></li>
-                        ${html}
-                        <li>
-                            <a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=0">»</a>
-                        </li>
-                    </ul>
+                    ${html}
                 </div>
             </div>
         </div>
