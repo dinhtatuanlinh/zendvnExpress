@@ -8,56 +8,8 @@
         }else{
             html += `<li><a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=1">«</a></li>`;
         }
-        if(pagiParams.currentPage === 2){
-            html += `<li>
-                    <a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=1">1</a>
-                </li>`;
-        }else if(pagiParams.currentPage === 3){
-            html += `<li>
-                    <a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=1">1</a>
-                </li>
-                <li>
-                    <a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=2">2</a>
-                </li>`;
-        }else if(pagiParams.currentPage > 3){
-            html += `<li>
-                    <a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=1">1</a>
-                </li>
-                <li class="active">
-                        <a>...</a>
-                </li>
-                <li>
-                    <a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=${pagiParams.currentPage-1}">${pagiParams.currentPage-1}</a>
-                </li>`;
-        }
-        html += `<li class="active">
-                        <a>${pagiParams.currentPage}</a>
-                </li>
-                `;
-        if(pagiParams.currentPage === (pagiParams.totalPages -2)){
-            html += `<li>
-                    <a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=${pagiParams.totalPages}">${pagiParams.totalPages}</a>
-                </li>`;
-        }else if(pagiParams.currentPage === (pagiParams.totalPages -3)){
-            html += `
-                <li>
-                    <a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=${pagiParams.totalPages-1}">${pagiParams.totalPages-1}</a>
-                </li>
-                <li>
-                    <a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=${pagiParams.totalPages}">${pagiParams.totalPages}</a>
-                </li>
-                `;
-        }else if(pagiParams.currentPage < (pagiParams.totalPages -3)){
-            html += `<li>
-                    <a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=${pagiParams.currentPage+1}">${pagiParams.currentPage+1}</a>
-                </li>
-                <li class="active">
-                        <a>...</a>
-                </li>
-                <li>
-                    <a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=${pagiParams.totalPages}">${pagiParams.totalPages}</a>
-                </li>`;
-        }
+
+        
         if(pagiParams.currentPage === pagiParams.totalPages){
             html += `<li class="disabled"><a>»</a></li>`;
         }else{
