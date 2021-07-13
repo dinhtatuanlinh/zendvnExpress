@@ -4,7 +4,7 @@ const ItemsModel = require('./../../schemas/items'); // kéo module items trong 
 const utility = require('./../../helper/utility'); // kéo các hàm trong utility helper vào 
 
 /* GET users listing. */
-router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu qua đường dẫn để lấy được dữ liệu đấy ta thêm /:status vào router. Nếu ko có dữ liệu truyền trên đường dẫn thì thêm (/:status)? nghĩa là có ý nghĩa là chuỗi được gửi lên có cũng được ko có cũng được
+router.get('(/:status)?(/:query)?', async (req, res, next) => {// khi truyền dữ liệu qua đường dẫn để lấy được dữ liệu đấy ta thêm /:status vào router. Nếu ko có dữ liệu truyền trên đường dẫn thì thêm (/:status)? nghĩa là có ý nghĩa là chuỗi được gửi lên có cũng được ko có cũng được
     let statusFilter = [
         {name: 'all', num: null, link: '#', class: 'default'},
         {name: 'active', num: null, link: '#', class: 'default'},
@@ -19,6 +19,12 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
             sort = {status: req.query.order};
         }
     }
+    // change status
+    if(req.params.query !== undefined && req.params.query === "change-status"){
+        console.log(req.query.id);
+        console.log(req.query.status);
+    }
+    // search
     var search = "";
     if (req.query.search !== undefined) search = req.query.search; // req.query dùng để lấy dữ liệu search được gửi qua phương thức get
     var where = {};
