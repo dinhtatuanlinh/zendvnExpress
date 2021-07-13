@@ -1,20 +1,20 @@
 
 <% 
     // linh = 'abc';
-    pagination = () =>{
+    pagination = (pagiParams) =>{
         return `
         <div class="panel panel-info" id="pagination">
             <div class="panel-heading">
                 Pagination
                 <span>^</span>
-                <span class="label label-warning">Total pages: 0</span>
-                <span class="label label-danger">Total entries: 0</span>
+                <span class="label label-warning">Total pages: ${pagiParams.totalPages}</span>
+                <span class="label label-danger">Total entries: ${pagiParams.totalItems}</span>
             </div>
             <div class="panel-body">
                 <div class="infor-pagination">
                     <p>
                         Number of elements on the page:
-                        <span>0</span>
+                        <span>${pagiParams.itemsPerPage}</span>
                     </p>
                     <p>
                         Showing

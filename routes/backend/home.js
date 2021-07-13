@@ -48,7 +48,8 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
             statusFilter,
             statusCurrent,
             search,
-            addLink
+            addLink,
+            pagiParams
         });
     });
 });
