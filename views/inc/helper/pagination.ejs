@@ -8,18 +8,24 @@
         }else{
             html += `<li><a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=1">«</a></li>`;
         }
+
+        html += `
+                <li class="active">
+                        <a>...</a>
+                </li>
+                <li>
+                    <a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=${pagiParams.currentPage-1}">${pagiParams.currentPage-1}</a>
+                </li>
+                <li class="active">
+                        <a>${pagiParams.currentPage}</a>
+                </li>
+                <li>
+                    <a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=${pagiParams.currentPage+1}">${pagiParams.currentPage+1}</a>
+                </li>
+                <li class="active">
+                        <a>...</a>
+                </li>`;
         
-        for(var i = 1; i <= pagiParams.totalPages; i++){
-            if (i === pagiParams.currentPage){
-                html += `<li class="active">
-                        <a>${i}</a>
-                    </li>`;
-            }else{
-                html += `<li>
-                        <a target="_self" href="${systemConfig.prefixAdmin}/${statusCurrent}?p=${i}">${i}</a>
-                    </li>`;
-            }
-        }
         if(pagiParams.currentPage === pagiParams.totalPages){
             html += `<li class="disabled"><a>»</a></li>`;
         }else{
