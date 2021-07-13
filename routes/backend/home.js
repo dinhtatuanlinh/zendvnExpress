@@ -20,6 +20,7 @@ router.get('(/:status)?(/:query)?', async (req, res, next) => {// khi truyền d
         }
     }
     // change status
+    console.log(req.params.query);
     if(req.params.query !== undefined && req.params.query === "change-status"){
         console.log(req.query.id);
         console.log(req.query.status);
@@ -34,7 +35,7 @@ router.get('(/:status)?(/:query)?', async (req, res, next) => {// khi truyền d
     statusFilter = await utility.statusButton(statusCurrent, statusFilter);// utility trả về async là 1 promise nên cũng phải await ra
     // pagination
     var pagiParams = await utility.pagiFunc(parseInt(req.query.p), statusFilter[0].num);
-    console.log(pagiParams);
+    // console.log(pagiParams);
     if(statusCurrent !== 'all') where.status = statusCurrent;// xử lý khi currentstatus bằng all
     // console.log(statusCurrent);
     var addLink = "";
