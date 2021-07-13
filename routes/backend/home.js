@@ -20,10 +20,16 @@ router.get('(/:status)?', async (req, res, next) => {// khi truyền dữ liệu
         }
     }
     // change status
-    console.log(req.query.changestatus);
     if(req.query.changestatus !== undefined && req.query.changestatus === "1"){
-        console.log(req.query.id);
-        console.log(req.query.status);
+        if (req.query.status === "active"){
+            ItemsModel.update({_id: req.query.id}, {status: "inactive"}, (err, affected, res)=>{
+                console.log("success");
+            })
+        }else{
+            ItemsModel.update({_id: req.query.id}, {status: "active"}, (err, affected, res)=>{
+                console.log("success");
+            })
+        }
     }
     // search
     var search = "";
