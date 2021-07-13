@@ -6,5 +6,5 @@
     }else if(status == 'inactive'){
         html = `<span class="label label-warning">inactive</span>`;
     }
-    return `<a target="_self" href="${systemConfig.prefixAdmin}/change-status?id=${id}&status=${status}">${html}</a>`;
+    return `<a target="_self" href="${systemConfig.prefixAdmin}?changestatus=1&id=${id}&status=${status}">${html}</a>`;
  } %>
