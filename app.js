@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const flash = require('express-flash-notification');
+const session = require('express-session');
 
 var expressLayouts = require('express-ejs-layouts'); //module dung để tạo layout cho giao diện
 // var mongoose = require('mongoose');
@@ -37,7 +39,14 @@ var indexRouter = require('./routes/index');
 
 
 var app = express();
-
+// notification
+app.use(cookieParser());
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+}));
+app.use(flash(app));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
