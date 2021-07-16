@@ -58,6 +58,7 @@ router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ
     .skip(pagiParams.position)
     .limit(pagiParams.itemsPerPage)
     .then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
+        if(statusCurrent !== undefined) req.flash('success', 'cập nhật status thành công', false);
         res.render('inc/admin/list', { 
             title: 'abc list page',
             items,
@@ -70,10 +71,10 @@ router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ
     });
 });
 router.post('/changestatus/:status', (req, res, next) => {// lấy dữ liệu gửi lên qua phương thức post
-    console.log(req.params.status);// lấy status truyền trên url
-    console.log(req.body);// phương thức req.body của module body parser dùng để lấy dữ liệu gửi lên tư form post
+    // console.log(req.params.status);// lấy status truyền trên url
+    // console.log(req.body);// phương thức req.body của module body parser dùng để lấy dữ liệu gửi lên tư form post
     ItemsModel.updateMany({_id: {$in: req.body.cid}}, {status: req.params.status}, (err, affected, result)=>{//
-        req.flash('info', 'dinh ta tuan linh', false);// tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
+        req.flash('success', 'cập nhật status thành công', false);// tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
         res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
     });
 });
