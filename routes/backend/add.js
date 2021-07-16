@@ -3,6 +3,9 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.render('inc/admin/add', { title: 'add page' });
+    req.flash('info', 'dinh ta tuan linh');
+    res.send('test flash');
+    res.end();
+    // res.render('inc/admin/add', { title: 'add page' });
 });
 module.exports = router;

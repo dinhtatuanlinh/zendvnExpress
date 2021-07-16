@@ -75,9 +75,4 @@ router.post('/changestatus/:status', (req, res, next) => {// lấy dữ liệu g
         res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
     });
 });
-router.get('/add', (req,res,next)=>{
-    req.flash('info', 'dinh ta tuan linh');
-    res.send('test flash');
-    res.end();
-})
 module.exports = router;
