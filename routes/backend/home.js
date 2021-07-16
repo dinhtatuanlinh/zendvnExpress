@@ -38,8 +38,10 @@ router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ
     var where = {};
     // để lấy được dữ liệu trên đường dẫn ta sử dụng req.params.status với status là dữ liệu (/:status)? (console.log(req.params.status))
     var statusCurrent = req.params.status;
+    console.log(statusCurrent);
     if(statusCurrent == undefined) statusCurrent = 'all';
     statusFilter = await utility.statusButton(statusCurrent, statusFilter);// utility trả về async là 1 promise nên cũng phải await ra
+    console.log(statusFilter);
     // pagination
     var pagiParams = await utility.pagiFunc(parseInt(req.query.p), statusFilter[0].num);
     // console.log(pagiParams);
