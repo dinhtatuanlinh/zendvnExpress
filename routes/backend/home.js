@@ -58,7 +58,6 @@ router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ
     .skip(pagiParams.position)
     .limit(pagiParams.itemsPerPage)
     .then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
-        if(statusCurrent !== undefined) req.flash('success', 'cập nhật status thành công');
         res.render('inc/admin/list', { 
             title: 'abc list page',
             items,
