@@ -38,10 +38,10 @@ router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ
     var where = {};
     // để lấy được dữ liệu trên đường dẫn ta sử dụng req.params.status với status là dữ liệu (/:status)? (console.log(req.params.status))
     var statusCurrent = req.params.status;
-    console.log(statusCurrent);
+    // console.log(statusCurrent);
     if(statusCurrent == undefined) statusCurrent = 'all';
     statusFilter = await utility.statusButton(statusCurrent, statusFilter);// utility trả về async là 1 promise nên cũng phải await ra
-    console.log(statusFilter);
+    // console.log(statusFilter);
     // pagination
     var pagiParams = await utility.pagiFunc(parseInt(req.query.p), statusFilter[0].num);
     // console.log(pagiParams);
@@ -73,7 +73,7 @@ router.post('/changestatus/:status', (req, res, next) => {// lấy dữ liệu g
     console.log(req.params.status);// lấy status truyền trên url
     console.log(req.body);// phương thức req.body của module body parser dùng để lấy dữ liệu gửi lên tư form post
     ItemsModel.updateMany({_id: {$in: req.body.cid}}, {status: req.params.status}, (err, affected, result)=>{//
-        console.log("success");
+        req.flash('info', 'dinh ta tuan linh', false);// tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
         res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
     });
 });
