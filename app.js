@@ -46,7 +46,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
-app.use(flash(app));
+app.use(flash(app,{viewName: 'inc/admin/elements/flash'}));// có thể thay đổ tệp tin hiển thị flash mặc định thành tên khác và đường dẫn tới tệp tin đó
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
