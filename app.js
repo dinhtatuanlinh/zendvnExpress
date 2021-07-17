@@ -46,14 +46,14 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
-app.use(flash(app,{viewName: 'inc/admin/elements/flash'}));// có thể thay đổ tệp tin hiển thị flash mặc định thành tên khác và đường dẫn tới tệp tin đó
+app.use(flash(app, { viewName: 'inc/admin/elements/flash' })); // có thể thay đổ tệp tin hiển thị flash mặc định thành tên khác và đường dẫn tới tệp tin đó
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', 'backend'); //set layout cho backend là file backend.ejs nội dung thay đổi sẽ được gọi vào được truyền tới <%- body %>
 
-//app.use(logger('dev'));// tắt log khi chạy
+app.use(logger('dev')); // tắt log khi chạy
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -79,7 +79,7 @@ app.use(function(err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render('error');///khi không tìm được trang sẽ trả về trang báo lỗi có thông báo lỗi đầy đủ
+    res.render('error'); ///khi không tìm được trang sẽ trả về trang báo lỗi có thông báo lỗi đầy đủ
     // res.render('error', { title: 'errorPage' });
 });
 
