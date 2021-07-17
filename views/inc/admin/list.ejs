@@ -1,53 +1,53 @@
 <%- locals.flash %>
 
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                Search & Filter
-                <a target="_self" href="<%= systemConfig.prefixAdmin %>">
-                    <span id="icon-reload" class="glyphicon glyphicon-refresh"></span>
-                </a>
-            </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Search & Filter
+                    <a target="_self" href="<%= systemConfig.prefixAdmin %>">
+                        <span id="icon-reload" class="glyphicon glyphicon-refresh"></span>
+                    </a>
+                </div>
 
-            <div class="panel-body">
-                <div class="row">
-                    <div class="status-list col-sm-6 pl0">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="status-list col-sm-6 pl0">
 
-                        <% 
+                            <% 
                         statusFilter.forEach((item, index)=>{     
                         %>
-                            <a target="_self" class="btn m-b-sm btn-<%= item.class %> btn-sm" href="<%= systemConfig.prefixAdmin %>/status/<%= item.name %><%= addLink %>">
-                                <%= item.name +" (" + item.num +" )" %>
-                            </a>
-                        <% }) %>
-                    </div>
-                    <div class="col-sm-6">
-                        <form target="_self" action="<%= systemConfig.prefixAdmin %>" method="GET">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="search" placeholder="Search for..." value="<%= search %>" />
+                                <a target="_self" class="btn m-b-sm btn-<%= item.class %> btn-sm" href="<%= systemConfig.prefixAdmin %>/status/<%= item.name %><%= addLink %>">
+                                    <%= item.name +" (" + item.num +" )" %>
+                                </a>
+                                <% }) %>
+                        </div>
+                        <div class="col-sm-6">
+                            <form target="_self" action="<%= systemConfig.prefixAdmin %>" method="GET">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="search" placeholder="Search for..." value="<%= search %>" />
 
-                                <span class="input-group-btn">
+                                    <span class="input-group-btn">
                                     <button class="btn btn-info" type="submit">Search</button>
                                 </span>
 
-                            </div>
-                        </form>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-lg-12">
-        <div class="panel panel-info">
-            <div class="panel-heading">List Items</div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-                <form target="_self" role="form" class="form-inline zt-form" id="zt-form" action="" method="post">
-                    <div class="zcontrols">
-                        <select name="action" class="form-control slbAction">
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">List Items</div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <form target="_self" role="form" class="form-inline zt-form" id="zt-form" action="" method="post">
+                        <div class="zcontrols">
+                            <select name="action" class="form-control slbAction">
                             <option value="">Bulk Action</option>
                             <option value="<%= systemConfig.prefixAdmin %>/changestatus/active">
                                 Active
@@ -59,65 +59,63 @@
                                 Delete
                             </option>
                         </select>
-                        <button class="btn btn-info btnAction" type="button" id="btn-action" value="btnAction" disabled>
+                            <button class="btn btn-info btnAction" type="button" id="btn-action" value="btnAction" disabled>
                             Apply
                         </button>
-                        <div class="pull-right">
-                            <a target="_self" href="<%= systemConfig.prefixAdmin %>/add" class="btn btn-warning btn-addNew">Add New </a>
+                            <div class="pull-right">
+                                <a target="_self" href="<%= systemConfig.prefixAdmin %>/add" class="btn btn-warning btn-addNew">Add New </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <input type="checkbox" class="cbAll" />
-                                    </th>
-                                    <th>#</th>
-                                    <th><a target="_self" href="<%= systemConfig.prefixAdmin %>?sort=name&order=ascending">Name</a></th>
-                                    <th><a target="_self" href="<%= systemConfig.prefixAdmin %>?sort=status&order=ascending">Status</a></th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- kéo hàm từ trong file ejs vào file này -->
-                                <% include ./../helper/status %>
-                                    <!-- end kéo hàm từ trong file ejs vào file này -->
-                                    <% items.forEach((item, index)=>{ %>
-                                        <tr>
-                                            <td>
-                                                <input type="checkbox" name="cid" value="<%= item._id %>" />
-                                            </td>
-                                            <td>
-                                                <%= index+1 %>
-                                            </td>
-                                            <td>
-                                                <%= item.name %>
-                                            </td>
-                                            <td>
-                                                <!-- gọi function từ helper ra  -->
-                                                <%- statusHelper(item.status,item._id) %>
-                                            </td>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" class="cbAll" />
+                                        </th>
+                                        <th>#</th>
+                                        <th><a target="_self" href="<%= systemConfig.prefixAdmin %>?sort=name&order=ascending">Name</a></th>
+                                        <th><a target="_self" href="<%= systemConfig.prefixAdmin %>?sort=status&order=ascending">Status</a></th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- kéo hàm từ trong file ejs vào file này -->
+                                    <% include ./../helper/status %>
+                                        <!-- end kéo hàm từ trong file ejs vào file này -->
+                                        <% items.forEach((item, index)=>{ %>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" name="cid" value="<%= item._id %>" />
+                                                </td>
+                                                <td>
+                                                    <%= index+1 %>
+                                                </td>
+                                                <td>
+                                                    <%= item.name %>
+                                                </td>
+                                                <td>
+                                                    <!-- gọi function từ helper ra  -->
+                                                    <%- statusHelper(item.status,item._id) %>
+                                                </td>
 
-                                            <td>
-                                                <a target="_self" href="<%= systemConfig.prefixAdmin %>/item/form//change-status/<%= item._id %>"
-                                                    type="button" class="btn btn-warning btn-sm">Edit</a>
-                                                <a target="_self" href="<%= systemConfig.prefixAdmin %>/item/delete//change-status/<%= item._id %>"
-                                                    type="button" class="btn btn-danger btn-sm btn-delete">Delete</a>
-                                            </td>
-                                        </tr>
-                                        <% }) %>
-                            </tbody>
-                        </table>
-                    </div>
-                </form>
+                                                <td>
+                                                    <a target="_self" href="<%= systemConfig.prefixAdmin %>/item/add/<%= item._id %>" type="button" class="btn btn-warning btn-sm">Edit</a>
+                                                    <a target="_self" href="<%= systemConfig.prefixAdmin %>/item/delete/<%= item._id %>" type="button" class="btn btn-danger btn-sm btn-delete">Delete</a>
+                                                </td>
+                                            </tr>
+                                            <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-lg-12">
-        <!-- kéo hàm từ trong file ejs vào file này -->
-        <% include ./../helper/pagination %>
-        <%- pagination(pagiParams) %>
+        <div class="col-lg-12">
+            <!-- kéo hàm từ trong file ejs vào file này -->
+            <% include ./../helper/pagination %>
+                <%- pagination(pagiParams) %>
 
+        </div>
     </div>
-</div>
