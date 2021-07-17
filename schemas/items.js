@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const connect = require('./database');
+connect();
 // định nghĩa các collections trong database
 var schema = new mongoose.Schema({
     name: String,
