@@ -10,6 +10,7 @@ router.get('(/:id)?', function(req, res, next) {
         var data = {};
         ItemsModel.findById(req.params.id, (err, item) => {
             data = item;
+            console.log(item);
         });
         console.log(data);
         res.render('inc/admin/add', { title: 'edit page', data });
