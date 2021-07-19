@@ -10,7 +10,6 @@ router.get('(/:id)?', function(req, res, next) {
     var data = { name: '', status: 'novalue' };
 
     if (req.params.id === undefined) {
-        console.log(validatorErr);
         res.render('inc/admin/add', { title: 'add page', data, validatorErr });
     } else {
         
@@ -35,7 +34,7 @@ router.post('/save', [check('name', 'chiều dài từ 5 tới 10 ký tự').isL
     } else {
         // check validate
         console.log(Object.assign(req.body));
-        let validatorErr = req.validationErrors();
+        validatorErr = req.validationErrors();
         console.log(validatorErr);
         if(validatorErr !== false){
             console.log(validatorErr);
