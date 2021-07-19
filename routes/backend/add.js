@@ -34,7 +34,7 @@ router.post('/save', [check('name', 'chiều dài từ 5 tới 10 ký tự').isL
     } else {
         // check validate
         console.log(Object.assign(req.body));
-        validatorErr = validationErrors();
+        validatorErr = validationErrors(req);
         console.log(validatorErr);
         if(validatorErr !== false){
             console.log(validatorErr);
