@@ -11,7 +11,7 @@
                         <div class="alert alert-danger" role="alert">
                             <ul>
                                 <% validatorErr.forEach(err =>{ %>
-                                    <li><%= validatorErr.param %> : <%= validatorErr.msg %></li>
+                                    <li><%= err.param %> : <%= err.msg %></li>
                                 <% }) %> 
                             </ul>
                         </div>
