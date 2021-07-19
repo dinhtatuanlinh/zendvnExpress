@@ -28,6 +28,7 @@ router.get('(/:id)?', function(req, res, next) {
 
 });
 router.post('/save', [check('status').custom(({req}) => {
+    console.log(req.body.status);
     if (req.body.status === 'novalue') {
       throw new Error('chưa chọn status');
     }
