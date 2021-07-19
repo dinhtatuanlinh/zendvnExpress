@@ -48,6 +48,11 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use(flash(app, { viewName: 'inc/admin/elements/flash' })); // có thể thay đổ tệp tin hiển thị flash mặc định thành tên khác và đường dẫn tới tệp tin đó
+app.use(validator({
+    isNotEqual: (val1, val2) =>{
+        return val1 !== val2;
+    }
+}));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -59,11 +64,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(validator({
-    isNotEqual: (val1, val2) =>{
-        return val1 !== val2;
-    }
-}));
+
 
 // router
 // local variable
