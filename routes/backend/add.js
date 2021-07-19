@@ -7,12 +7,12 @@ const utility = require('./../../helper/utility'); // kéo các hàm trong utili
 /* GET users listing. */
 router.get('(/:id)?', function(req, res, next) {
     var data = { name: '', status: 'novalue' };
-
+    console.log('abc');
     if (req.params.id === undefined) {
 
         res.render('inc/admin/add', { title: 'add page', data });
     } else {
-        console.log('abc');
+        
         var data = {};
         ItemsModel.findById(req.params.id, (err, result) => {
             data = result;
