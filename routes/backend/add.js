@@ -40,6 +40,7 @@ router.post('/save', itemsValidation.validator,  (req, res, next) => {
             validatorErr = validatorErr.errors;
             res.render('inc/admin/add', { title: 'add page', data, validatorErr });
         }else{
+            console.log('abc');
             new ItemsModel(data).save().then(() => {
                 req.flash('success', 'Thêm mới  thành công', false); // tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
                 res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
