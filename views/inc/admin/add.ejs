@@ -10,7 +10,9 @@
                         <% if(validatorErr !== undefined){ %> 
                         <div class="alert alert-danger" role="alert">
                             <ul>
-                                <%= JSON.stringify(validatorErr.errors) %> 
+                                <% validatorErr.forEach((err) => { %>
+                                    <li><%= err.param %> : <%= err.msg %></li>
+                                <% }) %> 
                             </ul>
                         </div>
                         <% } %>
