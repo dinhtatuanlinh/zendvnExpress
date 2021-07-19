@@ -5,12 +5,12 @@ const ItemsModel = require('./../../schemas/items'); // kéo module items trong 
 const utility = require('./../../helper/utility'); // kéo các hàm trong utility helper vào 
 // const itemsValidation = require('./../../validation/items'); // keo ham validator
 /* GET users listing. */
-var validatorErr = {};
+var validatorErr;
 router.get('(/:id)?', function(req, res, next) {
     var data = { name: '', status: 'novalue' };
 
     if (req.params.id === undefined) {
-        console.log('123');
+        console.log(validatorErr);
         res.render('inc/admin/add', { title: 'add page', data, validatorErr });
     } else {
         
