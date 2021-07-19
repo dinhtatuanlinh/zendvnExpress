@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const flash = require('express-flash-notification');
 const session = require('express-session');
-var validation = require('express-validator');
+var validator = require('express-validator');
 
 var expressLayouts = require('express-ejs-layouts'); //module dung để tạo layout cho giao diện
 // var mongoose = require('mongoose');
@@ -59,7 +59,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(validation({
+app.use(validator({
     isNotEqual: (val1, val2) =>{
         return val1 !== val2;
     }
