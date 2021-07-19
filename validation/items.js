@@ -1,7 +1,8 @@
+const { check, validationErrors } = require('express-validator');
 module.exports = {
-    validator: (req) => {
-        req.checkBody('name', 'chiều dài từ 5 tới 10 ký tự').isLength({min: 5, max: 10});
-        // req.checkBody('ordering', 'Phải là số nguyên lớn hơn 0 và bé hơn 100').isInt({gt: 0, lt: 100});
-        req.checkBody('status', 'Phải là active hoặc inactive').isNotEqual('novalue');
-    }
+    validator: [
+        check('name', 'chiều dài từ 5 tới 10 ký tự').isLength({min: 5, max: 10}),
+        // check('ordering', 'Phải là số nguyên lớn hơn 0 và bé hơn 100').isInt({gt: 0, lt: 100}),
+        // check('status', 'Phải là active hoặc inactive').isNotEqual('novalue')
+    ]
 }

@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const flash = require('express-flash-notification');
 const session = require('express-session');
-var validator = require('express-validator');
+
 
 var expressLayouts = require('express-ejs-layouts'); //module dung để tạo layout cho giao diện
 // var mongoose = require('mongoose');
@@ -48,11 +48,7 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use(flash(app, { viewName: 'inc/admin/elements/flash' })); // có thể thay đổ tệp tin hiển thị flash mặc định thành tên khác và đường dẫn tới tệp tin đó
-app.use(validator({
-    isNotEqual: (val1, val2) =>{
-        return val1 !== val2;
-    }
-}));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
