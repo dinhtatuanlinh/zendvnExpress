@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const { check, validationErrors } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 const ItemsModel = require('./../../schemas/items'); // kéo module items trong schemas để truy cập bảng items trong database
 const utility = require('./../../helper/utility'); // kéo các hàm trong utility helper vào 
 // const itemsValidation = require('./../../validation/items'); // keo ham validator
@@ -34,8 +34,8 @@ router.post('/save', [check('name', 'chiều dài từ 5 tới 10 ký tự').isL
     } else {
         // check validate
         console.log(Object.assign(req.body));
-        validatorErr = validationErrors(req);
-        console.log(validatorErr);
+        var Err = validationResult(req);
+        console.log(Err);
         if(validatorErr !== false){
             console.log(validatorErr);
             // res.render('inc/admin/add', { title: 'add page', data, validatorErr });
