@@ -3,7 +3,7 @@ var router = express.Router();
 const { check, validationErrors } = require('express-validator');
 const ItemsModel = require('./../../schemas/items'); // kéo module items trong schemas để truy cập bảng items trong database
 const utility = require('./../../helper/utility'); // kéo các hàm trong utility helper vào 
-const itemsValidation = require('./../../validation/items'); // keo ham validator
+// const itemsValidation = require('./../../validation/items'); // keo ham validator
 /* GET users listing. */
 router.get('(/:id)?', function(req, res, next) {
     var data = { name: '', status: 'novalue' };
@@ -26,7 +26,7 @@ router.get('(/:id)?', function(req, res, next) {
     // res.end();
 
 });
-router.post('/save', itemsValidation.validator, (req, res, next) => {
+router.post('/save', [check('name', 'chiều dài từ 5 tới 10 ký tự').isLength({min: 5, max: 10})], (req, res, next) => {
     var data = { name: req.body.name, status: req.body.status };
     if (req.body.id) {
 
@@ -36,7 +36,7 @@ router.post('/save', itemsValidation.validator, (req, res, next) => {
         let validatorErr = req.validationErrors();
         if(validatorErr !== false){
             console.log(validatorErr);
-            res.render('inc/admin/add', { title: 'add page', data, validatorErr });
+            // res.render('inc/admin/add', { title: 'add page', data, validatorErr });
         }else{
             new ItemsModel(data).save().then(() => {
                 req.flash('success', 'Thêm mới  thành công', false); // tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
