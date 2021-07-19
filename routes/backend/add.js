@@ -3,7 +3,7 @@ var router = express.Router();
 const { check, validationResult } = require('express-validator');
 const ItemsModel = require('./../../schemas/items'); // kéo module items trong schemas để truy cập bảng items trong database
 const utility = require('./../../helper/utility'); // kéo các hàm trong utility helper vào 
-// const itemsValidation = require('./../../validation/items'); // keo ham validator
+const itemsValidation = require('./../../validation/items'); // keo ham validator
 /* GET users listing. */
 
 router.get('(/:id)?', function(req, res, next) {
@@ -27,7 +27,15 @@ router.get('(/:id)?', function(req, res, next) {
     // res.end();
 
 });
-router.post('/save', [check('name', 'chiều dài từ 5 tới 10 ký tự').isLength({min: 5, max: 10})], (req, res, next) => {
+router.post('/save', [check('status').custom((value, { req }) => {
+    console.log(value);
+    if (value !== req.body.password) {
+      throw new Error('Password confirmation does not match password');
+    }
+
+    // Indicates the success of this synchronous custom validator
+    return true;
+  })], (req, res, next) => {
     var data = { name: req.body.name, status: req.body.status };
     if (req.body.id) {
 
