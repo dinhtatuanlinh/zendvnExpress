@@ -27,15 +27,7 @@ router.get('(/:id)?', function(req, res, next) {
     // res.end();
 
 });
-router.post('/save', 
-    [check('status').custom((value) => {
-        if (value === 'novalue') {
-        throw new Error('chưa chọn status');
-        }
-        // Indicates the success of this synchronous custom validator
-        return true;
-    })], 
-    (req, res, next) => {
+router.post('/save', itemsValidation.validator,  (req, res, next) => {
     var data = { name: req.body.name, status: req.body.status };
     if (req.body.id) {
 
