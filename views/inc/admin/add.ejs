@@ -10,7 +10,7 @@
                         <% if(validatorErr !== undefined){ %> 
                         <div class="alert alert-danger" role="alert">
                             <ul>
-                                <%= JSON.stringify(validatorErr) %> 
+                                <%= JSON.stringify(validatorErr.errors) %> 
                             </ul>
                         </div>
                         <% } %>
