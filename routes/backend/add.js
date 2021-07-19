@@ -27,10 +27,9 @@ router.get('(/:id)?', function(req, res, next) {
     // res.end();
 
 });
-router.post('/save', [check('status').custom((value, { req }) => {
-    console.log(value);
-    if (value !== req.body.password) {
-      throw new Error('Password confirmation does not match password');
+router.post('/save', [check('status').custom(({req}) => {
+    if (req.body.status === 'novalue') {
+      throw new Error('chưa chọn status');
     }
 
     // Indicates the success of this synchronous custom validator
