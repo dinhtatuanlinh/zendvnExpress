@@ -8,7 +8,7 @@ const itemsValidation = require('./../../validation/items'); // keo ham validato
 
 router.get('(/:id)?', function(req, res, next) {
     var data = { name: '', status: 'novalue' };
-    var validatorErr;
+    var validatorErr = null;
     if (req.params.id === undefined) {
         res.render('inc/admin/add', { title: 'add page', data, validatorErr });
     } else {
