@@ -10,7 +10,9 @@
                         <% if(validatorErr !== undefined){ %> 
                         <div class="alert alert-danger" role="alert">
                             <ul>
-                               abc
+                                <% for(var i = 0; i < validatorErr.length; i ++) => { %>
+                                    <li><%= validator[i].param %>: <%= validator[i].msg %></li>
+                                <% }) %> 
                             </ul>
                         </div>
                         <% } %>
