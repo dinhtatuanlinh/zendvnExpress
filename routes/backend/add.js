@@ -12,6 +12,7 @@ router.get('(/:id)?', function(req, res, next) {
 
         res.render('inc/admin/add', { title: 'add page', data });
     } else {
+        console.log('abc');
         var data = {};
         ItemsModel.findById(req.params.id, (err, result) => {
             data = result;
