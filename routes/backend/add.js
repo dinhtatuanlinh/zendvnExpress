@@ -9,7 +9,7 @@ router.get('(/:id)?', function(req, res, next) {
     var data = { name: '', status: 'novalue' };
     console.log('abc');
     if (req.params.id === undefined) {
-
+        console.log('123');
         res.render('inc/admin/add', { title: 'add page', data });
     } else {
         
