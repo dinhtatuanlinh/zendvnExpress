@@ -1,0 +1,10 @@
+<!-- cách xây dựng hàm tạo link phân loại theo các trường -->
+<% sortlinkHelper = (sortField, sortFieldCurrent, sortType) => { 
+    var iconType = (sortType == "asc") ? 'desc' : "asc";
+    var link = systemConfig.prefixAdmin + '/sort/' + sortField +'/' + iconType;
+    var icon = '<i class="fa fa-fw fa-sort"></i>';
+    if(sortField == sortFieldCurrent) icon = `<i class="fa fa-fw fa-sort-${sortType}"></i>`;
+    var html = `<th><a target="_self" href="${link}">${sortField}</a> </th>`;
+    return html;
+ 
+ } %>

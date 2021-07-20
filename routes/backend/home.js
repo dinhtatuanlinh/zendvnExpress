@@ -12,9 +12,10 @@ router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ
     ];
     // sort theo cột
     var sort = {};
-    sort[req.session.sortField] = req.session.sortType;
+    var sortField = (req.session.sortType == undefined) ? 'name' : req.session.sortField;
+    var sortType = (req.session.sortType == undefined) ? 'asc' : req.session.sortType;
+    sort[sortField] = sortType;// gắn dưới dạng array sẽ tự động chuyển qua object
     console.log(sort);
-    console.log(req.session.sortField);
     // change status
     // console.log(req.app.locals.systemConfig) // phương thức req.app.locals dùng để truy cập tới các biến locals được tạo như ở đây là biến locals systemConfig được tạo tại file app.js
     if(req.query.changestatus !== undefined && req.query.changestatus === "1"){
@@ -61,7 +62,9 @@ router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ
             statusCurrent,
             search,
             addLink,
-            pagiParams
+            pagiParams,
+            sortField,
+            sortType
         });
     });
 });
