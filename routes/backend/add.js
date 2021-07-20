@@ -29,14 +29,23 @@ router.get('(/:id)?', function(req, res, next) {
 });
 router.post('/save', itemsValidation.validator,  (req, res, next) => {
     var data = { name: req.body.name, status: req.body.status };
+    var validatorErr = validationResult(req).errors;// lấy ra lỗi khi validation
     if (req.body.id) {
+        if(validatorErr.length > 0){
+            res.render('inc/admin/add', { title: 'edit page', data, validatorErr });
+        }else{
+            
 
+            ItemsModel.updateOne({_id: req.query.id}, data, (err, affected, res)=>{
+                req.flash('success', 'cập nhật status thành công', false);
+                res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
+            })
+        }
     } else {
         // check validate
         // console.log(Object.assign(req.body));
-        var validatorErr = validationResult(req).errors;
+        
         if(validatorErr.length > 0){
-            validatorErr = validatorErr;
             res.render('inc/admin/add', { title: 'add page', data, validatorErr });
         }else{
             new ItemsModel(data).save().then(() => {
