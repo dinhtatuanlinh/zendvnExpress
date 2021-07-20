@@ -45,16 +45,16 @@ router.get('(/:id)?', function(req, res, next) {
     // res.end();
 
 });
-router.post('/save', itemsValidation.validator,  (req, respond, next) => {
+router.post('/save', itemsValidation.validator,  (req, res, next) => {
     var data = { name: req.body.name, status: req.body.status };
     var validatorErr = validationResult(req).errors;// lấy ra lỗi khi validation
     if (req.body.id) {
         if(validatorErr.length > 0){
-            respond.render('inc/admin/add', { title: 'edit page', data, validatorErr });
+            res.render('inc/admin/add', { title: 'edit page', data, validatorErr });
         }else{
-            ItemsModel.updateOne({_id: req.body.id}, data, (err, affected, res)=>{
+            ItemsModel.updateOne({_id: req.body.id}, data, (err, affected, result)=>{
                 req.flash('success', 'cập nhật status thành công', false);
-                respond.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
+                res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
                 
             })
         }
@@ -65,11 +65,11 @@ router.post('/save', itemsValidation.validator,  (req, respond, next) => {
         
         if(validatorErr.length > 0){
             console.log(data);
-            respond.render('inc/admin/add', { title: 'add page', data, validatorErr });
+            res.render('inc/admin/add', { title: 'add page', data, validatorErr });
         }else{
             new ItemsModel(data).save().then(() => {
                 req.flash('success', 'Thêm mới  thành công', false); // tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
-                respond.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
+                res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
             });
         }
         
