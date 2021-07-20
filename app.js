@@ -14,7 +14,7 @@ global.__base = __dirname + '/';
 global.__pathConfigs = __base + 'configs/';
 global.__pathRoutes = __base + 'routes/';
 global.__pathSchemas = __base + 'schemas/';
-global.__pathHelps = __base + 'helps/';
+global.__pathHelps = __base + 'helper/';
 global.__pathValidation = __base + 'validation/';
 const systemConfig = require( __pathConfigs + 'system');
 
