@@ -50,7 +50,7 @@ router.post('/save', itemsValidation.validator,  (req, respond, next) => {
     var validatorErr = validationResult(req).errors;// lấy ra lỗi khi validation
     if (req.body.id) {
         if(validatorErr.length > 0){
-            res.render('inc/admin/add', { title: 'edit page', data, validatorErr });
+            respond.render('inc/admin/add', { title: 'edit page', data, validatorErr });
         }else{
             ItemsModel.updateOne({_id: req.body.id}, data, (err, affected, res)=>{
                 req.flash('success', 'cập nhật status thành công', false);
@@ -65,7 +65,7 @@ router.post('/save', itemsValidation.validator,  (req, respond, next) => {
         
         if(validatorErr.length > 0){
             console.log(data);
-            res.render('inc/admin/add', { title: 'add page', data, validatorErr });
+            respond.render('inc/admin/add', { title: 'add page', data, validatorErr });
         }else{
             new ItemsModel(data).save().then(() => {
                 req.flash('success', 'Thêm mới  thành công', false); // tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
