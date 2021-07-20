@@ -10,10 +10,11 @@ router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ
         {name: 'active', num: null, link: '#', class: 'default'},
         {name: 'inactive', num: null, link: '#', class: 'default'},
     ];
-    
+    // sort theo cột
     var sort = {};
     sort[req.session.sortField] = req.session.sortType;
     console.log(sort);
+    console.log(req.session.sortField);
     // change status
     // console.log(req.app.locals.systemConfig) // phương thức req.app.locals dùng để truy cập tới các biến locals được tạo như ở đây là biến locals systemConfig được tạo tại file app.js
     if(req.query.changestatus !== undefined && req.query.changestatus === "1"){
