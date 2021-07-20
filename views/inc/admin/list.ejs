@@ -15,10 +15,9 @@
                     <div class="row">
                         <div class="status-list col-sm-6 pl0">
 
-                            <% 
-                        statusFilter.forEach((item, index)=>{     
-                        %>
-                                <a target="_self" class="btn m-b-sm btn-<%= item.class %> btn-sm" href="<%= systemConfig.prefixAdmin %>/status/<%= item.name %><%= addLink %>">
+                            <% statusFilter.forEach((item, index)=>{ %>
+                                <a target="_self" class="btn m-b-sm btn-<%= item.class %> btn-sm"
+                                    href="<%= systemConfig.prefixAdmin %>/status/<%= item.name %><%= addLink %>">
                                     <%= item.name +" (" + item.num +" )" %>
                                 </a>
                                 <% }) %>
@@ -26,11 +25,12 @@
                         <div class="col-sm-6">
                             <form target="_self" action="<%= systemConfig.prefixAdmin %>" method="GET">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="search" placeholder="Search for..." value="<%= search %>" />
+                                    <input type="text" class="form-control" name="search" placeholder="Search for..."
+                                        value="<%= search %>" />
 
                                     <span class="input-group-btn">
-                                    <button class="btn btn-info" type="submit">Search</button>
-                                </span>
+                                        <button class="btn btn-info" type="submit">Search</button>
+                                    </span>
 
                                 </div>
                             </form>
@@ -48,22 +48,24 @@
                     <form target="_self" role="form" class="form-inline zt-form" id="zt-form" action="" method="post">
                         <div class="zcontrols">
                             <select name="action" class="form-control slbAction">
-                            <option value="">Bulk Action</option>
-                            <option value="<%= systemConfig.prefixAdmin %>/changestatus/active">
-                                Active
-                            </option>
-                            <option value="<%= systemConfig.prefixAdmin %>/changestatus/inactive">
-                                InActive
-                            </option>
-                            <option value="<%= systemConfig.prefixAdmin %>/delete/">
-                                Delete
-                            </option>
-                        </select>
-                            <button class="btn btn-info btnAction" type="button" id="btn-action" value="btnAction" disabled>
-                            Apply
-                        </button>
+                                <option value="">Bulk Action</option>
+                                <option value="<%= systemConfig.prefixAdmin %>/changestatus/active">
+                                    Active
+                                </option>
+                                <option value="<%= systemConfig.prefixAdmin %>/changestatus/inactive">
+                                    InActive
+                                </option>
+                                <option value="<%= systemConfig.prefixAdmin %>/delete/">
+                                    Delete
+                                </option>
+                            </select>
+                            <button class="btn btn-info btnAction" type="button" id="btn-action" value="btnAction"
+                                disabled>
+                                Apply
+                            </button>
                             <div class="pull-right">
-                                <a target="_self" href="<%= systemConfig.prefixAdmin %>/add" class="btn btn-warning btn-addNew">Add New </a>
+                                <a target="_self" href="<%= systemConfig.prefixAdmin %>/add"
+                                    class="btn btn-warning btn-addNew">Add New </a>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -74,8 +76,12 @@
                                             <input type="checkbox" class="cbAll" />
                                         </th>
                                         <th>#</th>
-                                        <th><a target="_self" href="<%= systemConfig.prefixAdmin %>?sort=name&order=ascending">Name</a></th>
-                                        <th><a target="_self" href="<%= systemConfig.prefixAdmin %>?sort=status&order=ascending">Status</a></th>
+                                        <th><a target="_self"
+                                                href="<%= systemConfig.prefixAdmin %>/sort/name/ascending">Name</a>
+                                        </th>
+                                        <th><a target="_self"
+                                                href="<%= systemConfig.prefixAdmin %>/sort/status/ascending">Status</a>
+                                        </th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -100,8 +106,13 @@
                                                 </td>
 
                                                 <td>
-                                                    <a target="_self" href="<%= systemConfig.prefixAdmin %>/add/<%= item._id %>" type="button" class="btn btn-warning btn-sm">Edit</a>
-                                                    <a target="_self" href="<%= systemConfig.prefixAdmin %>/delete/<%= item._id %>" type="button" class="btn btn-danger btn-sm btn-delete">Delete</a>
+                                                    <a target="_self"
+                                                        href="<%= systemConfig.prefixAdmin %>/add/<%= item._id %>"
+                                                        type="button" class="btn btn-warning btn-sm">Edit</a>
+                                                    <a target="_self"
+                                                        href="<%= systemConfig.prefixAdmin %>/delete/<%= item._id %>"
+                                                        type="button"
+                                                        class="btn btn-danger btn-sm btn-delete">Delete</a>
                                                 </td>
                                             </tr>
                                             <% }) %>

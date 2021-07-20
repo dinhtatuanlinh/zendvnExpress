@@ -12,13 +12,8 @@ router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ
     ];
     
     var sort = {};
-    if(req.query.sort !== undefined && req.query.order !== undefined) {
-        if(req.query.sort === "name"){
-            sort = {name: req.query.order};
-        }else if(req.query.sort === "status"){
-            sort = {status: req.query.order};
-        }
-    }
+    sort[req.session.sortField] = req.session.sortType;
+    console.log(sort);
     // change status
     // console.log(req.app.locals.systemConfig) // phương thức req.app.locals dùng để truy cập tới các biến locals được tạo như ở đây là biến locals systemConfig được tạo tại file app.js
     if(req.query.changestatus !== undefined && req.query.changestatus === "1"){
@@ -79,4 +74,9 @@ router.post('/changestatus/:status', (req, res, next) => {// lấy dữ liệu g
         res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
     });
 });
+router.get('/sort/:name/:type', (req, res, next) => {
+    req.session.sortField = req.params.field;// req.session giúp đưa dữ liệu vào session để gọi ra ở router khác
+    req.session.sortType = req.params.type;
+    res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
+})
 module.exports = router;
