@@ -36,6 +36,8 @@ router.post('/save', itemsValidation.validator,  (req, respond, next) => {
             res.render('inc/admin/add', { title: 'edit page', data, validatorErr });
         }else{
             ItemsModel.updateOne({_id: req.query.id}, data, (err, affected, res)=>{
+                console.log(res);
+                console.log(affected);
                 console.log(err);
                 req.flash('success', 'cập nhật status thành công', false);
                 respond.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
