@@ -30,7 +30,7 @@ router.get('(/:id)?', function(req, res, next) {
 router.post('/save', itemsValidation.validator,  (req, respond, next) => {
     var data = { name: req.body.name, status: req.body.status };
     var validatorErr = validationResult(req).errors;// lấy ra lỗi khi validation
-    console.log(data);
+    console.log(req.query.id);
     if (req.body.id) {
         if(validatorErr.length > 0){
             res.render('inc/admin/add', { title: 'edit page', data, validatorErr });
