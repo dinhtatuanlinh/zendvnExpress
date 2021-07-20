@@ -35,7 +35,7 @@ router.post('/save', itemsValidation.validator,  (req, respond, next) => {
         if(validatorErr.length > 0){
             res.render('inc/admin/add', { title: 'edit page', data, validatorErr });
         }else{
-            ItemsModel.updateOne({_id: req.query.id}, data, (err, affected, res)=>{
+            ItemsModel.updateOne({_id: req.query.id}, { name: req.body.name, status: req.body.status }, (err, affected, res)=>{
                 console.log(res);
                 console.log(affected);
                 console.log(err);
