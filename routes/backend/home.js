@@ -75,7 +75,7 @@ router.post('/changestatus/:status', (req, res, next) => {// lấy dữ liệu g
         res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
     });
 });
-router.get('/sort/:name/:type', (req, res, next) => {
+router.get('/sort/:field/:type', (req, res, next) => {
     req.session.sortField = req.params.field;// req.session giúp đưa dữ liệu vào session để gọi ra ở router khác
     req.session.sortType = req.params.type;
     res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
