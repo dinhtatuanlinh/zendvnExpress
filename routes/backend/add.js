@@ -61,7 +61,7 @@ router.post('/save', itemsValidation.validator,  (req, respond, next) => {
     } else {
         // check validate
         // console.log(Object.assign(req.body));
-        
+        console.log(validatorErr);
         if(validatorErr.length > 0){
             res.render('inc/admin/add', { title: 'add page', data, validatorErr });
         }else{
