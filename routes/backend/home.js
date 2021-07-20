@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const ItemsModel = require('./../../schemas/items'); // kéo module items trong schemas để truy cập bảng items trong database
-const utility = require('./../../helper/utility'); // kéo các hàm trong utility helper vào 
+const ItemsModel = require(__pathSchemas + 'items'); // kéo module items trong schemas để truy cập bảng items trong database
+const utility = require(__pathHelps + 'utility'); // kéo các hàm trong utility helper vào 
 
 /* GET users listing. */
 router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ liệu qua đường dẫn để lấy được dữ liệu đấy ta thêm /:status vào router. Nếu ko có dữ liệu truyền trên đường dẫn thì thêm (/:status)? nghĩa là có ý nghĩa là chuỗi được gửi lên có cũng được ko có cũng được

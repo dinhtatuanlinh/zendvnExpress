@@ -9,12 +9,18 @@ const session = require('express-session');
 
 var expressLayouts = require('express-ejs-layouts'); //module dung để tạo layout cho giao diện
 // var mongoose = require('mongoose');
-
-const systemConfig = require('./configs/system');
+// define path
+global.__base = __dirname + '/';
+global.__pathConfigs = __base + 'configs/';
+global.__pathRoutes = __base + 'routes/';
+global.__pathSchemas = __base + 'schemas/';
+global.__pathHelps = __base + 'helps/';
+global.__pathValidation = __base + 'validation/';
+const systemConfig = require( __pathConfigs + 'system');
 
 
 // router
-var indexRouter = require('./routes/index');
+var indexRouter = require(__pathRoutes + 'index');
 
 // mongoose.connect('mongodb://tuanlinh:164342816@115.79.35.159:27017/admin');
 // const db = mongoose.connection;
