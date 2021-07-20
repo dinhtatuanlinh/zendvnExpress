@@ -20,7 +20,27 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
-                        
+                        <form target="_self" role="form" action="<%= systemConfig.prefixAdmin %>/add/save" method="POST">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input class="form-control" name="name" value="<%= data.name %>">
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select name="status" class="form-control">
+                                    <option value="novalue">Choose Status</option>
+                                    <option value="active" <%= (data.status == "active")? 'selected=selected' : ' ' %> >Active</option>
+                                    <option value="inactive" <%= (data.status == "inactive")? 'selected=selected' : ' ' %> >Inactive</option>
+                                </select>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label>Content</label>
+                                <textarea class="form-control" name="content" rows="2"  id="content_ck" ></textarea>
+                                </div> -->
+                            <input class="form-control" name="id" value="<%= data._id %>" type="hidden">
+                            <button type="submit" class="btn btn-primary">Submit </button>
+                            <a type="button" href="admin123/item/" class="btn btn-default">Cancel</a>
+                        </form>
                     </div>
                 </div>
             </div>
