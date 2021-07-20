@@ -4,7 +4,7 @@
     var link = systemConfig.prefixAdmin + '/sort/' + sortField +'/' + iconType;
     var icon = '<i class="fa fa-fw fa-sort"></i>';
     if(sortField == sortFieldCurrent) icon = `<i class="fa fa-fw fa-sort-${sortType}"></i>`;
-    var html = `<th><a target="_self" href="${link}">${sortField}</a> </th>`;
+    var html = `<th><a target="_self" href="${link}">${sortField}${icon}</a> </th>`;
     return html;
  
  } %>
