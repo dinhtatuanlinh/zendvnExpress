@@ -6,6 +6,7 @@ database.connect();
 var schema = new mongoose.Schema({
     name: String,
     status: String,
-    ordering: Number
+    ordering: Number,
+    content: string
 });
 module.exports = mongoose.model('items', schema);
