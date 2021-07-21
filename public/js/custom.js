@@ -1,3 +1,13 @@
+DecoupledEditor
+            .create( document.querySelector( '#ckeditor' ) )
+            .then( editor => {
+                const toolbarContainer = document.querySelector( '#toolbar-container' );
+
+                toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
 $(document).ready(function () {
     var ckbAll = $(".cbAll");
     var fmAdmin = $("#zt-form");
