@@ -10,5 +10,6 @@ module.exports = {
             // Indicates the success of this synchronous custom validator
             return true;
         }),
+        check('content', 'Không được để trống').isLength({min: 1}),
     ]
 }
