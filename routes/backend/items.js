@@ -25,11 +25,12 @@ const utility = require(__pathHelps + 'utility'); // kéo các hàm trong utilit
 const itemsValidation = require(__pathValidation + 'items'); // keo ham validator
 
 var col = 'items';
-var baselink = systemConfig.prefixAdmin + '/' + col;
+
 
 
 /* GET users listing. */
 router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ liệu qua đường dẫn để lấy được dữ liệu đấy ta thêm /:status vào router. Nếu ko có dữ liệu truyền trên đường dẫn thì thêm (/:status)? nghĩa là có ý nghĩa là chuỗi được gửi lên có cũng được ko có cũng được
+    var baselink = req.app.locals.systemConfig.prefixAdmin + '/' + col;
     let statusFilter = [
         {name: 'all', num: null, link: '#', class: 'default'},
         {name: 'active', num: null, link: '#', class: 'default'},
