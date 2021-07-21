@@ -1,10 +1,10 @@
 <!-- cách xây dựng hàm và nhúng hàm trong ejs -->
-<% statusHelper = (status, id) => { 
+<% statusHelper = (status, id, col) => { 
     let html ='';
     if(status == 'active'){
         html = `<span class="label label-success">active</span>`;
     }else if(status == 'inactive'){
         html = `<span class="label label-warning">inactive</span>`;
     }
-    return `<a target="_self" href="${systemConfig.prefixAdmin}?changestatus=1&id=${id}&status=${status}">${html}</a>`;
+    return `<a target="_self" href="${systemConfig.prefixAdmin}/${col}?changestatus=1&id=${id}&status=${status}">${html}</a>`;
  } %>
