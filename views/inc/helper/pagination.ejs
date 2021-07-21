@@ -1,9 +1,9 @@
 
 <% 
     // linh = 'abc';
-    pagination = (pagiParams, col) =>{
+    pagination = (pagiParams, statusCurrent, col) =>{
         var html = `<ul class="pagination text-center">`;
-        var link = systemConfig.prefixAdmin + '/' + col ;
+        var link = systemConfig.prefixAdmin + '/' + col + '/status/' + statusCurrent;
         if(pagiParams.currentPage === 1){
             html += `<li class="disabled"><a>«</a></li>`;
         }else{
