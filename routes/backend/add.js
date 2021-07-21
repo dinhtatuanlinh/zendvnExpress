@@ -46,7 +46,8 @@ router.get('(/:id)?', function(req, res, next) {
 
 });
 router.post('/save', itemsValidation.validator,  (req, res, next) => {
-    var data = { name: req.body.name, status: req.body.status };
+    var data = { name: req.body.name, status: req.body.status, content: req.body.content };
+    console.log(data);
     var validatorErr = validationResult(req).errors;// lấy ra lỗi khi validation
     if (req.body.id) {
         if(validatorErr.length > 0){
