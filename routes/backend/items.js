@@ -64,7 +64,7 @@ router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ
     // console.log(statusCurrent);
     if(statusCurrent == undefined) statusCurrent = 'all';
     statusFilter = await utility.statusButton(statusCurrent, statusFilter);// utility trả về async là 1 promise nên cũng phải await ra
-    // console.log(statusFilter);
+    console.log(statusFilter);
     // pagination
     var pagiParams = await utility.pagiFunc(parseInt(req.query.p), statusFilter[0].num);
     // console.log(pagiParams);
