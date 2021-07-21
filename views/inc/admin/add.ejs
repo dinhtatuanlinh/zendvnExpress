@@ -7,7 +7,18 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        
+                        <%= JSON.stringify(validatorErr) %>
+                        <% if(validatorErr !==undefined){ %>
+                            <div class="alert alert-danger" role="alert">
+                                <ul>
+                                    <% validatorErr.forEach((err)=> { %>
+                                        <li>
+                                            <%= err.param %> : <%= err.msg %>
+                                        </li>
+                                        <% }) %>
+                                </ul>
+                            </div>
+                            <% } %>
                     </div>
                 </div>
                 <div class="row">
