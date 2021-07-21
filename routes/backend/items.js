@@ -25,7 +25,8 @@ const utility = require(__pathHelps + 'utility'); // kéo các hàm trong utilit
 const itemsValidation = require(__pathValidation + 'items'); // keo ham validator
 
 var col = 'items';
-var baselink = app.locals.systemConfig.prefixAdmin + '/' + col;
+
+var baselink = __admin + '/' + col;
 
 
 /* GET users listing. */

@@ -72,7 +72,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // local variable
 
 app.locals.systemConfig = systemConfig; //tạo biến local để truyền tới view biến systemConfig sẽ có thể gọi được ở view ejs
-global.__SystemConfig
+global.__admin = systemConfig.prefixAdmin;
 app.use(`/${systemConfig.prefixAdmin}`, require('./routes/backend/backendManager'));
 
 // catch 404 and forward to error handler
