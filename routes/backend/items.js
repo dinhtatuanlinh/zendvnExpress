@@ -135,9 +135,9 @@ router.get('/add(/:id)?', function(req, res, next) {
 });
 router.post('/add/save', itemsValidation.validator,  (req, res, next) => {
     var data = { name: req.body.name, status: req.body.status, content: req.body.content };
-    console.log(data);
+    // console.log(data);
     var validatorErr = validationResult(req).errors;// lấy ra lỗi khi validation
-    console.log(validatorErr);
+    // console.log(validatorErr);
     if (req.body.id) {
         if(validatorErr.length > 0){
             res.render('inc/admin/add', { title: 'edit page', data, validatorErr, baselink, col });
@@ -151,8 +151,9 @@ router.post('/add/save', itemsValidation.validator,  (req, res, next) => {
     } else {
         // check validate
         // console.log(Object.assign(req.body));
-        // console.log(validatorErr);
-        
+        console.log(validatorErr);
+        console.log(baselink);
+        console.log(col);
         if(validatorErr.length > 0){
             // console.log(data);
             res.render('inc/admin/add', { title: 'add page', data, validatorErr, baselink, col });
