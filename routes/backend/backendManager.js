@@ -7,8 +7,8 @@ var router = express.Router();
 router.use('/dashboard', require('./dashboard'));
 // router.use('/all', require('./home'));
 // items
-router.use('/', require('./items/home'));
-router.use('/add', require('./items/add'));
+router.use('/items/', require('./items/home'));
+router.use('/items/add', require('./items/add'));
 
 
 module.exports = router;
