@@ -81,7 +81,7 @@ router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ
     .skip(pagiParams.position)
     .limit(pagiParams.itemsPerPage)
     .then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
-        res.render(`inc/admin/${col}/list`, { 
+        res.render(`inc/admin/items/list`, { 
             title: 'abc list page',
             items,
             statusFilter,
