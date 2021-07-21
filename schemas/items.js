@@ -7,6 +7,6 @@ var schema = new mongoose.Schema({
     name: String,
     status: String,
     ordering: Number,
-    content: string
+    content: String
 });
 module.exports = mongoose.model('items', schema);
