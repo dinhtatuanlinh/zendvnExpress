@@ -116,13 +116,13 @@ router.get('/add(/:id)?', function(req, res, next) {
     var data = { name: '', status: 'novalue' };
     var validatorErr = undefined;
     if (req.params.id === undefined) {
-        res.render('inc/admin/add', { title: 'add page', data, validatorErr });
+        res.render('inc/admin/items/add', { title: 'add page', data, validatorErr, baselink, col });
     } else {
         
         var data = {};
         ItemsModel.findById(req.params.id, (err, result) => {
             data = result;
-            res.render('inc/admin/add', { title: 'edit page', data, validatorErr, baselink });
+            res.render('inc/admin/items/add', { title: 'edit page', data, validatorErr, baselink, col });
         });
 
     }
