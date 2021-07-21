@@ -1,7 +1,4 @@
-var editor = new Simditor({
-    textarea: $('#editor')
-    //optional options
-  });
+CKEDITOR.replace( 'editor' );
 $(document).ready(function () {
     var ckbAll = $(".cbAll");
     var fmAdmin = $("#zt-form");
