@@ -67,7 +67,7 @@ router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ
     console.log(statusFilter);
     // pagination
     var pagiParams = await utility.pagiFunc(parseInt(req.query.p), statusFilter[0].num);
-    // console.log(pagiParams);
+    console.log(pagiParams);
     if(statusCurrent !== 'all') where.status = statusCurrent;// xử lý khi currentstatus bằng all
     // console.log(statusCurrent);
     var addLink = "";
