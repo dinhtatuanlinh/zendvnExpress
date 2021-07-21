@@ -1,8 +1,4 @@
-ClassicEditor
-            .create( document.querySelector( '#editor1' ) )
-            .catch( error => {
-                console.error( error );
-            } );
+CKEDITOR.replace( 'ckeditor' );
 $(document).ready(function () {
     var ckbAll = $(".cbAll");
     var fmAdmin = $("#zt-form");
