@@ -65,10 +65,10 @@ router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ
     // console.log(statusCurrent);
     if(statusCurrent == undefined) statusCurrent = 'all';
     statusFilter = await utility.statusButton(statusCurrent, statusFilter);// utility trả về async là 1 promise nên cũng phải await ra
-    console.log(statusFilter);
+    // console.log(statusFilter);
     // pagination
     var pagiParams = await utility.pagiFunc(parseInt(req.query.p), statusFilter[0].num);
-    console.log(pagiParams);
+    // console.log(pagiParams);
     if(statusCurrent !== 'all') where.status = statusCurrent;// xử lý khi currentstatus bằng all
     // console.log(statusCurrent);
     var addLink = "";
@@ -137,6 +137,7 @@ router.post('/add/save', itemsValidation.validator,  (req, res, next) => {
     var data = { name: req.body.name, status: req.body.status, content: req.body.content };
     console.log(data);
     var validatorErr = validationResult(req).errors;// lấy ra lỗi khi validation
+    console.log(validatorErr);
     if (req.body.id) {
         if(validatorErr.length > 0){
             res.render('inc/admin/add', { title: 'edit page', data, validatorErr });
