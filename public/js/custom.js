@@ -1,5 +1,5 @@
 DecoupledEditor
-            .create( document.querySelector( '#ckeditor' ) )
+            .create( document.querySelector( '#editor' ) )
             .then( editor => {
                 const toolbarContainer = document.querySelector( '#toolbar-container' );
 
