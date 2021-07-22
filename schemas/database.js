@@ -4,7 +4,14 @@ var connect = () => {
     const db = mongoose.connection;
     db.on('error', () => { console.log('connection error') }); // phải dùng function hoặc arrow function ở đây
     db.once('open', function() {
+        db.listCollections({})
+            .next(function(err, collinfo) {
+                if (collinfo) {
+                    console.log(collinfo);
+                }
+            });
         // we're connected! 
+
         console.log('database connected');
     });
 };
