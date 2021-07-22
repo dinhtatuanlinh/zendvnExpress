@@ -8,5 +8,8 @@ router.use('/dashboard', require('./dashboard'));
 // router.use('/all', require('./home'));
 // items
 router.use('/items/', require('./items'));
-
+// users
+router.use('/users/', require('./users'));
+// roles
+router.use('/users/', require('./roles'));
 module.exports = router;

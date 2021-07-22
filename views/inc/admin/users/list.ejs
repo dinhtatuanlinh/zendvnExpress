@@ -1,0 +1,131 @@
+<%- locals.flash %>
+<% include ./../../helper/status %>
+<% include ./../../helper/pagination %>
+<% include ./../../helper/sortlink %>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Search & Filter
+                <a target="_self" href="<%= baselink %>/">
+                    <span id="icon-reload" class="glyphicon glyphicon-refresh"></span>
+                </a>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="status-list col-sm-6 pl0">
+
+                        <% statusFilter.forEach((item, index)=>{ %>
+                            <a target="_self" class="btn m-b-sm btn-<%= item.class %> btn-sm"
+                                href="<%= baselink %>/status/<%= item.name %><%= addLink %>">
+                                <%= item.name +" (" + item.num +" )" %>
+                            </a>
+                            <% }) %>
+                    </div>
+                    <div class="col-sm-6">
+                        <form target="_self" action="<%= baselink %>/" method="GET">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="search" placeholder="Search for..."
+                                    value="<%= search %>" />
+
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info" type="submit">Search</button>
+                                </span>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">List Items</div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <form target="_self" role="form" class="form-inline zt-form" id="zt-form" action="" method="post">
+                    <div class="zcontrols">
+                        <select name="action" class="form-control slbAction">
+                            <option value="">Bulk Action</option>
+                            <option value="<%= baselink %>/changestatus/active">
+                                Active
+                            </option>
+                            <option value="<%= baselink %>/changestatus/inactive">
+                                InActive
+                            </option>
+                            <option value="<%= baselink %>/delete/">
+                                Delete
+                            </option>
+                        </select>
+                        <button class="btn btn-info btnAction" type="button" id="btn-action" value="btnAction"
+                            disabled>
+                            Apply
+                        </button>
+                        <div class="pull-right">
+                            <a target="_self" href="<%= baselink %>/add"
+                                class="btn btn-warning btn-addNew">Add New </a>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" class="cbAll" />
+                                    </th>
+                                    <th>#</th>
+                                    <%- sortlinkHelper('name', sortField, sortType, col) %>
+                                    <%- sortlinkHelper('status', sortField, sortType, col) %>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- kéo hàm từ trong file ejs vào file này -->
+                                
+                                    <!-- end kéo hàm từ trong file ejs vào file này -->
+                                    <% items.forEach((item, index)=>{ %>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="cid" value="<%= item._id %>" />
+                                            </td>
+                                            <td>
+                                                <%= index+1 %>
+                                            </td>
+                                            <td>
+                                                <%= item.name %>
+                                            </td>
+                                            <td>
+                                                <!-- gọi function từ helper ra  -->
+                                                <%- statusHelper(item.status,item._id, col) %>
+                                            </td>
+
+                                            <td>
+                                                <a target="_self"
+                                                    href="<%= baselink %>/add/<%= item._id %>"
+                                                    type="button" class="btn btn-warning btn-sm">Edit</a>
+                                                <a target="_self"
+                                                    href="<%= baselink %>/delete/<%= item._id %>"
+                                                    type="button"
+                                                    class="btn btn-danger btn-sm btn-delete">Delete</a>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <!-- kéo hàm từ trong file ejs vào file này -->
+
+            <%- pagination(pagiParams, statusCurrent, col) %>
+
+    </div>
+</div>

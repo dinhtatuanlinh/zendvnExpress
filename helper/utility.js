@@ -13,7 +13,6 @@ var count = (cond) => {
 }
 var delay = (status, statusFilter) => {
     return new Promise(async(res, rej) => {
-
         var i = 0;
         for (var item of statusFilter) {
             let cond = {};
