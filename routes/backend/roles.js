@@ -56,20 +56,15 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
     var pagiParams = await utility.pagiFunc(parseInt(req.query.p), number);
     // console.log(pagiParams);
     var addLink = "";
-    if(search !== "") {
+    if (search !== "") {
         addLink = "?search=" + search;
         where.name = new RegExp(search, 'i'); // RegExp là regular expressions giúp tìm document chứa đoạn kí tự search, i là ko phân biệt hoa thường
     }
     // check roles existence
-    var rolesExistence = async (roles) =>{
-
-        for(var role of roles){
-
-            await rolesModel.find({'role': {$in: role}}).then((items)=>{
-                console.log(items);
-            });
-        }
-        
+    var rolesExistence = async (roles) => {
+        await rolesModel.find({ 'role': { $in: roles } }).then((items) => {
+            console.log(items);
+        });
     }
     rolesExistence([
         'admin',
@@ -79,22 +74,22 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
         'client'
     ]);
     rolesModel.find(where)
-    .sort(sort)
-    .skip(pagiParams.position)
-    .limit(pagiParams.itemsPerPage)
-    .then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
-        res.render(`inc/admin/${col}/list`, { 
-            title: 'abc list page',
-            items,
-            search,
-            addLink,
-            pagiParams,
-            sortField,
-            sortType,
-            col,
-            baselink
+        .sort(sort)
+        .skip(pagiParams.position)
+        .limit(pagiParams.itemsPerPage)
+        .then((items) => { // thay bằng phương thức then để xử lý bất đồng bộ
+            res.render(`inc/admin/${col}/list`, {
+                title: 'abc list page',
+                items,
+                search,
+                addLink,
+                pagiParams,
+                sortField,
+                sortType,
+                col,
+                baselink
+            });
         });
-    });
 });
 
 router.get('/sort/:field/:type', (req, res, next) => {
