@@ -62,8 +62,18 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
     }
     // check roles existence
     var rolesExistence = async (roles) => {
-        await rolesModel.find({ 'role': { $in: roles } }).then((items) => {
-            console.log(items);
+        await rolesModel.find({ 'role': { $in: roles } }).then(async (items) => {
+            if(roles.length > items.length){
+                for(var role of roles){
+                    for(var item of items){
+                        if(role !== item.role){
+                            new rolesModel({'role': role}).save().then(() => {
+                                console.log(`thêm mới role ${role} thành công`);
+                            });
+                        }
+                    }
+                }
+            }
         });
     }
     rolesExistence([
