@@ -84,7 +84,7 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
         await rolesModel.find({ 'role': { $in: roles } }).then(async (items) => {
 
             if(roles.length > items.length){
-                roles = removeSameElementsFrom2Arrays(roles,items);
+                roles = await removeSameElementsFrom2Arrays(roles,items);
                 
                 console.log(roles);
             }
