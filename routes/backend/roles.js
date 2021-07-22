@@ -95,7 +95,7 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
             if(roles.length > items.length){
                 roles = await removeSameElementsFrom2Arrays(roles,items);
                 var data = await makeData(roles);
-                console.log(data);
+
                 rolesModel.insertMany(data, function(error, docs) {
                     if(error) console.log(error);
                     console.log(docs);
