@@ -39,11 +39,12 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
     // console.log(sort);
     // change status
     // console.log(req.app.locals.systemConfig) // phương thức req.app.locals dùng để truy cập tới các biến locals được tạo như ở đây là biến locals systemConfig được tạo tại file app.js
-    var number = await usersModel.countDocuments({}, (err, data) => {
+    var number = await rolesModel.countDocuments({}, (err, data) => {
         if (err) return console.log(err); // cần phải có đoạn code này thì mới lấy được số lượng document
         // console.log(data);
         res(data);
     })
+    console.log(number);
     // search
     var search = "";
     if (req.query.search !== undefined) search = req.query.search; // req.query dùng để lấy dữ liệu search được gửi qua phương thức get
