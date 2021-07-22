@@ -61,6 +61,13 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
         where.name = new RegExp(search, 'i'); // RegExp là regular expressions giúp tìm document chứa đoạn kí tự search, i là ko phân biệt hoa thường
     }
     // check roles existence
+    var addnew = (roles) =>{
+        return new Promise((resolve, reject)=>{
+            new rolesModel(role).save().then(() => {
+                console.log(`them moi ${role} thanh cong`);
+            });
+        })
+    }
     var rolesExistence = async (roles) => {
         await rolesModel.find({ 'role': { $in: roles } }).then(async (items) => {
             console.log(items);
@@ -70,7 +77,7 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
                     for(var item of items){
                         console.log(`${role} + ${item.role}`);
                         if(role !== item.role){
-                            console.log('khac');
+                            await addnew({'role': role});
                         }
                     }
                 }
