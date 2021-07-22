@@ -76,7 +76,7 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
                 for(var item of items){
                     for(var i = 0; i < roles.length; i++){
                         if(roles[i] === item.role){
-                            roles = roles.splice(i, 1);
+                            roles.splice(i, 1);
                         }
                     }
                 }
