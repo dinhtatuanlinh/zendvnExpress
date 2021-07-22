@@ -85,8 +85,9 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
 
             if(roles.length > items.length){
                 roles = await removeSameElementsFrom2Arrays(roles,items);
-                
-                console.log(roles);
+                for(var role of roles){
+                    await addnew({'role': role});
+                }
             }
         });
     }
