@@ -1,5 +1,5 @@
 // tạo nút phân loại active inactive
-const ItemsModel = require(__pathSchemas + 'items');
+const ItemsModel = require(__pathSchemas + 'database').itemsModel;
 
 var count = (cond) => {
     return new Promise((res, rej) => {
