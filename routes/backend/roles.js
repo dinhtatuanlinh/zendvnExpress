@@ -68,18 +68,24 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
             });
         })
     }
+    var removeSameElementsFrom2Arrays = (a,b)=>{
+        return new Promise((resolve, reject)=>{
+            for(var item of b){
+                for(var i = 0; i < a.length; i++){
+                    if(a[i] === item.role){
+                        a.splice(i, 1);
+                    }
+                }
+            }
+            resolve(a);
+        })
+    }
     var rolesExistence = async (roles) => {
         await rolesModel.find({ 'role': { $in: roles } }).then(async (items) => {
 
             if(roles.length > items.length){
-
-                for(var item of items){
-                    for(var i = 0; i < roles.length; i++){
-                        if(roles[i] === item.role){
-                            roles.splice(i, 1);
-                        }
-                    }
-                }
+                roles = removeSameElementsFrom2Arrays(roles,items);
+                
                 console.log(roles);
             }
         });
