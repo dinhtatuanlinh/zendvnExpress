@@ -11,5 +11,5 @@ router.use('/items/', require('./items'));
 // users
 router.use('/users/', require('./users'));
 // roles
-router.use('/users/', require('./roles'));
+router.use('/roles/', require('./roles'));
 module.exports = router;
