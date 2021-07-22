@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const database = require('./database');
 database.connect();
 // định nghĩa các collections trong database
-database.db.listCollections({})
+database.listCollections({})
     .next(function(err, collinfo) {
         if (collinfo) {
             console.log(collinfo);
