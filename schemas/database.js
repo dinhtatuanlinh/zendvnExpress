@@ -20,14 +20,15 @@ var usersSchema = new mongoose.Schema({
     content: String
 });
 connectionDatabase.once('open', function() {
-    connectionDatabase.db.listCollections()
+    // we're connected! 
+    console.log('database connected');
+    connectionDatabase.db.listCollections({})
         .next(function(err, collinfo) {
             if (collinfo) {
                 console.log(collinfo);
             }
         });
-    // we're connected! 
-    console.log('database connected');
+    
 });
 
 module.exports = {
