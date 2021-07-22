@@ -19,17 +19,17 @@ var usersSchema = new mongoose.Schema({
     ordering: Number,
     content: String
 });
+var abcSchema = new mongoose.Schema({
+    name: String,
+    status: String,
+    ordering: Number,
+    content: String
+});
 connectionDatabase.once('open', function() {
     // we're connected! 
     console.log('database connected');
     var collections = Object.keys(connectionDatabase.collections);
     console.log(collections);
-    connectionDatabase.db.listCollections({})
-        .next(function(err, collinfo) {
-            if (collinfo) {
-                console.log(collinfo);
-            }
-        });
     
 });
 
@@ -37,4 +37,5 @@ module.exports = {
     itemsModel: mongoose.model('items', itemsSchema),
     rolesModel: mongoose.model('roles', rolesSchema),
     usersModel: mongoose.model('users', usersSchema),
+    abcModel: mongoose.model('abc', abcSchema),
 }
