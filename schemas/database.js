@@ -20,7 +20,7 @@ var usersSchema = new mongoose.Schema({
     content: String
 });
 connectionDatabase.once('open', function() {
-    connectionDatabase.db.listCollections('items')
+    connectionDatabase.db.listCollections()
         .next(function(err, collinfo) {
             if (collinfo) {
                 console.log(collinfo);
