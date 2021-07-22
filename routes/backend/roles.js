@@ -63,7 +63,7 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
     // check roles existence
     var addnew = (role) =>{
         return new Promise((resolve, reject)=>{
-            new rolesModel(role).save().then(() => {
+            new rolesModel({'role': { $in : role}}).save().then(() => {
                 console.log(`them moi ${role} thanh cong`);
             });
         })
@@ -86,7 +86,7 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
             if(roles.length > items.length){
                 roles = await removeSameElementsFrom2Arrays(roles,items);
                 for(var role of roles){
-                    await addnew({'role': role});
+                    await addnew(role);
                 }
             }
         });
