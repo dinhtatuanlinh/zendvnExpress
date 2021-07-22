@@ -64,6 +64,7 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
     var rolesExistence = async (roles) => {
         await rolesModel.find({ 'role': { $in: roles } }).then(async (items) => {
             if(roles.length > items.length){
+                console.log('test');
                 for(var role of roles){
                     for(var item of items){
                         console.log(`${role} + ${item.role}`);
