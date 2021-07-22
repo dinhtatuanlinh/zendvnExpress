@@ -66,10 +66,9 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
             if(roles.length > items.length){
                 for(var role of roles){
                     for(var item of items){
-                        if(role !== item.role){
-                            new rolesModel({'role': role}).save().then(() => {
-                                console.log(`thêm mới role ${role} thành công`);
-                            });
+                        console.log(`${role} + ${item.role}`);
+                        if(role != item.role){
+                            console.log('khac');
                         }
                     }
                 }
