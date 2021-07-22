@@ -33,7 +33,7 @@ var baselink = __admin + '/' + col;
 router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đường dẫn để lấy được dữ liệu đấy ta thêm /:status vào router. Nếu ko có dữ liệu truyền trên đường dẫn thì thêm (/:status)? nghĩa là có ý nghĩa là chuỗi được gửi lên có cũng được ko có cũng được
     // sort theo cột
     var sort = {};
-    var sortField = (req.session.sortType == undefined) ? 'name' : req.session.sortField;
+    var sortField = (req.session.sortType == undefined) ? 'role' : req.session.sortField;
     var sortType = (req.session.sortType == undefined) ? 'asc' : req.session.sortType;
     sort[sortField] = sortType;// gắn dưới dạng array sẽ tự động chuyển qua object
     // console.log(sort);
@@ -91,17 +91,13 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
     }
     var rolesExistence = async (roles) => {
         await rolesModel.find({ 'role': { $in: roles } }).then(async (items) => {
-
             if(roles.length > items.length){
                 roles = await removeSameElementsFrom2Arrays(roles,items);
                 var data = await makeData(roles);
-
                 rolesModel.insertMany(data, function(error, docs) {
                     if(error) console.log(error);
                     console.log(docs);
                 });
-                
-
             }
         });
     }
