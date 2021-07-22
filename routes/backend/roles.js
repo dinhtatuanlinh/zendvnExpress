@@ -61,7 +61,7 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
         where.name = new RegExp(search, 'i'); // RegExp là regular expressions giúp tìm document chứa đoạn kí tự search, i là ko phân biệt hoa thường
     }
     // check roles existence
-    var addnew = (roles) =>{
+    var addnew = (role) =>{
         return new Promise((resolve, reject)=>{
             new rolesModel(role).save().then(() => {
                 console.log(`them moi ${role} thanh cong`);
