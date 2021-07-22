@@ -61,11 +61,20 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
         where.name = new RegExp(search, 'i'); // RegExp là regular expressions giúp tìm document chứa đoạn kí tự search, i là ko phân biệt hoa thường
     }
     // check roles existence
-    var addnew = (role) =>{
+    // var addnew = (role) =>{
+    //     return new Promise((resolve, reject)=>{
+    //         new rolesModel({'role': { $in : role}}).save().then(() => {
+    //             console.log(`them moi ${role} thanh cong`);
+    //         });
+    //     })
+    // }
+    var makeData = (roles)=>{
         return new Promise((resolve, reject)=>{
-            new rolesModel({'role': { $in : role}}).save().then(() => {
-                console.log(`them moi ${role} thanh cong`);
-            });
+            var arr = [];
+            for (var role of roles){
+                arr.push({'role': role});
+            }
+            resolve(arr)
         })
     }
     var removeSameElementsFrom2Arrays = (a,b)=>{
@@ -85,7 +94,9 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
 
             if(roles.length > items.length){
                 roles = await removeSameElementsFrom2Arrays(roles,items);
-                rolesModel.insertMany({'role': {$in: roles}}, function(error, docs) {
+                var data = await makeData(roles);
+                console.log(data);
+                rolesModel.insertMany(data, function(error, docs) {
                     if(error) console.log(error);
                     console.log(docs);
                 });
