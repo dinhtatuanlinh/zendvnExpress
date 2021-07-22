@@ -20,7 +20,7 @@ var util = require('util');
 // // Returns: 'foo:%s'
 
 
-const rolesModel = require(__pathSchemas + 'roles'); // kéo module items trong schemas để truy cập bảng items trong database
+const rolesModel = require(__pathSchemas + 'database').rolesModel; // kéo module items trong schemas để truy cập bảng items trong database
 const utility = require(__pathHelps + 'utility'); // kéo các hàm trong utility helper vào 
 const rolesValidation = require(__pathValidation + 'roles'); // keo ham validator
 

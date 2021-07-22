@@ -20,7 +20,7 @@ var util = require('util');
 // // Returns: 'foo:%s'
 
 
-const ItemsModel = require(__pathSchemas + 'items'); // kéo module items trong schemas để truy cập bảng items trong database
+const ItemsModel = require(__pathSchemas + 'database').itemsModel; // kéo module items trong schemas để truy cập bảng items trong database
 const utility = require(__pathHelps + 'utility'); // kéo các hàm trong utility helper vào 
 const itemsValidation = require(__pathValidation + 'items'); // keo ham validator
 
