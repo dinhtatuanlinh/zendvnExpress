@@ -85,8 +85,11 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
 
             if(roles.length > items.length){
                 roles = await removeSameElementsFrom2Arrays(roles,items);
+                rolesModel.insertMany({'role': {$in: roles}}, function(error, docs) {
+                    if(error) console.log(error);
+                    console.log(docs);
+                });
                 
-                    await addnew(roles);
 
             }
         });
