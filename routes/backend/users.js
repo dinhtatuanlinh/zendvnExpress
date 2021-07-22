@@ -67,11 +67,14 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
     // statusFilter = await utility.statusButton(statusCurrent, statusFilter);// utility trả về async là 1 promise nên cũng phải await ra
     // console.log(statusFilter);
     // pagination
-    var number = await usersModel.countDocuments({}, (err, data) => {
+    var number;
+    console.log(number);
+    await usersModel.countDocuments({}, (err, data) => {
         if (err) return console.log(err); // cần phải có đoạn code này thì mới lấy được số lượng document
         // console.log(data);
-        res(data);
+        number = data;
     })
+    console.log(number);
     var pagiParams = await utility.pagiFunc(parseInt(req.query.p), number);
     // console.log(pagiParams);
     if(statusCurrent !== 'all') where.status = statusCurrent;// xử lý khi currentstatus bằng all
