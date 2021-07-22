@@ -22,6 +22,8 @@ var usersSchema = new mongoose.Schema({
 connectionDatabase.once('open', function() {
     // we're connected! 
     console.log('database connected');
+    var collections = Object.keys(connectionDatabase.collections);
+    console.log(collections);
     connectionDatabase.db.listCollections({})
         .next(function(err, collinfo) {
             if (collinfo) {
