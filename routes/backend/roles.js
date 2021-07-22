@@ -69,7 +69,7 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
                 for(var role of roles){
                     for(var item of items){
                         console.log(`${role} + ${item.role}`);
-                        if(role != item.role){
+                        if(role !== item.role){
                             console.log('khac');
                         }
                     }
