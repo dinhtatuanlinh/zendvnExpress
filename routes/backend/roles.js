@@ -73,8 +73,9 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
             console.log(items);
             if(roles.length > items.length){
                 console.log('test');
-                for(var role of roles){
-                    for(var item of items){
+                for(var item of items){
+                    for(var role of roles){
+                    
                         console.log(`${role} + ${item.role}`);
                         if(role !== item.role){
                             await addnew({'role': role});
