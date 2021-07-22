@@ -78,7 +78,7 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
                     
                         console.log(`${roles[i]} + ${item.role}`);
                         if(roles[i] !== item.role){
-                            await addnew({'role': roles});
+                            await addnew({'role': roles[i]});
                         }else{
                             roles = roles.splice(i, 1);
                         }
