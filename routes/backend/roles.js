@@ -67,7 +67,7 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
             console.log('test2');
             await rolesModel.find({'role': role}).then((items)=>{
                 console.log(items.length);
-                if(items.length = 0){
+                if(items.length === 0){
                     console.log('chua tồn tại');
                     new usersModel({'role': role}).save().then(() => {
                         console.log(`role ${role} vừa được tạo`);
