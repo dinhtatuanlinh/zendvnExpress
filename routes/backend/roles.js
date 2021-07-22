@@ -60,7 +60,13 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
         addLink = "?search=" + search;
         where.name = new RegExp(search, 'i'); // RegExp là regular expressions giúp tìm document chứa đoạn kí tự search, i là ko phân biệt hoa thường
     }
-    
+    // check roles existence
+    var rolesExistence = (role) =>{
+        rolesModel.find(role).then((items)=>{
+            console.log(items);
+        });
+    }
+    rolesExistence({'role': 'admin'});
     rolesModel.find(where)
     .sort(sort)
     .skip(pagiParams.position)
@@ -85,55 +91,4 @@ router.get('/sort/:field/:type', (req, res, next) => {
     req.session.sortType = req.params.type;
     res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}/${col}`);
 })
-router.get('/add(/:id)?', function(req, res, next) {
-    var data = { name: '', status: 'novalue' };
-    var validatorErr = undefined;
-    if (req.params.id === undefined) {
-        res.render(`inc/admin/${col}/add`, { title: 'add page', data, validatorErr, baselink, col });
-    } else {
-        
-        var data = {};
-        rolesModel.findById(req.params.id, (err, result) => {
-            data = result;
-            res.render(`inc/admin/${col}/add`, { title: 'edit page', data, validatorErr, baselink, col });
-        });
-
-    }
-    // '/form(/:id)?'
-    // console.log('abc');
-    // req.flash('info', 'dinh ta tuan linh');
-    // res.send('test flash');
-    // res.end();
-
-});
-router.post('/add/save', rolesValidation.validator,  (req, res, next) => {
-    var data = { name: req.body.name, status: req.body.status, content: req.body.content };
-    // console.log(data);
-    var validatorErr = validationResult(req).errors;// lấy ra lỗi khi validation
-    // console.log(validatorErr);
-    if (req.body.id) {
-        if(validatorErr.length > 0){
-            res.render(`inc/admin/${col}/add`, { title: 'edit page', data, validatorErr, baselink, col });
-        }else{
-            rolesModel.updateOne({_id: req.body.id}, data, (err, affected, result)=>{
-                req.flash('success', 'cập nhật status thành công', false);
-                res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
-                
-            })
-        }
-    } else {
-        // check validate
-
-        if(validatorErr.length > 0){
-            // console.log(data);
-            res.render(`inc/admin/${col}/add`, { title: 'add page', data, validatorErr, baselink, col });
-        }else{
-            new rolesModel(data).save().then(() => {
-                req.flash('success', 'Thêm mới  thành công', false); // tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
-                res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
-            });
-        }
-        
-    }
-});
 module.exports = router;
