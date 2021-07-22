@@ -70,20 +70,17 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
     }
     var rolesExistence = async (roles) => {
         await rolesModel.find({ 'role': { $in: roles } }).then(async (items) => {
-            console.log(items);
+
             if(roles.length > items.length){
-                console.log('test');
+
                 for(var item of items){
                     for(var i = 0; i < roles.length; i++){
-                    
-                        console.log(`${roles[i]} + ${item.role}`);
-                        if(roles[i] !== item.role){
-                            await addnew({'role': roles[i]});
-                        }else{
+                        if(roles[i] === item.role){
                             roles = roles.splice(i, 1);
                         }
                     }
                 }
+                console.log(roles);
             }
         });
     }
