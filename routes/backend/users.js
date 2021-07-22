@@ -77,7 +77,7 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
     console.log(number);
     var pagiParams = await utility.pagiFunc(parseInt(req.query.p), number);
     // console.log(pagiParams);
-    if(statusCurrent !== 'all') where.status = statusCurrent;// xử lý khi currentstatus bằng all
+    // if(statusCurrent !== 'all') where.status = statusCurrent;// xử lý khi currentstatus bằng all
     // console.log(statusCurrent);
     var addLink = "";
     if(search !== "") {
@@ -94,7 +94,6 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
             title: 'abc list page',
             items,
             statusFilter,
-            statusCurrent,
             search,
             addLink,
             pagiParams,
