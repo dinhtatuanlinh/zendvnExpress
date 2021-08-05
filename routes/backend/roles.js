@@ -102,7 +102,7 @@ var baselink = __admin + '/' + col;
         });
     }
     rolesExistence([
-        'admin',
+        __layoutAdmin,
         'mod',
         'editor',
         'shop manager',
@@ -114,7 +114,7 @@ var baselink = __admin + '/' + col;
         .limit(pagiParams.itemsPerPage)
         .then((items) => { // thay bằng phương thức then để xử lý bất đồng bộ
             res.render(`inc/admin/${col}/list`, {
-                layout: 'admin',
+                layout: __layoutAdmin,
                 title: 'abc list page',
                 items,
                 search,

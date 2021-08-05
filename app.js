@@ -16,6 +16,7 @@ global.__pathRoutes = __base + 'routes/';
 global.__pathSchemas = __base + 'schemas/';
 global.__pathHelps = __base + 'helper/';
 global.__pathValidation = __base + 'validation/';
+global.__layoutAdmin = 'admin';
 const systemConfig = require( __pathConfigs + 'system');
 
 
