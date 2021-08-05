@@ -60,7 +60,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 // app.set('layout', 'backend'); //set layout cho backend là file backend.ejs nội dung thay đổi sẽ được gọi vào được truyền tới <%- body %>
-
+// cách set layout này sẽ set cho tất cả nên sử dụng cho phía client vì sẽ không cần gọi lại nhiều lần
 // app.use(logger('dev')); // tắt log khi chạy
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -82,7 +82,8 @@ router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ
     .skip(pagiParams.position)
     .limit(pagiParams.itemsPerPage)
     .then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
-        res.render(`inc/admin/items/list`, { 
+        res.render(`inc/admin/items/list`, {
+            layout: 'admin',
             title: 'abc list page',
             items,
             statusFilter,
@@ -116,13 +117,13 @@ router.get('/add(/:id)?', function(req, res, next) {
     var data = { name: '', status: 'novalue' };
     var validatorErr = undefined;
     if (req.params.id === undefined) {
-        res.render('inc/admin/items/add', { title: 'add page', data, validatorErr, baselink, col });
+        res.render('inc/admin/items/add', { layout: 'admin', title: 'add page', data, validatorErr, baselink, col });
     } else {
         
         var data = {};
         ItemsModel.findById(req.params.id, (err, result) => {
             data = result;
-            res.render('inc/admin/items/add', { title: 'edit page', data, validatorErr, baselink, col });
+            res.render('inc/admin/items/add', { layout: 'admin', title: 'edit page', data, validatorErr, baselink, col });
         });
 
     }
@@ -140,7 +141,7 @@ router.post('/add/save', itemsValidation.validator,  (req, res, next) => {
     // console.log(validatorErr);
     if (req.body.id) {
         if(validatorErr.length > 0){
-            res.render('inc/admin/items/add', { title: 'edit page', data, validatorErr, baselink, col });
+            res.render('inc/admin/items/add', {layout: 'admin', title: 'edit page', data, validatorErr, baselink, col });
         }else{
             ItemsModel.updateOne({_id: req.body.id}, data, (err, affected, result)=>{
                 req.flash('success', 'cập nhật status thành công', false);
@@ -156,7 +157,7 @@ router.post('/add/save', itemsValidation.validator,  (req, res, next) => {
         console.log(col);
         if(validatorErr.length > 0){
             // console.log(data);
-            res.render('inc/admin/items/add', { title: 'add page', data, validatorErr, baselink, col });
+            res.render('inc/admin/items/add', {layout: 'admin', title: 'add page', data, validatorErr, baselink, col });
         }else{
             new ItemsModel(data).save().then(() => {
                 req.flash('success', 'Thêm mới  thành công', false); // tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
