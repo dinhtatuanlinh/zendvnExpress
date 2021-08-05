@@ -30,7 +30,7 @@ var baselink = __admin + '/' + col;
 
 
 /* GET roles listing. */
-router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đường dẫn để lấy được dữ liệu đấy ta thêm /:status vào router. Nếu ko có dữ liệu truyền trên đường dẫn thì thêm (/:status)? nghĩa là có ý nghĩa là chuỗi được gửi lên có cũng được ko có cũng được
+    router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đường dẫn để lấy được dữ liệu đấy ta thêm /:status vào router. Nếu ko có dữ liệu truyền trên đường dẫn thì thêm (/:status)? nghĩa là có ý nghĩa là chuỗi được gửi lên có cũng được ko có cũng được
     // sort theo cột
     var sort = {};
     var sortField = (req.session.sortType == undefined) ? 'role' : req.session.sortField;
