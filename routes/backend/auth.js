@@ -16,7 +16,7 @@ router.post("/login", (req, res, next) => {
     console.log('abce');
   passport.authenticate("local", {
     successRedirect: __admin,
-    failureRedirect: baselink,
+    failureRedirect: __admin,
   })(req, res, next);
 });
 
