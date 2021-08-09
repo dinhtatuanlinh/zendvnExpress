@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const flash = require('express-flash-notification');
 const session = require('express-session');
+var passport = require('passport');
 
 
 var expressLayouts = require('express-ejs-layouts'); //module dung để tạo layout cho giao diện
@@ -54,7 +55,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
-
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash(app, { viewName: 'inc/admin/elements/flash' })); // có thể thay đổ tệp tin hiển thị flash mặc định thành tên khác và đường dẫn tới tệp tin đó
 
 // view engine setup
