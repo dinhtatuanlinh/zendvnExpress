@@ -11,7 +11,7 @@ router.get("/", (req, res, next) => {
   });
 });
 router.post("/login", (req, res, next) => {
-    console.log(req.params.username, req.params.pass);
+    console.log(req.body.username, req.body.pass);
     res.render('inc/admin/dashboard', { title: 'dashboard page', layout: __layoutAdmin});
 })
 module.exports = router;
