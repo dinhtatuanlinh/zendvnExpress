@@ -18,8 +18,7 @@ router.post(
     successRedirect: "/",
     failureRedirect: "/login",
     failureFlash: true,
-  }),
-  (req, res, next) => {}
+  })
 );
 
 passport.use(
