@@ -15,8 +15,8 @@ router.get("/", (req, res, next) => {
 router.post(
   "/login",
   passport.authenticate("local", {
-      successRedirect: "/admin124/roles",
-    failureRedirect: "/admin124/items",
+    successRedirect: "/admin124/roles",
+    failureRedirect: baselink,
   })
 );
 
@@ -33,7 +33,7 @@ passport.use(
     //   if (!user.validPassword(password)) {
     //     return done(null, false, { message: "Incorrect password." });
     //   }
-    return done(null, true);
+    return done(null, false);
     // });
   })
 );
