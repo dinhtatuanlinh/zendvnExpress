@@ -19,7 +19,7 @@ global.__pathValidation = __base + 'validation/';
 global.__layoutAdmin = 'admin';
 const systemConfig = require( __pathConfigs + 'system');
 
-
+console.log(__pathRoutes);
 // router
 // var indexRouter = require(__pathRoutes + 'index');
 
