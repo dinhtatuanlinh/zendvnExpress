@@ -15,7 +15,7 @@ router.get("/", (req, res, next) => {
 router.post("/login", (req, res, next) => {
     console.log('abce');
   passport.authenticate("local", {
-    successRedirect: baselink,
+    successRedirect: 'zendvnexpress.nodeatext.com/admin124/admin',
     failureRedirect: baselink,
   })(req, res, next);
 });
