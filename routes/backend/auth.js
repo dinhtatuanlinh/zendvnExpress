@@ -16,7 +16,7 @@ router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/admin124/roles",
-    failureRedirect: "/admin124/admin",
+    failureRedirect: "/",
   })
 );
 
