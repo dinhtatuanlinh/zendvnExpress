@@ -12,13 +12,15 @@ router.get("/", (req, res, next) => {
     baselink,
   });
 });
-router.post("/login", (req, res, next) => {
-    console.log('abce');
+router.post(
+  "/login",
   passport.authenticate("local", {
-    successRedirect: 'zendvnexpress.nodeatext.com/admin124',
-    failureRedirect: baselink,
-  })(req, res, next);
-});
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true,
+  }),
+  (req, res, next) => {}
+);
 
 passport.use(
   new LocalStrategy(function (username, password, done) {
@@ -33,7 +35,7 @@ passport.use(
     //   if (!user.validPassword(password)) {
     //     return done(null, false, { message: "Incorrect password." });
     //   }
-      return done(null, user);
+    return done(null, user);
     // });
   })
 );
