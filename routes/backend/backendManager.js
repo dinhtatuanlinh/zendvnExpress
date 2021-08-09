@@ -7,7 +7,7 @@ var router = express.Router();
 router.use('/', require('./dashboard'));
 // router.use('/all', require('./home'));
 // auth
-// router.use('/admin', require('./auth'));
+router.use('/admin', require('./auth'));
 // items
 router.use('/items/', require('./items'));
 // users
