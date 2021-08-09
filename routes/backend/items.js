@@ -78,6 +78,7 @@ router.get('(/status/:status)?', async (req, res, next) => {// khi truyền dữ
     }
     
     ItemsModel.find(where)
+    // .select('name thumb ')// lựa chọn dữ liệu muốn lấy ra ví dụ như chỉ lấy tên và ảnh đại diện
     .sort(sort)
     .skip(pagiParams.position)
     .limit(pagiParams.itemsPerPage)
