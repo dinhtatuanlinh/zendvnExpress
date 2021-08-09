@@ -15,6 +15,7 @@ router.get("/", (req, res, next) => {
 router.post(
   "/login",
   passport.authenticate("local", {
+      successRedirect: "/admin124/roles",
     failureRedirect: "/admin124/items",
   }),(req, res, next)=>{
       console.log(req.app.locals.systemConfig.prefixAdmin);
@@ -35,7 +36,7 @@ passport.use(
     //   if (!user.validPassword(password)) {
     //     return done(null, false, { message: "Incorrect password." });
     //   }
-    return done(null, false);
+    return done(null, true);
     // });
   })
 );
