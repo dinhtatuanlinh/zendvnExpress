@@ -17,7 +17,6 @@ router.post(
   passport.authenticate("local", {
     successRedirect: "/admin124",
     failureRedirect: "/admin124/items",
-    failureFlash: true,
   })
 );
 
