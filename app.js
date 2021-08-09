@@ -21,7 +21,7 @@ const systemConfig = require( __pathConfigs + 'system');
 
 
 // router
-var indexRouter = require(__pathRoutes + 'index');
+// var indexRouter = require(__pathRoutes + 'index');
 
 // mongoose.connect('mongodb://tuanlinh:164342816@115.79.35.159:27017/admin');
 // const db = mongoose.connection;
