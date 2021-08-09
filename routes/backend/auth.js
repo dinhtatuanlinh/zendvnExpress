@@ -17,7 +17,7 @@ router.post(
   passport.authenticate("local", {
     failureRedirect: "/admin124/items",
   }),(req, res, next)=>{
-      res.redirect(baselink);
+      res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
   }
 );
 
