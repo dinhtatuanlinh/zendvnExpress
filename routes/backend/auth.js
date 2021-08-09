@@ -17,10 +17,7 @@ router.post(
   passport.authenticate("local", {
       successRedirect: "/admin124/roles",
     failureRedirect: "/admin124/items",
-  }),(req, res, next)=>{
-      console.log(req.app.locals.systemConfig.prefixAdmin);
-      res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
-  }
+  })
 );
 
 passport.use(
