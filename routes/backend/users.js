@@ -1,7 +1,7 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-const { check, validationResult } = require('express-validator');
-var util = require('util');
+const { check, validationResult } = require("express-validator");
+var util = require("util");
 //util.format('dinh ta tuan linh %d', 3);// thư viện util của nodejs giúp đưa biến vào trong một chuỗi
 // format <string> A printf-like format string.
 // The util.format() method returns a formatted string using the first argument as a printf-like format string which can contain zero or more format specifiers. Each specifier is replaced with the converted value from the corresponding argument. Supported specifiers are:
@@ -19,28 +19,29 @@ var util = require('util');
 // util.format('%s:%s', 'foo');
 // // Returns: 'foo:%s'
 
+const usersModel = require(__pathSchemas + "database").usersModel; // kéo module items trong schemas để truy cập bảng items trong database
+const utility = require(__pathHelps + "utility"); // kéo các hàm trong utility helper vào
+const usersValidation = require(__pathValidation + "users"); // keo ham validator
 
-const usersModel = require(__pathSchemas + 'database').usersModel; // kéo module items trong schemas để truy cập bảng items trong database
-const utility = require(__pathHelps + 'utility'); // kéo các hàm trong utility helper vào 
-const usersValidation = require(__pathValidation + 'users'); // keo ham validator
+var col = "users";
 
-var col = 'users';
-
-var baselink = __admin + '/' + col;
-
+var baselink = __admin + "/" + col;
 
 /* GET users listing. */
-router.get('/', async(req, res, next) => { // khi truyền dữ liệu qua đường dẫn để lấy được dữ liệu đấy ta thêm /:status vào router. Nếu ko có dữ liệu truyền trên đường dẫn thì thêm (/:status)? nghĩa là có ý nghĩa là chuỗi được gửi lên có cũng được ko có cũng được
+router.get("/", async(req, res, next) => {
+    // khi truyền dữ liệu qua đường dẫn để lấy được dữ liệu đấy ta thêm /:status vào router. Nếu ko có dữ liệu truyền trên đường dẫn thì thêm (/:status)? nghĩa là có ý nghĩa là chuỗi được gửi lên có cũng được ko có cũng được
 
     let statusFilter = [
-        { name: 'all', num: null, link: '#', class: 'default' },
-        { name: 'active', num: null, link: '#', class: 'default' },
-        { name: 'inactive', num: null, link: '#', class: 'default' },
+        { name: "all", num: null, link: "#", class: "default" },
+        { name: "active", num: null, link: "#", class: "default" },
+        { name: "inactive", num: null, link: "#", class: "default" },
     ];
     // sort theo cột
     var sort = {};
-    var sortField = (req.session.sortType == undefined) ? 'name' : req.session.sortField;
-    var sortType = (req.session.sortType == undefined) ? 'asc' : req.session.sortType;
+    var sortField =
+        req.session.sortType == undefined ? "name" : req.session.sortField;
+    var sortType =
+        req.session.sortType == undefined ? "asc" : req.session.sortType;
     sort[sortField] = sortType; // gắn dưới dạng array sẽ tự động chuyển qua object
     // console.log(sort);
     // change status
@@ -73,7 +74,7 @@ router.get('/', async(req, res, next) => { // khi truyền dữ liệu qua đư�
         if (err) return console.log(err); // cần phải có đoạn code này thì mới lấy được số lượng document
         // console.log(data);
         number = data;
-    })
+    });
     console.log(number);
     var pagiParams = await utility.pagiFunc(parseInt(req.query.p), number);
     // console.log(pagiParams);
@@ -82,18 +83,20 @@ router.get('/', async(req, res, next) => { // khi truyền dữ liệu qua đư�
     var addLink = "";
     if (search !== "") {
         addLink = "?search=" + search;
-        where.name = new RegExp(search, 'i'); // RegExp là regular expressions giúp tìm document chứa đoạn kí tự search, i là ko phân biệt hoa thường
+        where.name = new RegExp(search, "i"); // RegExp là regular expressions giúp tìm document chứa đoạn kí tự search, i là ko phân biệt hoa thường
     }
 
-    usersModel.find(where)
+    usersModel
+        .find(where)
         .sort(sort)
         .skip(pagiParams.position)
         .limit(pagiParams.itemsPerPage)
-        .then((items) => { // thay bằng phương thức then để xử lý bất đồng bộ
+        .then((items) => {
+            // thay bằng phương thức then để xử lý bất đồng bộ
             console.log(items);
-            res.render(`inc/admin/${col}/list`, {
+            res.render(`inc/admin/users/list`, {
                 layout: __layoutAdmin,
-                title: 'abc list page',
+                title: "abc list page",
                 items,
                 statusFilter,
                 search,
@@ -102,60 +105,88 @@ router.get('/', async(req, res, next) => { // khi truyền dữ liệu qua đư�
                 sortField,
                 sortType,
                 col,
-                baselink
+                baselink,
             });
         });
 });
-router.post('/changestatus/:status', (req, res, next) => { // lấy dữ liệu gửi lên qua phương thức post
+router.post("/changestatus/:status", (req, res, next) => {
+    // lấy dữ liệu gửi lên qua phương thức post
     // console.log(req.params.status);// lấy status truyền trên url
     // console.log(req.body);// phương thức req.body của module body parser dùng để lấy dữ liệu gửi lên tư form post
-    usersModel.updateMany({ _id: { $in: req.body.cid } }, { status: req.params.status }, (err, affected, result) => { //
-        console.log(result);
-        console.log(affected);
-        req.flash('success', 'cập nhật status thành công', false); // tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
-        res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}/${col}`);
-    });
+    usersModel.updateMany({ _id: { $in: req.body.cid } }, { status: req.params.status },
+        (err, affected, result) => {
+            //
+            console.log(result);
+            console.log(affected);
+            req.flash("success", "cập nhật status thành công", false); // tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
+            res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}/${col}`);
+        }
+    );
 });
-router.get('/sort/:field/:type', (req, res, next) => {
+router.get("/sort/:field/:type", (req, res, next) => {
     req.session.sortField = req.params.field; // req.session giúp đưa dữ liệu vào session để gọi ra ở router khác
     req.session.sortType = req.params.type;
     res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}/${col}`);
-})
-router.get('/add(/:id)?', function(req, res, next) {
-    var data = { name: '', status: 'novalue' };
+});
+router.get("/add(/:id)?", function(req, res, next) {
+    var data = { name: "", status: "novalue" };
     var validatorErr = undefined;
     if (req.params.id === undefined) {
-        res.render(`inc/admin/${col}/add`, { layout: __layoutAdmin, title: 'add page', data, validatorErr, baselink, col });
+        res.render(`inc/admin/${col}/add`, {
+            layout: __layoutAdmin,
+            title: "add page",
+            data,
+            validatorErr,
+            baselink,
+            col,
+        });
     } else {
-
         var data = {};
         usersModel.findById(req.params.id, (err, result) => {
             data = result;
-            res.render(`inc/admin/${col}/add`, { layout: __layoutAdmin, title: 'edit page', data, validatorErr, baselink, col });
+            res.render(`inc/admin/${col}/add`, {
+                layout: __layoutAdmin,
+                title: "edit page",
+                data,
+                validatorErr,
+                baselink,
+                col,
+            });
         });
-
     }
     // '/form(/:id)?'
     // console.log('abc');
     // req.flash('info', 'dinh ta tuan linh');
     // res.send('test flash');
     // res.end();
-
 });
-router.post('/add/save', usersValidation.validator, (req, res, next) => {
-    var data = { name: req.body.name, status: req.body.status, content: req.body.content };
+router.post("/add/save", usersValidation.validator, (req, res, next) => {
+    var data = {
+        name: req.body.name,
+        status: req.body.status,
+        content: req.body.content,
+    };
     // console.log(data);
     var validatorErr = validationResult(req).errors; // lấy ra lỗi khi validation
     // console.log(validatorErr);
     if (req.body.id) {
         if (validatorErr.length > 0) {
-            res.render(`inc/admin/${col}/add`, { layout: __layoutAdmin, title: 'edit page', data, validatorErr, baselink, col });
+            res.render(`inc/admin/${col}/add`, {
+                layout: __layoutAdmin,
+                title: "edit page",
+                data,
+                validatorErr,
+                baselink,
+                col,
+            });
         } else {
-            usersModel.updateOne({ _id: req.body.id }, data, (err, affected, result) => {
-                req.flash('success', 'cập nhật status thành công', false);
-                res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
-
-            })
+            usersModel.updateOne({ _id: req.body.id },
+                data,
+                (err, affected, result) => {
+                    req.flash("success", "cập nhật status thành công", false);
+                    res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
+                }
+            );
         }
     } else {
         // check validate
@@ -165,14 +196,20 @@ router.post('/add/save', usersValidation.validator, (req, res, next) => {
         console.log(col);
         if (validatorErr.length > 0) {
             // console.log(data);
-            res.render(`inc/admin/${col}/add`, { layout: __layoutAdmin, title: 'add page', data, validatorErr, baselink, col });
+            res.render(`inc/admin/${col}/add`, {
+                layout: __layoutAdmin,
+                title: "add page",
+                data,
+                validatorErr,
+                baselink,
+                col,
+            });
         } else {
             new usersModel(data).save().then(() => {
-                req.flash('success', 'Thêm mới  thành công', false); // tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
+                req.flash("success", "Thêm mới  thành công", false); // tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
                 res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
             });
         }
-
     }
 });
 module.exports = router;
