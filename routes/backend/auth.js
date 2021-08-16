@@ -40,4 +40,12 @@ passport.use(
             // });
         })
     }));
+passport.serializeUser((user, done) => {
+    done(null, user._id);
+});
+passport.deserializeUser((id, done) => {
+    usersModel.findOne({ _id: id }, function(err, user) {
+        done(null, user);
+    })
+});
 module.exports = router;
