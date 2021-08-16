@@ -24,7 +24,7 @@ passport.use(
     new LocalStrategy(function(username, password, done) {
         // console.log(username, password);
         usersModel.findOne({ username: username }, function(err, user) {
-            console.log(user);
+            // console.log(user);
             if (err) {
                 return done(err);
             }
@@ -36,7 +36,7 @@ passport.use(
                 console.log('pass ko dung');
                 return done(null, false, { message: "Incorrect password." });
             }
-            return done(null, true);
+            return done(null, user); // truyen vao user toi serializeUser
             // });
         })
     }));
