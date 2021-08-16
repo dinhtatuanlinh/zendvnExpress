@@ -46,7 +46,7 @@ passport.serializeUser((user, done) => {
 });
 passport.deserializeUser((id, done) => {
     usersModel.findOne({ _id: id }, function(err, user) {
-        console.log(1);
+        console.log('1');
         console.log(user);
         done(null, user);
     })
