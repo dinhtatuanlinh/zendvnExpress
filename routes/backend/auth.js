@@ -13,7 +13,7 @@ router.get("/", (req, res, next) => {
     });
 });
 router.get("/logout", (req, res, next) => {
-    res.redirect(`${baselink}`);
+    res.redirect(`/${baselink}`);
 })
 router.post(
     "/login",
