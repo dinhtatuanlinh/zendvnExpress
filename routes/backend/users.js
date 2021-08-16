@@ -96,7 +96,7 @@ router.get("/", async(req, res, next) => {
             console.log(items);
             res.render(`inc/admin/users/list`, {
                 // layout: 'admin',
-                title: "abc list page",
+                title: "user",
                 items,
                 statusFilter,
                 search,
