@@ -30,18 +30,18 @@ var baselink = __admin + '/' + col;
 
 
 /* GET users listing. */
-router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đường dẫn để lấy được dữ liệu đấy ta thêm /:status vào router. Nếu ko có dữ liệu truyền trên đường dẫn thì thêm (/:status)? nghĩa là có ý nghĩa là chuỗi được gửi lên có cũng được ko có cũng được
-    
+router.get('/', async(req, res, next) => { // khi truyền dữ liệu qua đường dẫn để lấy được dữ liệu đấy ta thêm /:status vào router. Nếu ko có dữ liệu truyền trên đường dẫn thì thêm (/:status)? nghĩa là có ý nghĩa là chuỗi được gửi lên có cũng được ko có cũng được
+
     let statusFilter = [
-        {name: 'all', num: null, link: '#', class: 'default'},
-        {name: 'active', num: null, link: '#', class: 'default'},
-        {name: 'inactive', num: null, link: '#', class: 'default'},
+        { name: 'all', num: null, link: '#', class: 'default' },
+        { name: 'active', num: null, link: '#', class: 'default' },
+        { name: 'inactive', num: null, link: '#', class: 'default' },
     ];
     // sort theo cột
     var sort = {};
     var sortField = (req.session.sortType == undefined) ? 'name' : req.session.sortField;
     var sortType = (req.session.sortType == undefined) ? 'asc' : req.session.sortType;
-    sort[sortField] = sortType;// gắn dưới dạng array sẽ tự động chuyển qua object
+    sort[sortField] = sortType; // gắn dưới dạng array sẽ tự động chuyển qua object
     // console.log(sort);
     // change status
     // console.log(req.app.locals.systemConfig) // phương thức req.app.locals dùng để truy cập tới các biến locals được tạo như ở đây là biến locals systemConfig được tạo tại file app.js
@@ -80,43 +80,44 @@ router.get('/', async (req, res, next) => {// khi truyền dữ liệu qua đư�
     // if(statusCurrent !== 'all') where.status = statusCurrent;// xử lý khi currentstatus bằng all
     // console.log(statusCurrent);
     var addLink = "";
-    if(search !== "") {
+    if (search !== "") {
         addLink = "?search=" + search;
         where.name = new RegExp(search, 'i'); // RegExp là regular expressions giúp tìm document chứa đoạn kí tự search, i là ko phân biệt hoa thường
     }
-    
+
     usersModel.find(where)
-    .sort(sort)
-    .skip(pagiParams.position)
-    .limit(pagiParams.itemsPerPage)
-    .then(( items) => { // thay bằng phương thức then để xử lý bất đồng bộ
-        res.render(`inc/admin/${col}/list`, { 
-            layout: __layoutAdmin,
-            title: 'abc list page',
-            items,
-            statusFilter,
-            search,
-            addLink,
-            pagiParams,
-            sortField,
-            sortType,
-            col,
-            baselink
+        .sort(sort)
+        .skip(pagiParams.position)
+        .limit(pagiParams.itemsPerPage)
+        .then((items) => { // thay bằng phương thức then để xử lý bất đồng bộ
+            console.log(items);
+            res.render(`inc/admin/${col}/list`, {
+                layout: __layoutAdmin,
+                title: 'abc list page',
+                items,
+                statusFilter,
+                search,
+                addLink,
+                pagiParams,
+                sortField,
+                sortType,
+                col,
+                baselink
+            });
         });
-    });
 });
-router.post('/changestatus/:status', (req, res, next) => {// lấy dữ liệu gửi lên qua phương thức post
+router.post('/changestatus/:status', (req, res, next) => { // lấy dữ liệu gửi lên qua phương thức post
     // console.log(req.params.status);// lấy status truyền trên url
     // console.log(req.body);// phương thức req.body của module body parser dùng để lấy dữ liệu gửi lên tư form post
-    usersModel.updateMany({_id: {$in: req.body.cid}}, {status: req.params.status}, (err, affected, result)=>{//
+    usersModel.updateMany({ _id: { $in: req.body.cid } }, { status: req.params.status }, (err, affected, result) => { //
         console.log(result);
         console.log(affected);
-        req.flash('success', 'cập nhật status thành công', false);// tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
+        req.flash('success', 'cập nhật status thành công', false); // tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
         res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}/${col}`);
     });
 });
 router.get('/sort/:field/:type', (req, res, next) => {
-    req.session.sortField = req.params.field;// req.session giúp đưa dữ liệu vào session để gọi ra ở router khác
+    req.session.sortField = req.params.field; // req.session giúp đưa dữ liệu vào session để gọi ra ở router khác
     req.session.sortType = req.params.type;
     res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}/${col}`);
 })
@@ -124,13 +125,13 @@ router.get('/add(/:id)?', function(req, res, next) {
     var data = { name: '', status: 'novalue' };
     var validatorErr = undefined;
     if (req.params.id === undefined) {
-        res.render(`inc/admin/${col}/add`, {layout: __layoutAdmin, title: 'add page', data, validatorErr, baselink, col });
+        res.render(`inc/admin/${col}/add`, { layout: __layoutAdmin, title: 'add page', data, validatorErr, baselink, col });
     } else {
-        
+
         var data = {};
         usersModel.findById(req.params.id, (err, result) => {
             data = result;
-            res.render(`inc/admin/${col}/add`, {layout: __layoutAdmin, title: 'edit page', data, validatorErr, baselink, col });
+            res.render(`inc/admin/${col}/add`, { layout: __layoutAdmin, title: 'edit page', data, validatorErr, baselink, col });
         });
 
     }
@@ -141,19 +142,19 @@ router.get('/add(/:id)?', function(req, res, next) {
     // res.end();
 
 });
-router.post('/add/save', usersValidation.validator,  (req, res, next) => {
+router.post('/add/save', usersValidation.validator, (req, res, next) => {
     var data = { name: req.body.name, status: req.body.status, content: req.body.content };
     // console.log(data);
-    var validatorErr = validationResult(req).errors;// lấy ra lỗi khi validation
+    var validatorErr = validationResult(req).errors; // lấy ra lỗi khi validation
     // console.log(validatorErr);
     if (req.body.id) {
-        if(validatorErr.length > 0){
-            res.render(`inc/admin/${col}/add`, {layout: __layoutAdmin, title: 'edit page', data, validatorErr, baselink, col });
-        }else{
-            usersModel.updateOne({_id: req.body.id}, data, (err, affected, result)=>{
+        if (validatorErr.length > 0) {
+            res.render(`inc/admin/${col}/add`, { layout: __layoutAdmin, title: 'edit page', data, validatorErr, baselink, col });
+        } else {
+            usersModel.updateOne({ _id: req.body.id }, data, (err, affected, result) => {
                 req.flash('success', 'cập nhật status thành công', false);
                 res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
-                
+
             })
         }
     } else {
@@ -162,16 +163,16 @@ router.post('/add/save', usersValidation.validator,  (req, res, next) => {
         console.log(validatorErr);
         console.log(baselink);
         console.log(col);
-        if(validatorErr.length > 0){
+        if (validatorErr.length > 0) {
             // console.log(data);
-            res.render(`inc/admin/${col}/add`, {layout: __layoutAdmin, title: 'add page', data, validatorErr, baselink, col });
-        }else{
+            res.render(`inc/admin/${col}/add`, { layout: __layoutAdmin, title: 'add page', data, validatorErr, baselink, col });
+        } else {
             new usersModel(data).save().then(() => {
                 req.flash('success', 'Thêm mới  thành công', false); // tham số thứ nhất là info là biến title truyền ra ngoài view, tham số thứ 2 là câu thông báo truyền ra ngoài view, nếu ko render ra giao diện thì phải thêm tham số thứ 3 là false
                 res.redirect(`/${req.app.locals.systemConfig.prefixAdmin}`);
             });
         }
-        
+
     }
 });
 module.exports = router;
