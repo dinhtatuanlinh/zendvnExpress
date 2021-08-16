@@ -28,7 +28,7 @@ passport.use(
             if (err) {
                 return done(err);
             }
-            if (username !== user.username) {
+            if (user == undefined || user.length == 0) {
                 console.log('user ko dung');
                 return done(null, false, { message: "Incorrect username." });
             }
