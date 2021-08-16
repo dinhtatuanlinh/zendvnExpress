@@ -95,7 +95,7 @@ router.get("/", async(req, res, next) => {
             // thay bằng phương thức then để xử lý bất đồng bộ
             console.log(items);
             res.render(`inc/admin/users/list`, {
-                // layout: 'admin',
+                layout: __layoutAdmin,
                 title: "user",
                 items,
                 statusFilter,
