@@ -12,6 +12,9 @@ router.get("/", (req, res, next) => {
         baselink,
     });
 });
+router.get("/logout", (req, res, next) => {
+    res.redirect(`${baselink}`);
+})
 router.post(
     "/login",
     passport.authenticate("local", {
