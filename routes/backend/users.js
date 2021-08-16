@@ -69,7 +69,7 @@ router.get("/", async(req, res, next) => {
     // console.log(statusFilter);
     // pagination
     var number;
-    console.log(number);
+    // console.log(number);
     await usersModel.countDocuments({}, (err, data) => {
         if (err) return console.log(err); // cần phải có đoạn code này thì mới lấy được số lượng document
         // console.log(data);
@@ -95,7 +95,7 @@ router.get("/", async(req, res, next) => {
             // thay bằng phương thức then để xử lý bất đồng bộ
             console.log(items);
             res.render(`inc/admin/users/list`, {
-                layout: 'admin',
+                // layout: 'admin',
                 title: "abc list page",
                 items,
                 statusFilter,
