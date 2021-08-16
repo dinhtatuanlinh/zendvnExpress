@@ -28,10 +28,12 @@ passport.use(
             if (err) {
                 return done(err);
             }
-            if (!user) {
+            if (username !== user.username) {
+                console.log('user ko dung');
                 return done(null, false, { message: "Incorrect username." });
             }
             if (password !== user.password) {
+                console.log('pass ko dung');
                 return done(null, false, { message: "Incorrect password." });
             }
             return done(null, true);
