@@ -15,9 +15,8 @@ var rolesSchema = new mongoose.Schema({
 });
 var usersSchema = new mongoose.Schema({
     name: String,
-    status: String,
-    ordering: Number,
-    content: String
+    username: String,
+    password: String
 });
 var abcSchema = new mongoose.Schema({
     name: String,
@@ -30,7 +29,7 @@ connectionDatabase.once('open', function() {
     console.log('database connected');
     var collections = Object.keys(connectionDatabase.collections);
     console.log(collections);
-    
+
 });
 
 module.exports = {
