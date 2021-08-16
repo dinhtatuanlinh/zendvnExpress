@@ -75,7 +75,7 @@ router.get("/", async(req, res, next) => {
         // console.log(data);
         number = data;
     });
-    console.log(number);
+    // console.log(number);
     var pagiParams = await utility.pagiFunc(parseInt(req.query.p), number);
     // console.log(pagiParams);
     // if(statusCurrent !== 'all') where.status = statusCurrent;// xử lý khi currentstatus bằng all
@@ -95,7 +95,7 @@ router.get("/", async(req, res, next) => {
             // thay bằng phương thức then để xử lý bất đồng bộ
             console.log(items);
             res.render(`inc/admin/users/list`, {
-                layout: __layoutAdmin,
+                // layout: __layoutAdmin,
                 title: "abc list page",
                 items,
                 statusFilter,
