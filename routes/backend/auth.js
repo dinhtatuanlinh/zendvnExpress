@@ -13,6 +13,7 @@ router.get("/", (req, res, next) => {
     });
 });
 router.get("/logout", (req, res, next) => {
+    req.logOut(); // để logout tài khoản
     res.redirect(`/${baselink}`);
 })
 router.post(
