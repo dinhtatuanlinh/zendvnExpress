@@ -3,11 +3,17 @@ var router = express.Router();
 
 
 // call child router
-
-router.use('/', require('./dashboard'));
-// router.use('/all', require('./home'));
 // auth
-router.use('/admin', require('./auth'));
+router.use('/admin', require('./auth')); // đặt lên trên router có check login thì sẽ ko bị check khi login
+router.use('/', (req, res, next) => {
+    if (req.isAuthenticated()) { // isAuthenticated để xác định đã được login rồi hay chưa rồi sẽ trả về true chưa trả về false
+        next();
+    } else {
+        res.redirect(`/${__admin}`);
+    }
+}, require('./dashboard'));
+// router.use('/all', require('./home'));
+
 // items
 router.use('/items/', require('./items'));
 // users
