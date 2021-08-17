@@ -18,7 +18,7 @@ router.get("/logout", (req, res, next) => {
 router.post(
     "/login",
     passport.authenticate("local", {
-        successRedirect: "/admin124/roles",
+        successRedirect: `/${__admin}`,
         failureRedirect: `/${baselink}`,
     })
 );
