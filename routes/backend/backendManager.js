@@ -17,7 +17,13 @@ router.use('/', (req, res, next) => {
 // items
 router.use('/items/', require('./items'));
 // users
-router.use('/users/', require('./users'));
+router.use('/users/', (req, res, next) => {
+    if (req.user.username == 'tuanlinh') { // req.user để lấy thông tin user
+        next();
+    } else {
+        res.redirect(`/${__admin}`);
+    }
+}, require('./users'));
 // roles
 router.use('/roles/', require('./roles'));
 module.exports = router;
