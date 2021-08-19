@@ -11,5 +11,7 @@ router.use('/', (req, res, next) => {
         res.redirect(`/${__admin}/admin`);
     }
 }, require('./home'));
+// items
+router.use('/room/', require('./room'));
 
 module.exports = router;
