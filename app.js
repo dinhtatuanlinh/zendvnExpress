@@ -18,6 +18,7 @@ global.__pathSchemas = __base + 'schemas/';
 global.__pathHelps = __base + 'helper/';
 global.__pathValidation = __base + 'validation/';
 global.__layoutAdmin = 'admin';
+global.__layoutChat = 'chat';
 const systemConfig = require(__pathConfigs + 'system');
 
 console.log(__pathRoutes);
