@@ -3,6 +3,6 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.render('chat/home', { title: 'dashboard page', layout: __layoutAdmin });
+    res.render('chat/home', { title: 'dashboard page', layout: __layoutChat });
 });
 module.exports = router;
