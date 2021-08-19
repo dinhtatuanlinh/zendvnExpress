@@ -10,6 +10,6 @@ router.use('/', (req, res, next) => {
     } else {
         res.redirect(`/${__admin}/admin`);
     }
-}, require('./dashboard'));
+}, require('./home'));
 
 module.exports = router;
