@@ -48,13 +48,13 @@ passport.use(
         })
     }));
 passport.serializeUser((user, done) => {
-    console.log(user);
+    // console.log(user);
     done(null, user._id);
 });
 passport.deserializeUser((id, done) => {
     usersModel.findOne({ _id: id }, function(err, user) {
-        console.log('1');
-        console.log(user);
+        // console.log('1');
+        // console.log(user);
         done(null, user);
     })
 });
