@@ -53,10 +53,7 @@ var app = express();
 var io = socket_io();
 app.io = io;
 
-// socket.io events
-io.on("connection", (socket) => {
-    console.log("a user connected");
-});
+
 // notification
 app.use(cookieParser());
 app.use(session({
@@ -90,7 +87,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.locals.systemConfig = systemConfig; //tạo biến local để truyền tới view biến systemConfig sẽ có thể gọi được ở view ejs
 global.__admin = systemConfig.prefixAdmin;
 app.use(`/${systemConfig.prefixAdmin}`, require('./routes/backend/backendManager'));
-app.use(`/${systemConfig.prefixChat}`, require('./routes/chat/chatManager'));
+app.use(`/${systemConfig.prefixChat}`, require('./routes/chat/chatManager')(io));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
