@@ -6,7 +6,7 @@ var logger = require('morgan');
 const flash = require('express-flash-notification');
 const session = require('express-session');
 var passport = require('passport');
-
+var socket_io = require('socket.io');
 
 var expressLayouts = require('express-ejs-layouts'); //module dung để tạo layout cho giao diện
 // var mongoose = require('mongoose');
@@ -49,6 +49,14 @@ var indexRouter = require(__pathRoutes + 'index');
 
 
 var app = express();
+// socket.io
+var io = socket_io();
+app.io = io;
+
+// socket.io events
+io.console("connection", (socket) => {
+    console.log("a user connected");
+});
 // notification
 app.use(cookieParser());
 app.use(session({
