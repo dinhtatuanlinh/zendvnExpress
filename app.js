@@ -54,7 +54,7 @@ var io = socket_io();
 app.io = io;
 
 // socket.io events
-io.console("connection", (socket) => {
+io.on("connection", (socket) => {
     console.log("a user connected");
 });
 // notification
