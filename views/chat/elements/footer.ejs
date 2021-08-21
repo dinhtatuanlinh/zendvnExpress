@@ -26,6 +26,9 @@
 <script src="socket.io/socket.io.js"></script>
 <script>
     var socket = io.connect('http://zendvnexpress.noteatext.com');
+    socket.on("server_send_data", (data) => {
+        console.log(data);
+    });
 </script>
 </body>
 

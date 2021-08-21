@@ -20,6 +20,7 @@ module.exports = (io) => {
     router.use('/room/', require('./room'));
     // socket.io events
     io.on("connection", (socket) => {
+        socket.emit("sever_send_data", socket.id);
         console.log("a user connected");
     });
     return router;
