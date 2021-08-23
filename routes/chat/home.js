@@ -6,6 +6,7 @@ var router = express.Router();
 
 module.exports = (io) => {
     router.get('/', function(req, res, next) {
+        console.log(__layoutChat);
         res.render('chat/home', { title: 'dashboard page', layout: __layoutChat });
     });
     // socket.io events
