@@ -25,9 +25,20 @@
 <script src="chat/js/demo.js"></script>
 <script src="socket.io/socket.io.js"></script>
 <script>
+    var chat_form = document.getElementById("chat_form");
+    var chat_message = document.getElementById("message");
+    var username = document.getElementById("username");
+
     var socket = io.connect('http://zendvnexpress.noteatext.com');
     socket.on("server_send_data", (data) => {
         console.log(data);
+    });
+    chat_form.addEventListener('submit', () => {
+        socket.emit('client_send_all_message', {
+            content: chat_message.value,
+            username: username.value
+        });
+        return false;
     });
 </script>
 </body>

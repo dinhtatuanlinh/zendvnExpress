@@ -12,6 +12,9 @@ module.exports = (io) => {
     io.on("connection", (socket) => {
         socket.emit("server_send_data", socket.id);
         console.log("a user connected");
+        socket.on('client_send_all_message', (data) => {
+            console.log(data);
+        })
     });
     return router;
 };
