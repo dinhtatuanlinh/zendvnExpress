@@ -35,5 +35,5 @@ module.exports = {
     itemsModel: mongoose.model('items', itemsSchema),
     rolesModel: mongoose.model('roles', rolesSchema),
     usersModel: mongoose.model('users', usersSchema),
-    chatModel: mongoose.model('chat', abcSchema),
+    chatModel: mongoose.model('chat', chatSchema),
 }
