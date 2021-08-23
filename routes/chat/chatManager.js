@@ -15,13 +15,9 @@ module.exports = (io) => {
         } else {
             res.redirect(`/${__admin}/admin`);
         }
-    }, require('./home'));
+    }, require('./home')(io));
     // items
     router.use('/room/', require('./room'));
-    // socket.io events
-    io.on("connection", (socket) => {
-        socket.emit("server_send_data", socket.id);
-        console.log("a user connected");
-    });
+
     return router;
 };

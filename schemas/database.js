@@ -18,11 +18,10 @@ var usersSchema = new mongoose.Schema({
     username: String,
     password: String
 });
-var abcSchema = new mongoose.Schema({
-    name: String,
-    status: String,
-    ordering: Number,
-    content: String
+var chatSchema = new mongoose.Schema({
+    content: String,
+    username: String,
+    time: Date,
 });
 connectionDatabase.once('open', function() {
     // we're connected! 
@@ -36,5 +35,5 @@ module.exports = {
     itemsModel: mongoose.model('items', itemsSchema),
     rolesModel: mongoose.model('roles', rolesSchema),
     usersModel: mongoose.model('users', usersSchema),
-    abcModel: mongoose.model('abc', abcSchema),
+    chatModel: mongoose.model('chat', abcSchema),
 }
