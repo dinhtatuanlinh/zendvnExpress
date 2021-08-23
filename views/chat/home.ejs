@@ -87,16 +87,16 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <%- userInfo.name %>
-                            <form id="chat_form">
-                                <div class="input-group">
-                                    <input type="text" name="message" id="message" placeholder="Type Message ..." class="form-control">
-                                    <input type="hidden" name="username" value="" id="username" value="">
-                                    <span class="input-group-btn">
+
+                        <form id="chat_form">
+                            <div class="input-group">
+                                <input type="text" name="message" id="message" placeholder="Type Message ..." class="form-control">
+                                <input type="hidden" name="username" value="" id="username" value="<%- userInfo.name %>">
+                                <span class="input-group-btn">
                                     <button type="submit" class="btn btn-primary btn-flat">Send</button>
                                 </span>
-                                </div>
-                            </form>
+                            </div>
+                        </form>
                     </div>
                     <!-- /.box-footer-->
                 </div>
