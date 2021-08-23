@@ -13,4 +13,5 @@ module.exports = (io) => {
         socket.emit("server_send_data", socket.id);
         console.log("a user connected");
     });
+    return router;
 };
