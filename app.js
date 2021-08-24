@@ -53,7 +53,17 @@ var app = express();
 var io = socket_io();
 app.io = io;
 
+// socket.io events
+io.on("connection", (socket) => {
 
+    console.log("a user connected");
+
+    socket.emit("server_send_data", socket.id);
+
+    socket.on('client_send_all_message', (data) => {
+        console.log(data);
+    })
+});
 // notification
 app.use(cookieParser());
 app.use(session({

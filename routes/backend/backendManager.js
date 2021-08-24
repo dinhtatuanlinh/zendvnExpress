@@ -12,6 +12,7 @@ router.use('/', (req, res, next) => {
         res.redirect(`/${__admin}/admin`);
     }
 }, require('./dashboard'));
+// router.use('/', require('./dashboard'));
 // router.use('/all', require('./home'));
 
 // items
@@ -24,6 +25,7 @@ router.use('/users/', (req, res, next) => {
         res.redirect(`/${__admin}`);
     }
 }, require('./users'));
+// router.use('/users/', require('./users'));
 // roles
 router.use('/roles/', require('./roles'));
 module.exports = router;

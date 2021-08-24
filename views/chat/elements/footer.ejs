@@ -33,6 +33,14 @@
     socket.on("server_send_data", (data) => {
         console.log(data);
     });
+
+    // function send_message() {
+    //     socket.emit('client_send_all_message', {
+    //         content: chat_message.value,
+    //         username: username.value
+    //     });
+    //     chat_message.value = '';
+    // };
     chat_form.addEventListener('submit', () => {
         socket.emit('client_send_all_message', {
             content: chat_message.value,

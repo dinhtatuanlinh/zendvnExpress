@@ -88,7 +88,7 @@
                     <!-- /.box-body -->
                     <div class="box-footer">
 
-                        <form target="_self" method="POST" id="chat_form">
+                        <form target="_self" method="POST" id="chat_form" onsubmit="send_message();return false">
                             <div class="input-group">
                                 <input type="text" name="message" id="message" placeholder="Type Message ..." class="form-control">
                                 <input type="hidden" name="username" id="username" value="<%- userInfo.name %>">

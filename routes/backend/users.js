@@ -163,8 +163,8 @@ router.get("/add(/:id)?", function(req, res, next) {
 router.post("/add/save", usersValidation.validator, (req, res, next) => {
     var data = {
         name: req.body.name,
-        status: req.body.status,
-        content: req.body.content,
+        username: req.body.username,
+        password: req.body.password
     };
     // console.log(data);
     var validatorErr = validationResult(req).errors; // lấy ra lỗi khi validation

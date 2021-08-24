@@ -16,8 +16,17 @@ module.exports = (io) => {
             res.redirect(`/${__admin}/admin`);
         }
     }, require('./home')(io));
+
+    // router.use('/', require('./home')(io));
     // items
     router.use('/room/', require('./room'));
-
+    // socket.io events
+    // io.on("connection", (socket) => {
+    //     socket.emit("server_send_data", socket.id);
+    //     console.log("a user connected");
+    //     socket.on('client_send_all_message', (data) => {
+    //         console.log(data);
+    //     })
+    // });
     return router;
 };
