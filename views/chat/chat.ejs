@@ -41,51 +41,18 @@
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Online</h3>
-                            <span data-toggle="tooltip" title="" class="badge bg-light-blue count" data-original-title="5 Users">5</span>
+                            <span class="badge bg-light-blue count" id="total_online_room_users">5</span>
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                          class="fa fa-minus"></i>
-                  </button>
+                                    class="fa fa-minus"></i>
+                            </button>
                             </div>
                             <!-- /.box-tools -->
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body">
-                            <div class="user">
-                                <div class="col-md-8 user-avatar">
-                                    <img class="contacts-list-img" src="chat/img/user1-128x128.jpg" alt="User Image">
-                                    <h5>Alexander Pierce</h5>
-                                </div>
-                                <div class="col-md-4"><button type="button" class="btn btn-block btn-primary btn-sm btn-w">Add friend</button></div>
-                            </div>
-                            <div class="user">
-                                <div class="col-md-8 user-avatar">
-                                    <img class="contacts-list-img" src="chat/img/user3-128x128.jpg" alt="User Image">
-                                    <h5>Sarah Bullock</h5>
-                                </div>
-                                <div class="col-md-4"><button type="button" class="btn btn-block btn-primary btn-sm btn-w">Add friend</button></div>
-                            </div>
-                            <div class="user">
-                                <div class="col-md-8 user-avatar">
-                                    <img class="contacts-list-img" src="chat/img/user4-128x128.jpg" alt="User Image">
-                                    <h5>Tennille Lown</h5>
-                                </div>
-                                <div class="col-md-4"><button type="button" class="btn btn-block btn-primary btn-sm btn-w">Add friend</button></div>
-                            </div>
-                            <div class="user">
-                                <div class="col-md-8 user-avatar">
-                                    <img class="contacts-list-img" src="chat/img/user5-128x128.jpg" alt="User Image">
-                                    <h5>Crystle Bethke</h5>
-                                </div>
-                                <div class="col-md-4"><button type="button" class="btn btn-block btn-primary btn-sm btn-w">Add friend</button></div>
-                            </div>
-                            <div class="user">
-                                <div class="col-md-8 user-avatar">
-                                    <img class="contacts-list-img" src="chat/img/user6-128x128.jpg" alt="User Image">
-                                    <h5>Shakira Arthur</h5>
-                                </div>
-                                <div class="col-md-4"><button type="button" class="btn btn-block btn-default btn-sm btn-w">Remove</button></div>
-                            </div>
+                        <div class="box-body" id="online_room_users">
+
+
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -103,128 +70,34 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <!-- Conversations are loaded here -->
-                        <div class="direct-chat-messages">
-                            <!-- Message. Default to the left -->
-                            <div class="direct-chat-msg">
-                                <div class="direct-chat-info clearfix">
-                                    <span class="direct-chat-name pull-left">Alexander Pierce</span>
-                                    <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-                                </div>
-                                <!-- /.direct-chat-info -->
-                                <img class="direct-chat-img" src="chat/img/user1-128x128.jpg" alt="Message User Image">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    Is this template really for free? That's unbelievable!
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- /.direct-chat-msg -->
-                            <!-- Message. Default to the left -->
-                            <div class="direct-chat-msg">
-                                <div class="direct-chat-info clearfix">
-                                    <span class="direct-chat-name pull-left">Alexander Pierce</span>
-                                    <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-                                </div>
-                                <!-- /.direct-chat-info -->
-                                <img class="direct-chat-img" src="chat/img/user2-160x160.jpg" alt="Message User Image">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    Oh, Yessssssssssss!
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- /.direct-chat-msg -->
-                            <!-- Message. Default to the left -->
-                            <div class="direct-chat-msg">
-                                <div class="direct-chat-info clearfix">
-                                    <span class="direct-chat-name pull-left">Tennille Lown</span>
-                                    <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-                                </div>
-                                <!-- /.direct-chat-info -->
-                                <img class="direct-chat-img" src="chat/img/user4-128x128.jpg" alt="Message User Image">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    Oh, Yeahhhhhhhhh!
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- /.direct-chat-msg -->
-                            <!-- Message. Default to the left -->
-                            <div class="direct-chat-msg">
-                                <div class="direct-chat-info clearfix">
-                                    <span class="direct-chat-name pull-left">Alexander Pierce</span>
-                                    <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-                                </div>
-                                <!-- /.direct-chat-info -->
-                                <img class="direct-chat-img" src="chat/img/user1-128x128.jpg" alt="Message User Image">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    like like like like !
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- /.direct-chat-msg -->
-                            <!-- Message. Default to the left -->
-                            <div class="direct-chat-msg">
-                                <div class="direct-chat-info clearfix">
-                                    <span class="direct-chat-name pull-left">Crystle Bethke</span>
-                                    <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-                                </div>
-                                <!-- /.direct-chat-info -->
-                                <img class="direct-chat-img" src="chat/img/user5-128x128.jpg" alt="Message User Image">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    Is this template really for free? That's unbelievable!
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- /.direct-chat-msg -->
-                            <!-- Message. Default to the left -->
-                            <div class="direct-chat-msg">
-                                <div class="direct-chat-info clearfix">
-                                    <span class="direct-chat-name pull-left">Alexander Pierce</span>
-                                    <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-                                </div>
-                                <!-- /.direct-chat-info -->
-                                <img class="direct-chat-img" src="chat/img/user1-128x128.jpg" alt="Message User Image">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    Is this template really for free? That's unbelievable!
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- /.direct-chat-msg -->
-                            <!-- Message. Default to the left -->
-                            <div class="direct-chat-msg">
-                                <div class="direct-chat-info clearfix">
-                                    <span class="direct-chat-name pull-left">Shakira Arthur</span>
-                                    <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-                                </div>
-                                <!-- /.direct-chat-info -->
-                                <img class="direct-chat-img" src="chat/img/user6-128x128.jpg" alt="Message User Image">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    Great,unbelievable !
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- /.direct-chat-msg -->
+                        <div class="direct-chat-messages" id="area-list-messages">
+                            <% roomMessages.forEach(roomMessage => { %>
+                                <% 
+                                    let right = '';
+                                    let direct_chat_name = 'pull-left';
+                                    let direct_chat_timestamp = 'pull-right';
+                                    if (roomMessage.username == userInfo.username) {
+                                        right = 'right';
+                                        direct_chat_name = 'pull-right';
+                                        direct_chat_timestamp = 'pull-left';
+                                    }
+                                    %>
+                                    <div class="direct-chat-msg <%= right %> ">
+                                        <div class="direct-chat-info clearfix">
+                                            <span class="direct-chat-name <%= direct_chat_name %>"><%= roomMessage.username %></span>
+                                            <span class="direct-chat-timestamp <%= direct_chat_timestamp %>"><%= roomMessage.time %></span>
+                                        </div>
+                                        <!-- /.direct-chat-info -->
+                                        <img class="direct-chat-img" src="chat/img/user1-128x128.jpg" alt="Message User Image">
+                                        <!-- /.direct-chat-img -->
+                                        <div class="direct-chat-text">
+                                            <%- roomMessage.content %>
 
-                            <!-- Message to the right -->
-                            <div class="direct-chat-msg right">
-                                <div class="direct-chat-info clearfix">
-                                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
-                                    <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
-                                </div>
-                                <!-- /.direct-chat-info -->
-                                <img class="direct-chat-img" src="chat/img/user3-128x128.jpg" alt="Message User Image">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    You better believe it!
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- /.direct-chat-msg -->
+                                        </div>
+                                        <!-- /.direct-chat-text -->
+                                    </div>
+                                    <% });  %>
+
                         </div>
                         <!--/.direct-chat-messages-->
 
@@ -253,9 +126,9 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <form action="#" method="post">
+                        <form target="_self" method="POST" id="chat_form" onsubmit="send_message();return false">
                             <div class="input-group">
-                                <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                <input type="text" name="message" id="message" placeholder="Type Message ..." class="form-control">
                                 <span class="input-group-btn">
                         <button type="submit" class="btn btn-primary btn-flat">Send</button>
                       </span>
@@ -271,3 +144,87 @@
     </div>
     <!-- /.container -->
 </div>
+<input type="hidden" id="roomID" value="<%= roomID %>">
+<input type="hidden" id="username" value="<%= userInfo.username %>">
+
+<script src="socket.io/socket.io.js"></script>
+<script>
+    var chat_message = document.getElementById("message");
+    var roomID = document.getElementById("roomID");
+    var username = document.getElementById("username");
+    var online_room_users = document.getElementById("online_room_users");
+    var total_online_room_users = document.getElementById("total_online_room_users");
+    var listRoomMessages = document.getElementById("area-list-messages");
+    let thisUser = "<%= userInfo.username %>";
+    let socket = io.connect("http://localhost:3000");
+    socket.on("connect", () => {
+        let data = {
+            roomID: roomID.value,
+            username: username.value
+        };
+        socket.emit("user_join_room", data);
+        socket
+    });
+    // server send room message
+    socket.on("server_return_room_message", (data) => { //nhận tin nhắn từ server gửi tới tất cả user ở public
+        let right = '';
+        let direct_chat_name = 'pull-left';
+        let direct_chat_timestamp = 'pull-right';
+
+        if (thisUser === data.username) {
+            right = 'right';
+            direct_chat_name = 'pull-right';
+            direct_chat_timestamp = 'pull-left';
+        }
+        var html = `
+        <div class="direct-chat-msg ${right}">
+            <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name ${direct_chat_name}">${data.username}</span>
+                <span class="direct-chat-timestamp ${direct_chat_timestamp}">${data.time}</span>
+            </div>
+
+            <img class="direct-chat-img" src="chat/img/user1-128x128.jpg" alt="Message User Image">
+
+            <div class="direct-chat-text">
+                ${data.content}
+            </div>
+
+        </div>`;
+
+        listRoomMessages.innerHTML += html;
+    });
+    // end server send room message
+    socket.on("online_room_users", (data) => {
+        var html = '';
+        data.forEach(element => {
+            if (element.username !== username.value) {
+                html += `
+                    <div class="user">
+                        <div class="col-md-8 user-avatar">
+                            <img class="contacts-list-img" src="chat/img/user1-128x128.jpg" alt="User Image">
+                            <h5>${element.username}</h5>
+                        </div>
+                        <div class="col-md-4"><button type="button" class="btn btn-block btn-primary btn-sm btn-w">Add friend</button></div>
+                    </div>
+                    `;
+            }
+
+        });
+        online_room_users.innerHTML = html;
+        total_online_room_users.innerHTML = data.length - 1;
+    });
+    // send message in room
+    function send_message() {
+        var content = chat_message.value;
+        content = emoji(content);
+        socket.emit('client_send_room_message', { //gửi tin nhắn lên server để server gửi tin nhắn tới tất cả user ở public
+            content: content,
+            username: username.value,
+            room: roomID.value,
+        });
+        //remove text after send
+        chat_message.value = '';
+        // remove emoji
+        // emoji.data("emojioneArea").setText('');
+    };
+</script>

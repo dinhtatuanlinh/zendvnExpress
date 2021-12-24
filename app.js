@@ -1,9 +1,10 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+// express-flash-notification hiển thị thông báo phải dùng kèm với cookie-parser và express-session
 const flash = require('express-flash-notification');
+var cookieParser = require('cookie-parser');
 const session = require('express-session');
 var passport = require('passport');
 var socket_io = require('socket.io');
@@ -14,14 +15,17 @@ var expressLayouts = require('express-ejs-layouts'); //module dung để tạo l
 global.__base = __dirname + '/';
 global.__pathConfigs = __base + 'configs/';
 global.__pathRoutes = __base + 'routes/';
+global.__pathControllers = __base + 'controllers/';
 global.__pathSchemas = __base + 'schemas/';
 global.__pathHelps = __base + 'helper/';
+global.__pathViews = __base + 'views/';
 global.__pathValidation = __base + 'validation/';
-global.__layoutAdmin = 'admin';
-global.__layoutChat = 'chat';
+global.__layoutAdmin = __pathViews + 'admin';
+global.__layoutChat = __pathViews + 'chat';
+global.__layoutAuth = __pathViews + 'auth';
 const systemConfig = require(__pathConfigs + 'system');
 
-console.log(__pathRoutes);
+// console.log(__pathRoutes);
 // router
 var indexRouter = require(__pathRoutes + 'index');
 
@@ -54,16 +58,16 @@ var io = socket_io();
 app.io = io;
 
 // socket.io events
-io.on("connection", (socket) => {
+// io.on("connection", (socket) => {
 
-    console.log("a user connected");
+//     console.log("a user connected");
 
-    socket.emit("server_send_data", socket.id);
+//     socket.emit("server_send_data", socket.id);
 
-    socket.on('client_send_all_message', (data) => {
-        console.log(data);
-    })
-});
+//     socket.on('client_send_all_message', (data) => {
+//         console.log(data);
+//     })
+// });
 // notification
 app.use(cookieParser());
 app.use(session({
@@ -71,18 +75,26 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
+        // đặt thời gian hiển thị flash
         maxAge: 5 * 60 * 1000
     }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash(app, { viewName: 'inc/admin/elements/flash' })); // có thể thay đổ tệp tin hiển thị flash mặc định thành tên khác và đường dẫn tới tệp tin đó
+// cài đặt cho flash truyền vào app trong hàm flash() tham số thứ 2 là file lưu giao diện flash
+app.use(flash(app, { viewName: 'inc/admin/elements/flash' }));
+// cách sử dụng flash
+// cách đưa file dao diện vào vị trí hiển thị trong web bằng <%- locals.flash %> nó sẽ giúp kéo file giao diện vào vị trí muốn hiển thị
+// cách truyền dữ liệu vào để hiện thị trong flash
+
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
-// app.set('layout', 'admin'); //set layout cho backend là file backend.ejs nội dung thay đổi sẽ được gọi vào được truyền tới <%- body %>
+app.set('layout', __pathViews + 'index'); //set layout cho backend là file backend.ejs nội dung thay đổi sẽ được gọi vào được truyền tới <%- body %>
 // cách set layout này sẽ set cho tất cả nên sử dụng cho phía client vì sẽ không cần gọi lại nhiều lần
 // app.use(logger('dev')); // tắt log khi chạy
 app.use(express.json());

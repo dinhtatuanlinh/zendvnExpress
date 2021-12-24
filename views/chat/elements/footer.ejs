@@ -23,33 +23,9 @@
 <script src="chat/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="chat/js/demo.js"></script>
-<script src="socket.io/socket.io.js"></script>
-<script>
-    var chat_form = document.getElementById("chat_form");
-    var chat_message = document.getElementById("message");
-    var username = document.getElementById("username");
+<!-- <script src="chat/js/emojionearea.js"></script> -->
+<script src="chat/js/emoji.js"></script>
 
-    var socket = io.connect('http://zendvnexpress.noteatext.com');
-    socket.on("server_send_data", (data) => {
-        console.log(data);
-    });
-
-    // function send_message() {
-    //     socket.emit('client_send_all_message', {
-    //         content: chat_message.value,
-    //         username: username.value
-    //     });
-    //     chat_message.value = '';
-    // };
-    chat_form.addEventListener('submit', () => {
-        socket.emit('client_send_all_message', {
-            content: chat_message.value,
-            username: username.value
-        });
-        chat_message.value = '';
-        return false;
-    });
-</script>
 </body>
 
 </html>

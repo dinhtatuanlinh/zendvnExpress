@@ -1,3 +1,199 @@
+<header class="main-header ">
+    <nav class="navbar navbar-static-top ">
+        <div class="container ">
+            <div class="navbar-header ">
+                <a href="../../index2.html " class="navbar-brand "><b>NodeJs Level</b> 3</a>
+                <button type="button " class="navbar-toggle collapsed " data-toggle="collapse " data-target="#navbar-collapse ">
+                    <i class="fa fa-bars "></i>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse pull-left " id="navbar-collapse ">
+                <ul class="nav navbar-nav ">
+                    <li><a target="_self" href="<%= systemConfig.prefixAdmin %>">Dashboard</a>
+                    </li>
+
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- Messages: style can be found in dropdown.less-->
+                    <li class="dropdown messages-menu">
+                        <!-- Menu toggle button -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="label label-success">4</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">You have 4 messages</li>
+                            <li>
+                                <!-- inner menu: contains the messages -->
+                                <ul class="menu">
+                                    <li>
+                                        <!-- start message -->
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <!-- User Image -->
+                                                <img src="chat/img/user1-128x128.jpg" class="img-circle" alt="User Image">
+                                            </div>
+                                            <!-- Message title and timestamp -->
+                                            <h4>
+                                                Alexander Pierce
+                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                            </h4>
+                                            <!-- The message -->
+                                            <p>Why not buy a new awesome theme?</p>
+                                        </a>
+                                    </li>
+                                    <!-- end message -->
+                                    <li>
+                                        <!-- start message -->
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <!-- User Image -->
+                                                <img src="chat/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                            </div>
+                                            <!-- Message title and timestamp -->
+                                            <h4>
+                                                Sarah Bullock
+                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                            </h4>
+                                            <!-- The message -->
+                                            <p>Why not buy a new awesome theme?</p>
+                                        </a>
+                                    </li>
+                                    <!-- end message -->
+                                    <li>
+                                        <!-- start message -->
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <!-- User Image -->
+                                                <img src="chat/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                            </div>
+                                            <!-- Message title and timestamp -->
+                                            <h4>
+                                                Tennille Lown
+                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                            </h4>
+                                            <!-- The message -->
+                                            <p>Why not buy a new awesome theme?</p>
+                                        </a>
+                                    </li>
+                                    <!-- end message -->
+                                    <li>
+                                        <!-- start message -->
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <!-- User Image -->
+                                                <img src="chat/img/user5-128x128.jpg" class="img-circle" alt="User Image">
+                                            </div>
+                                            <!-- Message title and timestamp -->
+                                            <h4>
+                                                Crystle Bethke
+                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                            </h4>
+                                            <!-- The message -->
+                                            <p>Why not buy a new awesome theme?</p>
+                                        </a>
+                                    </li>
+                                    <!-- end message -->
+                                </ul>
+                                <!-- /.menu -->
+                            </li>
+                            <li class="footer"><a href="#">See All Messages</a></li>
+                        </ul>
+                    </li>
+                    <!-- /.messages-menu -->
+
+                    <!-- Notifications Menu -->
+                    <li class="dropdown notifications-menu">
+                        <!-- Menu toggle button -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-fw fa-user-plus"></i>
+                            <span class="label label-warning totalinvitation">
+                                <%= invitation.length %>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            <li class="header">You have
+                                <span class="totalinvitation">
+                                    <%= invitation.length %>
+                                </span> invitations
+                            </li>
+                            <li>
+                                <!-- Inner Menu: contains the notifications -->
+                                <ul class="menu">
+                                    <li id="invitationlist">
+                                        <!-- start notification -->
+                                        <% invitation.forEach(element=>{ %>
+                                            <div class="user-invite">
+                                                <div class="col-md-7 user-avatar">
+                                                    <img class="contacts-list-img" src="chat/img/user1-128x128.jpg" alt="User Image">
+                                                    <h5>
+                                                        <%= element.username %>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-md-5 btn-action-invite">
+                                                    <button type="button" class="btn btn-block btn-primary" data-id="<%= element._id %>" onclick="acceptfriend(this)">Accept</button>
+                                                    <button type="button" class="btn btn-block btn-default" data-id="<%= element._id %>" onclick="rejectfriend(this)">Reject</button>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+
+
+                                    </li>
+                                    <!-- end notification -->
+                                </ul>
+                            </li>
+                            <li class="footer"><a href="#">View all</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- User Account Menu -->
+                    <li class="dropdown  user-menu">
+                        <!-- Menu Toggle Button -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <!-- The user image in the navbar-->
+                            <img src="chat/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                            <span class="hidden-xs">
+                                <%- userInfo.name %>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- The user image in the menu -->
+                            <li class="user-header">
+                                <img src="chat/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+                                <p>
+                                    <%- userInfo.name %>
+                                        <small>Member since Nov. 2012</small>
+                                </p>
+                            </li>
+
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="<%= __admin %>/admin/logout" class="btn btn-default btn-flat">Sign out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-custom-menu -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</header>
 <!-- Full Width Column -->
 <div class="content-wrapper">
     <div class="container">
@@ -27,38 +223,39 @@
                     <div class="box-body">
                         <!-- Conversations are loaded here -->
                         <div class="direct-chat-messages">
-                            <!-- Message. Default to the left -->
-                            <div class="direct-chat-msg">
-                                <div class="direct-chat-info clearfix">
-                                    <span class="direct-chat-name pull-left">Alexander Pierce</span>
-                                    <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-                                </div>
-                                <!-- /.direct-chat-info -->
-                                <img class="direct-chat-img" src="chat/img/user1-128x128.jpg" alt="Message User Image">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    Is this template really for free? That's unbelievable!
-                                </div>
-                                <!-- /.direct-chat-text -->
-                            </div>
-                            <!-- /.direct-chat-msg -->
+                            <div id="area-list-messages">
+                                <!-- Message. Default to the left -->
+                                <% publicMessages.forEach(publicMessage=> { %>
+                                    <% let right='' ; let direct_chat_name='pull-left' ; let
+                                        direct_chat_timestamp='pull-right' ; if
+                                        (publicMessage.username==userInfo.username) { right='right' ;
+                                        direct_chat_name='pull-right' ; direct_chat_timestamp='pull-left' ; } %>
+                                        <div class="direct-chat-msg <%= right %> ">
+                                            <div class="direct-chat-info clearfix">
+                                                <span class="direct-chat-name <%= direct_chat_name %>">
+                                                    <%= publicMessage.username %>
+                                                </span>
+                                                <span class="direct-chat-timestamp <%= direct_chat_timestamp %>">
+                                                    <%= publicMessage.time %>
+                                                </span>
+                                            </div>
+                                            <!-- /.direct-chat-info -->
+                                            <img class="direct-chat-img" src="chat/img/user1-128x128.jpg" alt="Message User Image">
+                                            <!-- /.direct-chat-img -->
+                                            <div class="direct-chat-text">
+                                                <%- publicMessage.content %>
+
+                                            </div>
+                                            <!-- /.direct-chat-text -->
+                                        </div>
+                                        <% }); %>
+                                            <!-- /.direct-chat-msg -->
 
 
-                            <!-- Message to the right -->
-                            <div class="direct-chat-msg right">
-                                <div class="direct-chat-info clearfix">
-                                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
-                                    <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
-                                </div>
-                                <!-- /.direct-chat-info -->
-                                <img class="direct-chat-img" src="chat/img/user3-128x128.jpg" alt="Message User Image">
-                                <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text">
-                                    You better believe it!
-                                </div>
-                                <!-- /.direct-chat-text -->
+
+                                            <!-- /.direct-chat-msg -->
                             </div>
-                            <!-- /.direct-chat-msg -->
+                            <div id="bottom"></div>
                         </div>
                         <!--/.direct-chat-messages-->
 
@@ -71,9 +268,9 @@
 
                                         <div class="contacts-list-info">
                                             <span class="contacts-list-name">
-                              Count Dracula
-                              <small class="contacts-list-date pull-right">2/28/2015</small>
-                            </span>
+                                                Count Dracula
+                                                <small class="contacts-list-date pull-right">2/28/2015</small>
+                                            </span>
                                             <span class="contacts-list-msg">How have you been? I was...</span>
                                         </div>
                                         <!-- /.contacts-list-info -->
@@ -106,51 +303,18 @@
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Online</h3>
-                            <span data-toggle="tooltip" title="" class="badge bg-light-blue count" data-original-title="5 Users">5</span>
+                            <span class="badge bg-light-blue count" id="total_users"></span>
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                            class="fa fa-minus"></i>
-                                    </button>
+                                        class="fa fa-minus"></i>
+                                </button>
                             </div>
                             <!-- /.box-tools -->
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body">
-                            <div class="user">
-                                <div class="col-md-8 user-avatar">
-                                    <img class="contacts-list-img" src="chat/img/user1-128x128.jpg" alt="User Image">
-                                    <h5>Alexander Pierce</h5>
-                                </div>
-                                <div class="col-md-4"><button type="button" class="btn btn-block btn-primary btn-w btn-sm">Add friend</button></div>
-                            </div>
-                            <div class="user">
-                                <div class="col-md-8 user-avatar">
-                                    <img class="contacts-list-img" src="chat/img/user3-128x128.jpg" alt="User Image">
-                                    <h5>Sarah Bullock</h5>
-                                </div>
-                                <div class="col-md-4"><button type="button" class="btn btn-block btn-primary btn-w btn-sm">Add friend</button></div>
-                            </div>
-                            <div class="user">
-                                <div class="col-md-8 user-avatar">
-                                    <img class="contacts-list-img" src="chat/img/user4-128x128.jpg" alt="User Image">
-                                    <h5>Tennille Lown</h5>
-                                </div>
-                                <div class="col-md-4"><button type="button" class="btn btn-block btn-primary btn-w btn-sm">Add friend</button></div>
-                            </div>
-                            <div class="user">
-                                <div class="col-md-8 user-avatar">
-                                    <img class="contacts-list-img" src="chat/img/user5-128x128.jpg" alt="User Image">
-                                    <h5>Crystle Bethke</h5>
-                                </div>
-                                <div class="col-md-4"><button type="button" class="btn btn-block btn-primary btn-w btn-sm">Add friend</button></div>
-                            </div>
-                            <div class="user">
-                                <div class="col-md-8 user-avatar">
-                                    <img class="contacts-list-img" src="chat/img/user6-128x128.jpg" alt="User Image">
-                                    <h5>Shakira Arthur</h5>
-                                </div>
-                                <div class="col-md-4"><button type="button" class="btn btn-block btn-default btn-sm btn-w">Remove</button></div>
-                            </div>
+                        <div class="box-body" id="list_online_users">
+
+
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -162,30 +326,36 @@
                             <span data-toggle="tooltip" title="" class="badge bg-light-blue count" data-original-title="2 Rooms">2</span>
 
                             <div class="box-tools pull-right">
+
+                                <button type="button" class="btn btn-block btn-primary btn-w btn-sm">create</button>
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                            class="fa fa-minus"></i>
-                                    </button>
+                                        class="fa fa-minus"></i>
+                                </button>
                             </div>
                             <!-- /.box-tools -->
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body scroll-box">
-                            <div class="room">
-                                <div class="col-md-8 room-avatar">
-                                    <img class="rooms-list-img" src="chat/img/Angular.png" alt="User Image">
-                                    <h5 class="room-name">Room Angular</h5>
-                                    <small>Member: 5</small>
+                        <div class="box-body scroll-box" id="roomList">
+
+                            <input type="text" id="roomName" placeholder="Type room name ..." class="form-control">
+
+                            <% rooms.forEach(room=> { %>
+                                <div class="room">
+                                    <a target="_self" href="<%= systemConfig.prefixChat %>/room/<%= room._id %>">
+                                        <div class="col-md-8 room-avatar">
+                                            <img class="rooms-list-img" src="chat/img/Angular.png" alt="User Image">
+                                            <h5 class="room-name">
+                                                <%= room.roomName %>
+                                            </h5>
+                                            <small>Member: <%= room.members.length %></small>
+                                            <p>Created by:
+                                                <%= room.createdBy %>
+                                            </p>
+                                        </div>
+                                    </a>
+
                                 </div>
-                                <div class="col-md-4"><button type="button" class="btn btn-block btn-primary btn-w btn-sm">Join</button></div>
-                            </div>
-                            <div class="room">
-                                <div class="col-md-8 room-avatar">
-                                    <img class="rooms-list-img" src="chat/img/php-icon.png" alt="User Image">
-                                    <h5 class="room-name">Room PHP</h5>
-                                    <small>Member: 5</small>
-                                </div>
-                                <div class="col-md-4"><button type="button" class="btn btn-block btn-primary btn-w btn-sm">Join</button></div>
-                            </div>
+                                <% }) %>
 
 
                         </div>
@@ -199,3 +369,204 @@
     </div>
     <!-- /.container -->
 </div>
+<script src="socket.io/socket.io.js"></script>
+<script>
+    document.getElementById("bottom").scrollIntoView();
+    var chat_form = document.getElementById("chat_form");
+    var chat_message = document.getElementById("message");
+    var username = document.getElementById("username");
+    var listPublicMessages = document.getElementById("area-list-messages");
+    var list_online_users = document.getElementById("list_online_users");
+    var total_users = document.getElementById("total_users");
+    var roomName = document.getElementById("roomName");
+    var roomList = document.getElementById("roomList");
+    var totalinvitation = document.getElementsByClassName('totalinvitation');
+    var invitationlist = document.getElementById('invitationlist');
+    // let emoji = $("#message").emojioneArea(); // phai dung jquery
+    // var socket = io.connect('http://zendvnexpress.noteatext.com');
+    var socket = io.connect('localhost:3000');
+    let thisUser = "<%= userInfo.username %>";
+    let thisUserID = "<%= userInfo._id %>";
+    // reject invitation
+    var rejectfriend = (element) => {
+        var data = {};
+        data.senderID = element.dataset.id;
+        data.receiverID = thisUserID;
+        socket.emit("reject_invitation", data);
+        element.parentNode.parentNode.remove(); //remove the node chừa invitation này
+        // xóa số lượng invitation hiển thị
+        for (i = 0; i < totalinvitation.length; i++) {
+            totalinvitation[i].innerHTML = parseInt(totalinvitation[i].innerHTML) - 1;
+        }
+    };
+    // accept invitation
+    var acceptfriend = (element) => {
+        var data = {};
+        data.senderID = element.dataset.id;
+        data.receiverID = thisUserID;
+        socket.emit("accept_invitation", data);
+        element.parentNode.parentNode.remove(); //remove the node chừa invitation này
+        // xóa số lượng invitation hiển thị
+        for (i = 0; i < totalinvitation.length; i++) {
+            totalinvitation[i].innerHTML = parseInt(totalinvitation[i].innerHTML) - 1;
+        }
+    };
+    // receive invitaion
+    socket.on("server_send_invitation", (data) => {
+        // console.log(totalinvitation.length);
+
+        for (i = 0; i < totalinvitation.length; i++) {
+            totalinvitation[i].innerHTML = parseInt(totalinvitation[i].innerHTML) + 1;
+        }
+        var html = `
+                <div class="user-invite">
+                    <div class="col-md-7 user-avatar">
+                        <img class="contacts-list-img" src="chat/img/user1-128x128.jpg" alt="User Image">
+                        <h5>
+                            ${data[0].username}
+                        </h5>
+                    </div>
+                    <div class="col-md-5 btn-action-invite">
+                        <button type="button" class="btn btn-block btn-primary" data-id="${data[0]._id}" onclick="acceptfriend(this)">Accept</button>
+                        <button type="button" class="btn btn-block btn-default" data-id="${data[0]._id}" onclick="rejectfriend(this)">Reject</button>
+                    </div>
+                </div>
+                `;
+        invitationlist.innerHTML += html;
+    });
+    // server send public message
+    socket.on("server_return_public_message", (data) => { //nhận tin nhắn từ server gửi tới tất cả user ở public
+        let right = '';
+        let direct_chat_name = 'pull-left';
+        let direct_chat_timestamp = 'pull-right';
+
+        if (thisUser === data.username) {
+            right = 'right';
+            direct_chat_name = 'pull-right';
+            direct_chat_timestamp = 'pull-left';
+        }
+        var html = `
+        <div class="direct-chat-msg ${right}">
+            <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name ${direct_chat_name}">${data.username}</span>
+                <span class="direct-chat-timestamp ${direct_chat_timestamp}">${data.time}</span>
+            </div>
+
+            <img class="direct-chat-img" src="chat/img/user1-128x128.jpg" alt="Message User Image">
+
+            <div class="direct-chat-text">
+                ${data.content}
+            </div>
+
+        </div>`;
+
+        listPublicMessages.innerHTML += html;
+        document.getElementById("bottom").scrollIntoView();
+    });
+    // end server send public message
+    // nhận list online users
+    socket.on("online_users", (data) => {
+        var html = "";
+        // console.log(data);
+        data.allUsers.forEach(user => {
+            var online = '<p>offline</p>';
+            if (user.username !== thisUser) {
+                var socketid = '';
+                //filter giúp tìm trong mảng data.onlineUsers có phần tử thỏa mãn điều kiện onlineUser.username === user.username. Kết quả trả về mảng chứa các phẩn tử thỏa mãn điều kiện
+                var existenceOnline = data.onlineUsers.filter((onlineUser) => onlineUser.username === user.username)
+                if (existenceOnline.length > 0) {
+                    online = "<p style='color: red;'>online</p>";
+                    socketid = existenceOnline[0].id;
+                };
+                html += `<div class="user">
+                        <div class="col-md-8 user-avatar">
+                            <img class="contacts-list-img" src="chat/img/user1-128x128.jpg" alt="${user.username}">
+                            <h5>${user.username}</h5>
+                            ${online}
+                        </div>
+                        <div class="col-md-4"><button type="button" data-idsendinvitation="${thisUserID}" data-usersendinvitation="${thisUser}" data-receiveid="${user._id}" data-receivesocketid="${socketid}" data-receiveusername="${user.username}" class="btn btn-block btn-primary btn-w btn-sm" onclick="addfriend(this)">Add friend</button></div>
+                    </div>`;
+            };
+
+        });
+        list_online_users.innerHTML = html;
+        total_users.innerHTML = data.onlineUsers.length - 1;
+    });
+    // online
+    socket.emit("new_online_user", { // gửi user mới online
+        username: thisUser,
+        _id: thisUserID
+    });
+    // end online
+
+    // socket.on('server_send_user_typing',(data)=>{// nhận tín hiệu 1 ai đó sang gõ phím
+
+    // })
+    // create room
+    socket.on('server_return_rooms', (data) => {
+        // console.log(data);
+        var html =
+            `<div class="room">
+                <a target="_self" href="<%= systemConfig.prefixChat %>/room/${data._id}">
+                    <div class="col-md-8 room-avatar">
+                        <img class="rooms-list-img" src="chat/img/Angular.png" alt="User Image">
+                        <h5 class="room-name">${data.roomName}</h5>
+                        <small>Member: ${data.members.length}</small>
+                        <p>Created by: ${data.createdBy}</p>
+                    </div>
+                </a>
+
+            </div>
+        `;
+        roomList.innerHTML += html;
+    });
+    roomName.addEventListener("keyup", (event) => {
+
+        if (event.keyCode === 13) {
+
+            event.preventDefault();
+
+            socket.emit("create_room", {
+                roomName: roomName.value,
+                createdBy: thisUser,
+                members: [thisUser],
+            });
+            roomName.value = '';
+        }
+    });
+
+    // end create room
+    function send_message() {
+        var content = chat_message.value;
+        content = emoji(content);
+        // console.log(content);
+        socket.emit('client_send_public_message', { //gửi tin nhắn lên server để server gửi tin nhắn tới tất cả user ở public
+            content: content,
+            username: username.value,
+        });
+        //remove text after send
+        chat_message.value = '';
+
+        // remove emoji
+        // emoji.data("emojioneArea").setText('');
+    };
+    // chat_form.addEventListener('submit', (e) => {
+    //     // e.preventDefault();
+    //     socket.emit('client_send_all_message', {
+    //         content: chat_message.value,
+    //         username: username.value
+    //     });
+    //     chat_message.value = '';
+    //     return false;
+    // });
+    // addfriend
+    var addfriend = (element) => {
+        var data = {};
+        data.receiveUserID = element.dataset.receiveid;
+        data.receiveUserSocketID = element.dataset.receivesocketid;
+        data.receiveUsername = element.dataset.receiveusername;
+        data.userSendInvitation = element.dataset.usersendinvitation;
+        data.idSendInvitation = element.dataset.idsendinvitation;
+        socket.emit('send_addfriend', data);
+    };
+</script>

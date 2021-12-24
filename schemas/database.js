@@ -19,12 +19,24 @@ var usersSchema = new mongoose.Schema({
     name: String,
     username: String,
     password: String,
-    content: String
+    content: String,
+    friends: Array,
+    friendreqto: Array,
+    friendreqfrom: Array,
 });
 var chatSchema = new mongoose.Schema({
     content: String,
     username: String,
     time: Date,
+    room: String,
+});
+var roomSchema = new mongoose.Schema({
+    room: String,
+    roomName: String,
+    createdBy: String,
+    members: Array,
+    time: Date,
+
 });
 connectionDatabase.once('open', function() {
     // we're connected! 
@@ -39,4 +51,5 @@ module.exports = {
     rolesModel: mongoose.model('roles', rolesSchema),
     usersModel: mongoose.model('users', usersSchema),
     chatModel: mongoose.model('chat', chatSchema),
+    roomModel: mongoose.model('room', roomSchema),
 }

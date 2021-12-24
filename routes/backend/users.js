@@ -93,7 +93,7 @@ router.get("/", async(req, res, next) => {
         .limit(pagiParams.itemsPerPage)
         .then((items) => {
             // thay bằng phương thức then để xử lý bất đồng bộ
-            // console.log(items);
+            console.log('abc');
             res.render(`inc/admin/users/list`, {
                 layout: __layoutAdmin,
                 title: "user",
